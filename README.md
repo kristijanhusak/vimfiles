@@ -23,7 +23,6 @@ Plugins
 * NERDTree
 * CtrlP
 * Filesearch
-
 * Surround
 * Snipmate
 * Auto pairs
@@ -34,7 +33,6 @@ Plugins
 * Emmet
 * Syntastic
 * Easymotion
-
 * Blade syntax
 * Json syntax
 * Twig syntax
