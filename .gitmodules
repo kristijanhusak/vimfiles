@@ -12,7 +12,7 @@
 	url = https://github.com/jeetsukumaran/vim-filesearch.git
 [submodule "vim/bundle/ctrlp"]
 	path = vim/bundle/ctrlp
-	url = https://github.com/kien/ctrlpvim.git
+	url = https://github.com/kien/ctrlp.vim.git
 [submodule "vim/bundle/vim-surround"]
 	path = vim/bundle/vim-surround
 	url = https://github.com/tpope/vim-surround.git
@@ -55,9 +55,9 @@
 [submodule "vim/bundle/vim-javascript-syntax"]
 	path = vim/bundle/vim-javascript-syntax
 	url = https://github.com/jelera/vim-javascript-syntax.git
-[submodule "vim/bundle/phpvim"]
-	path = vim/bundle/phpvim
-	url = https://github.com/joshtronic/phpvim.git
-[submodule "vim/bundle/scss-syntaxvim"]
-	path = vim/bundle/scss-syntaxvim
-	url = https://github.com/cakebaker/scss-syntaxvim.git
+[submodule "vim/bundle/php.vim"]
+	path = vim/bundle/php.vim
+	url = https://github.com/joshtronic/php.vim.git
+[submodule "vim/bundle/scss-syntax.vim"]
+	path = vim/bundle/scss-syntax.vim
+	url = https://github.com/cakebaker/scss-syntax.vim.git
