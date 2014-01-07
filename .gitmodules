@@ -57,7 +57,7 @@
 	url = https://github.com/jelera/vim-javascript-syntax.git
 [submodule "vim/bundle/php.vim"]
 	path = vim/bundle/php.vim
-	url = https://github.com/joshtronic/php.vim.git
+	url = https://github.com/kris89/php.vim.git
 [submodule "vim/bundle/scss-syntax.vim"]
 	path = vim/bundle/scss-syntax.vim
 	url = https://github.com/cakebaker/scss-syntax.vim.git
