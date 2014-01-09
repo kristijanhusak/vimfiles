@@ -60,4 +60,4 @@
 	url = https://github.com/cakebaker/scss-syntax.vim.git
 [submodule "vim/bundle/php.vim"]
 	path = vim/bundle/php.vim
-	url = https://github.com/kris89/php.vim.git
+	url = https://github.com/joshtronic/php.vim.git
