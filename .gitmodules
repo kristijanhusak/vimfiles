@@ -64,3 +64,6 @@
 [submodule "vim/bundle/vim-php-cs-fixer"]
 	path = vim/bundle/vim-php-cs-fixer
 	url = https://github.com/stephpy/vim-php-cs-fixer.git
+[submodule "vim/bundle/vim-easy-align"]
+	path = vim/bundle/vim-easy-align
+	url = https://github.com/junegunn/vim-easy-align.git

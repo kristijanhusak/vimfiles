@@ -172,6 +172,10 @@ inoremap jj <Esc>
 " Twig tag autocomplete
 inoremap {%<Space> {%<Space><Space>%}<Esc><Left><Left><Insert>
 
+
+" Trigger easy align with Vim movement
+nmap <Leader>a <Plug>(EasyAlign)
+
 " Clear search highlight
 nnoremap <Leader><space> :noh<CR>
 " Open NERDTree
@@ -199,6 +203,9 @@ nnoremap <Leader>BT :call BuildCtags()<CR>
 " Maps for indentation in normal mode
 nnoremap <tab> >>
 nnoremap <s-tab> <<
+
+"Trigger easy plugin in visual mode
+vmap <Leader>a <Plug>(EasyAlign)
 
 " Copy to system clipboard
 vnoremap <Leader>y "+y
