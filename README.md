@@ -17,6 +17,8 @@ Instalation
     $ ln -s vimfiles/vim .vim
     $ ln -s vimfiles/vimrc .vimrc
 
+Run Vim and accept Bundles(Plugins) Installation
+
 Plugins
 ----------------
 
@@ -33,12 +35,23 @@ Plugins
 * Emmet
 * Syntastic
 * Easymotion
+* Easy Align
+* Repeat
+* tComment
+* BufOnly
+* HTML5 syntax
 * Blade syntax
 * Json syntax
 * Twig syntax
 * Php syntax
 * Javascript syntax
 * Scss syntax
+
+And also some dependencies:
+
+* L9
+* Addon mw utils
+* Tlib
 
 License
 -------

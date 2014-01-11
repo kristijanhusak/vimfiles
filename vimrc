@@ -1,10 +1,48 @@
-" Use Vim settings, rather then Vi settings (much better!).
-" This must be first, because it changes other options as a side effect.
-set nocompatible
+set nocompatible        "This must be first, because it changes other options as a side effect.
 scriptencoding utf-8    "Set scriptencoding to utf-8 (listchars)
-" Change leader to a comma because the backslash is too far away
-let mapleader=","
-execute pathogen#infect()
+
+" Add NeoBundle to runtimepath
+set runtimepath+=~/.vim/bundle/neobundle.vim/
+
+" Initialize neobundle
+call neobundle#rc(expand('~/.vim/bundle/'))
+
+" Let NeoBundle manage NeoBundle
+NeoBundleFetch 'Shougo/neobundle.vim'
+
+" Plugins
+NeoBundle 'L9'
+NeoBundle 'tomtom/tlib_vim'
+NeoBundle 'tomtom/tcomment_vim'
+NeoBundle 'MarcWeber/vim-addon-mw-utils'
+NeoBundle 'jeetsukumaran/vim-filesearch'
+NeoBundle 'kien/ctrlp.vim'
+NeoBundle 'garbas/vim-snipmate'
+NeoBundle 'jiangmiao/auto-pairs'
+NeoBundle 'terryma/vim-multiple-cursors'
+NeoBundle 'ervandew/supertab'
+NeoBundle 'Lokaltog/vim-easymotion'
+NeoBundle 'mattn/emmet-vim'
+NeoBundle 'junegunn/vim-easy-align'
+NeoBundle 'tpope/vim-surround'
+NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'tpope/vim-repeat'
+NeoBundle 'scrooloose/syntastic'
+NeoBundle 'scrooloose/nerdtree'
+NeoBundle 'bling/vim-airline'
+NeoBundle 'duff/vim-bufonly'
+NeoBundle 'othree/html5.vim'
+NeoBundle 'xsbeats/vim-blade'
+NeoBundle 'elzr/vim-json'
+NeoBundle 'evidens/vim-twig'
+NeoBundle 'jelera/vim-javascript-syntax'
+NeoBundle 'joshtronic/php.vim'
+NeoBundle 'cakebaker/scss-syntax.vim'
+
+filetype plugin indent on
+
+" Call NeoBundle command for checking bundles
+NeoBundleCheck
 
 " Set initial folder depending on OS
 if !argc()
@@ -17,10 +55,10 @@ if !argc()
     endif
 endif
 
-" If no file is selected, execute Nerdtree plugin
-autocmd vimenter * if !argc() | NERDTree | endif
+" Change leader to a comma because the backslash is too far away
+let mapleader=","
 
-" Some guioptions
+" ================ GUI options ====================
 set guioptions-=m                       "remove menu bar
 set guioptions-=T                       "remove toolbar
 set guioptions-=L                       "remove left scrollbar when vertical split
@@ -47,12 +85,19 @@ set ignorecase                  "case insensitive search
 set hlsearch                    "Highlight search term
 set incsearch                   "Jump to found term while searching
 set showmatch                   "Highlight matching bracket
-set background=dark             "Set background to dark
-set clipboard+=unnamed          "Copy to system clibpoard
+set mouse=a                     "Enable mouse
+set nostartofline               "Jump to first non-blank character
+set laststatus=2                "Show statusbar
+set fileencoding=utf-8          "Set utf-8 encoding on write
+set encoding=utf-8              "Set utf-8 encoding on read
+set wrap                        "Enable word wrap
+set linebreak                   "Wrap lines at convenient points
 set tags=tags;/                 "ctags file location, searches to root until it founds it
-set listchars=tab:\ \ ,trail:·   "Set trails for tabs and spaces
+set listchars=tab:\ \ ,trail:·  "Set trails for tabs and spaces
 set list                        "Enable listchars
 set completeopt-=preview        "Disable preview for autocomplete
+set background=dark             "Set background to dark
+
 colorscheme hybrid_custom
 
 " This makes vim act like all other editors, buffers can
@@ -88,20 +133,20 @@ set expandtab
 set smartindent
 set autoindent
 
-filetype plugin indent on
+" ================ Auto commands ======================
+
 " call php specific setup function on buff open
 autocmd filetype php call SetPhpOptions()
 
 " load yaml syntax on buffread ( Fixes old slow loading )
 autocmd BufNewFile,BufRead *.yaml,*.yml source ~/.vim/after/syntax/yaml.vim
 
+" Set compass file to .scss instead of css.scss
 autocmd BufRead,BufNewFile *.scss	set filetype=scss
 
-set mouse=a             "Enable mouse
-set nostartofline       "Jump to first non-blank character
+" If no file is selected, execute Nerdtree plugin
+autocmd vimenter * if !argc() | NERDTree | endif
 
-set wrap
-set linebreak    "Wrap lines at convenient points
 
 " ================ Folds ============================
 
@@ -140,11 +185,6 @@ if has("gui_running")
     endif
 endif
 
-set laststatus=2        "Show statusbar
-
-set fileencoding=utf-8  "Set utf-8 encoding on write
-set encoding=utf-8      "Set utf-8 encoding on read
-"
 " Reduce Command timeout for faster escape and O
 set timeoutlen=1000
 set ttimeoutlen=200
