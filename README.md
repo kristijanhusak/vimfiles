@@ -39,6 +39,7 @@ Plugins
 * Repeat
 * tComment
 * BufOnly
+* Match Tag
 * HTML5 syntax
 * Blade syntax
 * Json syntax
