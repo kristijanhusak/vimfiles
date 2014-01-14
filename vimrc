@@ -11,10 +11,7 @@ call neobundle#rc(expand('~/.vim/bundle/'))
 NeoBundleFetch 'Shougo/neobundle.vim'
 
 " Plugins
-NeoBundle 'L9'
-NeoBundle 'tomtom/tlib_vim'
 NeoBundle 'tomtom/tcomment_vim'
-NeoBundle 'MarcWeber/vim-addon-mw-utils'
 NeoBundle 'jeetsukumaran/vim-filesearch'
 NeoBundle 'kien/ctrlp.vim'
 NeoBundle 'jiangmiao/auto-pairs'
@@ -308,7 +305,6 @@ let g:syntastic_always_populate_loc_list=1              "Always popuplate syntas
 
 let g:neocomplete#enable_at_startup = 1                 "Enable autocomplete
 let g:neocomplete#enable_smart_case = 1                 "Use smartcase.
-let g:neocomplete#enable_auto_select = 1                "AutoCompPop behavior
 
 let g:vim_json_syntax_conceal = 0                   "Disable setting quotes for json syntax
 
