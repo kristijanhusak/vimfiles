@@ -17,10 +17,7 @@ NeoBundle 'tomtom/tcomment_vim'
 NeoBundle 'MarcWeber/vim-addon-mw-utils'
 NeoBundle 'jeetsukumaran/vim-filesearch'
 NeoBundle 'kien/ctrlp.vim'
-NeoBundle 'garbas/vim-snipmate'
 NeoBundle 'jiangmiao/auto-pairs'
-NeoBundle 'terryma/vim-multiple-cursors'
-NeoBundle 'ervandew/supertab'
 NeoBundle 'Lokaltog/vim-easymotion'
 NeoBundle 'mattn/emmet-vim'
 NeoBundle 'junegunn/vim-easy-align'
@@ -32,6 +29,8 @@ NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'bling/vim-airline'
 NeoBundle 'duff/vim-bufonly'
 NeoBundle 'gregsexton/MatchTag'
+NeoBundle 'Shougo/neocomplete.vim'
+NeoBundle 'Shougo/neosnippet'
 NeoBundle 'othree/html5.vim'
 NeoBundle 'xsbeats/vim-blade'
 NeoBundle 'elzr/vim-json'
@@ -254,6 +253,20 @@ vnoremap <Leader>y "+y
 vnoremap <tab> >
 vnoremap <s-tab> <
 
+" SuperTab like snippets behavior.
+imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)"
+\: pumvisible() ? "\<C-n>" : "\<TAB>"
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)"
+\: "\<TAB>"
+imap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
+" For snippet_complete marker.
+if has('conceal')
+  set conceallevel=2 concealcursor=i
+endif
+
 " ================ Abbreviations ========================
 
 cnoreabbrev Wq wq
@@ -293,13 +306,14 @@ let g:syntastic_quiet_messages = {'level': 'warnings'}  "Syntastic ignore warnin
 let g:syntastic_auto_loc_list=1                         "Show syntastic window when there are errors, otherwise close
 let g:syntastic_always_populate_loc_list=1              "Always popuplate syntastic error list
 
-let g:multi_cursor_use_default_mapping=0            "Disable default mappings for multiple cursors
-let g:multi_cursor_next_key='<C-d>'                 "Set start and next multiple cursor to Ctrl-d ( Sublime text like )
-let g:multi_cursor_prev_key='<C-r>'                 "Set prev multiple cursor
-let g:multi_cursor_skip_key='<C-x>'                 "Set skip cursor
-let g:multi_cursor_quit_key='<Esc>'                 "Exit multiple cursor mode
+let g:neocomplete#enable_at_startup = 1                 "Enable autocomplete
+let g:neocomplete#enable_smart_case = 1                 "Use smartcase.
+let g:neocomplete#enable_auto_select = 1                "AutoCompPop behavior
 
 let g:vim_json_syntax_conceal = 0                   "Disable setting quotes for json syntax
+
+let g:neosnippet#enable_snipmate_compatibility = 1      "Enable snipMate compatibility feature.
+let g:neosnippet#snippets_directory='~/.vim/snippets'   " Tell Neosnippet about the other snippets
 
 " ================ Functions ========================
 
