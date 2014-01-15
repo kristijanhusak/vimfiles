@@ -26,6 +26,7 @@ NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'bling/vim-airline'
 NeoBundle 'duff/vim-bufonly'
 NeoBundle 'gregsexton/MatchTag'
+NeoBundle 'kris89/vim-multiple-cursors'
 NeoBundle 'Shougo/neocomplete.vim'
 NeoBundle 'Shougo/neosnippet'
 NeoBundle 'othree/html5.vim'
@@ -303,6 +304,12 @@ let g:syntastic_quiet_messages = {'level': 'warnings'}  "Syntastic ignore warnin
 let g:syntastic_auto_loc_list=1                         "Show syntastic window when there are errors, otherwise close
 let g:syntastic_always_populate_loc_list=1              "Always popuplate syntastic error list
 
+let g:multi_cursor_use_default_mapping=0            "Disable default mappings for multiple cursors
+let g:multi_cursor_next_key='<C-d>'                 "Set start and next multiple cursor to Ctrl-d ( Sublime text like  )
+let g:multi_cursor_prev_key='<C-r>'                 "Set prev multiple cursor
+let g:multi_cursor_skip_key='<C-x>'                 "Set skip cursor
+let g:multi_cursor_quit_key='<Esc>'                 "Exit multiple cursor mode
+
 let g:neocomplete#enable_at_startup = 1                 "Enable autocomplete
 let g:neocomplete#enable_smart_case = 1                 "Use smartcase.
 
@@ -338,6 +345,16 @@ endfunction
 function! SetPhpOptions()
     setlocal autoindent
     setlocal smartindent
+endfunction
+
+" Disable autocomplete before multiple cursors to avoid conflict
+function! Multiple_cursors_before()
+    exe 'NeoCompleteLock'
+endfunction
+
+" Enable autocomplete after multiple cursors
+function! Multiple_cursors_after()
+    exe 'NeoCompleteUnlock'
 endfunction
 
 " ================ Function calls ========================

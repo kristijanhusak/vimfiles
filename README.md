@@ -26,11 +26,11 @@ Plugins
 * CtrlP
 * Filesearch
 * Surround
-* Snipmate
 * Auto pairs
 * Multiple cursors
 * Airline
-* Supertab
+* NeoComplete
+* NeoSnippets
 * Fugitive
 * Emmet
 * Syntastic
@@ -47,12 +47,6 @@ Plugins
 * Php syntax
 * Javascript syntax
 * Scss syntax
-
-And also some dependencies:
-
-* L9
-* Addon mw utils
-* Tlib
 
 License
 -------
