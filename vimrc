@@ -136,6 +136,9 @@ set autoindent
 " call php specific setup function on buff open
 autocmd filetype php call SetPhpOptions()
 
+" Remove unused markers for snippets
+autocmd InsertLeave * NeoSnippetClearMarkers
+
 " load yaml syntax on buffread ( Fixes old slow loading )
 autocmd BufNewFile,BufRead *.yaml,*.yml source ~/.vim/after/syntax/yaml.vim
 
