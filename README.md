@@ -1,7 +1,7 @@
 
 ========
 
-This is my Vim editor setup. 
+This is my Vim editor setup.
 Feel free to fork it
 and submit a pull request if you found any bug.
 
