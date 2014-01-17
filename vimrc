@@ -244,6 +244,10 @@ nnoremap <Leader>BT :call BuildCtags()<CR>
 " Maps for indentation in normal mode
 nnoremap <tab> >>
 nnoremap <s-tab> <<
+" Fugitive commands
+nnoremap <Leader>gs :Gstatus<CR>
+nnoremap <Leader>gc :call GitCommit()<CR>
+nnoremap <Leader>gp :call GitPush()<CR>
 
 "Trigger easy plugin in visual mode
 vmap <Leader>a <Plug>(EasyAlign)
@@ -360,6 +364,27 @@ endfunction
 function! Multiple_cursors_after()
     exe 'NeoCompleteUnlock'
 endfunction
+
+" Git commit function with prompt
+function! GitCommit()
+    call inputsave()
+    let commitMessage = input('Commit message: ')
+    call inputrestore()
+    if !empty(commitMessage)
+        exe 'Gcommit -m "'.commitMessage.'"'
+    endif
+endfunction
+
+" Git push to choosen branch
+function! GitPush()
+    call inputsave()
+    let branch = input('What branch to push on: ')
+    call inputrestore()
+    if !empty(branch)
+        exe "Git push origin ".branch."\n"
+    endif
+endfunction
+
 
 " ================ Function calls ========================
 
