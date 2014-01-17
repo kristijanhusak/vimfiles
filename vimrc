@@ -381,7 +381,7 @@ function! GitPush()
     let branch = input('What branch to push on: ')
     call inputrestore()
     if !empty(branch)
-        exe "Git push origin ".branch."\n"
+        exe "Git push origin ".branch
     endif
 endfunction
 
