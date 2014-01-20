@@ -42,17 +42,6 @@ filetype plugin indent on
 " Call NeoBundle command for checking bundles
 NeoBundleCheck
 
-" Set initial folder depending on OS
-if !argc()
-     if isdirectory("/Users/kristijanhusak/Sites/")
-        cd ~/Sites
-    elseif isdirectory("/var/www")
-        cd /var/www
-    elseif isdirectory("c:/xampp/htdocs")
-        cd c:/xampp/htdocs
-    endif
-endif
-
 " Change leader to a comma because the backslash is too far away
 let mapleader = ","
 
@@ -85,6 +74,8 @@ set incsearch                   "Jump to found term while searching
 set showmatch                   "Highlight matching bracket
 set mouse=a                     "Enable mouse
 set nostartofline               "Jump to first non-blank character
+set timeoutlen=1000             "Reduce Command timeout for faster escape and O
+set ttimeoutlen=200             "Reduce Command timeout for faster escape and O
 set laststatus=2                "Show statusbar
 set fileencoding=utf-8          "Set utf-8 encoding on write
 set encoding=utf-8              "Set utf-8 encoding on read
@@ -176,20 +167,6 @@ set scrolloff=8         "Start scrolling when we're 8 lines away from margins
 set sidescrolloff=15
 set sidescroll=1
 
-" ================ Window size and other setup ========================
-
-if has("gui_running")
-    if has("gui_macvim")            "On mac big screen we dont need fullscreen
-        set lines=65 columns=200
-    else
-        set lines=999 columns=999
-    endif
-endif
-
-" Reduce Command timeout for faster escape and O
-set timeoutlen=1000
-set ttimeoutlen=200
-
 " ================ Custom mappings ========================
 
 " Comment map
@@ -210,9 +187,6 @@ imap <c-space> <c-x><c-o>
 
 " Map for Escape key
 inoremap jj <Esc>
-" Twig tag autocomplete
-inoremap {%<Space> {%<Space><Space>%}<Esc><Left><Left><Insert>
-
 
 " Trigger easy align with Vim movement
 nmap <Leader>a <Plug>(EasyAlign)
