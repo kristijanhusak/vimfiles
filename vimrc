@@ -2,7 +2,7 @@ set nocompatible        "This must be first, because it changes other options as
 scriptencoding utf-8    "Set scriptencoding to utf-8 (listchars)
 
 " Add NeoBundle to runtimepath
-set runtimepath += ~/.vim/bundle/neobundle.vim/
+set runtimepath+=~/.vim/bundle/neobundle.vim/
 
 " Initialize neobundle
 call neobundle#rc(expand('~/.vim/bundle/'))
@@ -57,23 +57,23 @@ endif
 let mapleader = ","
 
 " ================ GUI options ====================
-set guioptions -= m                       "remove menu bar
-set guioptions -= T                       "remove toolbar
-set guioptions -= L                       "remove left scrollbar when vertical split
-set guioptions -= l                       "remove left scrollbar
-set linespace = 4                         "Set lineheight in gvim
+set guioptions-=m                       "remove menu bar
+set guioptions-=T                       "remove toolbar
+set guioptions-=L                       "remove left scrollbar when vertical split
+set guioptions-=l                       "remove left scrollbar
+set linespace=4                         "Set lineheight in gvim
 
 " ================ General Config ====================
 
-set t_Co = 256                    "Set 256 colors
+set t_Co=256                    "Set 256 colors
 set title                       "change the terminal's title
 set number                      "Line numbers are good
-set backspace = indent,eol,start  "Allow backspace in insert mode
-set history = 500                 "Store lots of :cmdline history
+set backspace=indent,eol,start  "Allow backspace in insert mode
+set history=500                 "Store lots of :cmdline history
 set showcmd                     "Show incomplete cmds down the bottom
 set noshowmode                  "Hide showmode because of the powerline plugin
 set gdefault                    "Set global flag for search and replace
-set gcr = a:blinkon0              "Disable cursor blink
+set gcr=a:blinkon0              "Disable cursor blink
 set noerrorbells                "No error bells
 set cursorline                  "Highlight current line
 set visualbell                  "No sounds
@@ -83,18 +83,18 @@ set ignorecase                  "case insensitive search
 set hlsearch                    "Highlight search term
 set incsearch                   "Jump to found term while searching
 set showmatch                   "Highlight matching bracket
-set mouse = a                     "Enable mouse
+set mouse=a                     "Enable mouse
 set nostartofline               "Jump to first non-blank character
-set laststatus = 2                "Show statusbar
-set fileencoding = utf-8          "Set utf-8 encoding on write
-set encoding = utf-8              "Set utf-8 encoding on read
+set laststatus=2                "Show statusbar
+set fileencoding=utf-8          "Set utf-8 encoding on write
+set encoding=utf-8              "Set utf-8 encoding on read
 set wrap                        "Enable word wrap
 set linebreak                   "Wrap lines at convenient points
-set tags = tags;/                 "ctags file location, searches to root until it founds it
-set listchars = tab:\ \ ,trail:·  "Set trails for tabs and spaces
+set tags=tags;/                 "ctags file location, searches to root until it founds it
+set listchars=tab:\ \ ,trail:·  "Set trails for tabs and spaces
 set list                        "Enable listchars
-set completeopt -= preview        "Disable preview for autocomplete
-set background = dark             "Set background to dark
+set completeopt-=preview        "Disable preview for autocomplete
+set background=dark             "Set background to dark
 
 colorscheme hybrid_custom
 
@@ -117,16 +117,16 @@ set nowb
 " Only works all the time.
 
 silent !mkdir ~/.vim/backups > /dev/null 2>&1
-set undodir = ~/.vim/backups
+set undodir=~/.vim/backups
 set undofile
 
 " ================ Indentation ======================
 
 " Tab setup
 set smarttab
-set shiftwidth = 4
-set softtabstop = 4
-set tabstop = 4
+set shiftwidth=4
+set softtabstop=4
+set tabstop=4
 set expandtab
 set smartindent
 set autoindent
@@ -151,44 +151,44 @@ autocmd vimenter * if !argc() | NERDTree | endif
 
 " ================ Folds ============================
 
-set foldmethod = marker
-set foldmarker = {{{,}}}
+set foldmethod=marker
+set foldmarker={{{,}}}
 set nofoldenable        "dont fold by default
 
 " ================ Completion =======================
 
-set wildmode = list:longest
+set wildmode=list:longest
 set wildmenu                "enable ctrl-n and ctrl-p to scroll thru matches
-set wildignore = *.o,*.obj,*~ "stuff to ignore when tab completing
-set wildignore += *vim/backups*
-set wildignore += *sass-cache*
-set wildignore += *vendor/**
-set wildignore += *node_modules/**
-set wildignore += *DS_Store*
-set wildignore += *.gem
-set wildignore += log/**
-set wildignore += tmp/**
-set wildignore += *.png,*.jpg,*.gif
+set wildignore=*.o,*.obj,*~ "stuff to ignore when tab completing
+set wildignore+=*vim/backups*
+set wildignore+=*sass-cache*
+set wildignore+=*vendor/**
+set wildignore+=*node_modules/**
+set wildignore+=*DS_Store*
+set wildignore+=*.gem
+set wildignore+=log/**
+set wildignore+=tmp/**
+set wildignore+=*.png,*.jpg,*.gif
 
 " ================ Scrolling ========================
 
-set scrolloff = 8         "Start scrolling when we're 8 lines away from margins
-set sidescrolloff = 15
-set sidescroll = 1
+set scrolloff=8         "Start scrolling when we're 8 lines away from margins
+set sidescrolloff=15
+set sidescroll=1
 
 " ================ Window size and other setup ========================
 
 if has("gui_running")
     if has("gui_macvim")            "On mac big screen we dont need fullscreen
-        set lines = 65 columns = 200
+        set lines=65 columns=200
     else
-        set lines = 999 columns = 999
+        set lines=999 columns=999
     endif
 endif
 
 " Reduce Command timeout for faster escape and O
-set timeoutlen = 1000
-set ttimeoutlen = 200
+set timeoutlen=1000
+set ttimeoutlen=200
 
 " ================ Custom mappings ========================
 
@@ -272,7 +272,7 @@ imap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
 " For snippet_complete marker.
 if has('conceal')
-  set conceallevel = 2 concealcursor = i
+  set conceallevel=2 concealcursor=i
 endif
 
 " ================ Abbreviations ========================
@@ -337,7 +337,7 @@ let g:neosnippet#snippets_directory = '~/.vim/snippets'   " Tell Neosnippet abou
 function! BuildCtags()
     exe '!ctags --languages=PHP,JavaScript -R .'
     if filereadable('tags')
-        echo "Build successfully!" 
+        echo "Build successfully!"
     else
         echo "Error! Please try again!"
     endif
@@ -346,11 +346,11 @@ endfunction
 " Set proper font depending on OS
 function! SetFont()
     if has('gui_macvim')
-        set guifont = DejaVu\ Sans\ Mono\ for\ Powerline:h12              "Mac OS
+        set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h12              "Mac OS
     elseif has('win16') || has('win32')
-        set guifont = DejaVu\ Sans\ Mono\ for\ Powerline:h10:cANSI        "Windows
+        set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h10:cANSI        "Windows
     else
-        set guifont = DejaVu\ Sans\ Mono\ for\ Powerline\ 10              "Other(Linux)
+        set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 10              "Other(Linux)
     endif
 endfunction
 
@@ -396,6 +396,6 @@ endfunction
 :call SetFont()                                             "Set font depending on OS
 
 " Include local vimrc if exists
-if filereadable(glob("$HOME/.vimrc.local")) 
+if filereadable(glob("$HOME/.vimrc.local"))
     source $HOME/.vimrc.local
 endif
