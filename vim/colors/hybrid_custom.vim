@@ -124,9 +124,9 @@ else
     let s:selection  = "13"
     let s:line       = "0"
     let s:comment    = "7"
-    let s:red        = "1"   
-    let s:orange     = "9"   
-    let s:yellow     = "3"   
+    let s:red        = "1"
+    let s:orange     = "9"
+    let s:yellow     = "3"
     let s:green      = "2"
     let s:aqua       = "6"
     let s:blue       = "4"
@@ -327,7 +327,7 @@ exe "hi! String"          .s:fg_green       .s:bg_none        .s:fmt_none
 exe "hi! Identifier"      .s:fg_purple      .s:bg_none        .s:fmt_none
 exe "hi! Function"        .s:fg_yellow      .s:bg_none        .s:fmt_none
 
-exe "hi! Statement"       .s:fg_blue        .s:bg_none        .s:fmt_none
+exe "hi! Statement"       .s:fg_blue        .s:bg_none        .s:fmt_bold
 "		Conditional"
 "		Repeat"
 "		Label"
@@ -341,7 +341,7 @@ exe "hi! PreProc"         .s:fg_aqua        .s:bg_none        .s:fmt_none
 "		Macro"
 "		PreCondit"
 
-exe "hi! Type"            .s:fg_orange      .s:bg_none        .s:fmt_none
+exe "hi! Type"            .s:fg_orange      .s:bg_none        .s:fmt_bold
 "		StorageClass"
 exe "hi! Structure"       .s:fg_aqua        .s:bg_none        .s:fmt_none
 "		Typedef"

@@ -202,6 +202,8 @@ nnoremap <Leader>n :NERDTreeToggle<CR>
 nnoremap <leader><tab> <c-^>
 " Switch jump half page to Ctrl-f so multiple cursors can be bind to Ctrl-d ( Sublime text like )
 nnoremap <C-f> <C-d>
+"Auto change directory to match current file ,cd
+nnoremap <Leader>cd :cd %:p:h<CR>:pwd<CR>
 " Copy and paste from clipboard
 nnoremap <Leader>y "+y
 nnoremap <Leader>v "+p
