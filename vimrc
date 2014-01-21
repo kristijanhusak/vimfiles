@@ -49,6 +49,7 @@ let mapleader = ","
 let g:force_bold_font = 1
 
 " ================ GUI options ====================
+
 set guioptions-=m                       "remove menu bar
 set guioptions-=T                       "remove toolbar
 set guioptions-=L                       "remove left scrollbar when vertical split
@@ -57,45 +58,41 @@ set linespace=4                         "Set lineheight in gvim
 
 " ================ General Config ====================
 
-set t_Co=256                    "Set 256 colors
-set title                       "change the terminal's title
-set number                      "Line numbers are good
-set backspace=indent,eol,start  "Allow backspace in insert mode
-set history=500                 "Store lots of :cmdline history
-set showcmd                     "Show incomplete cmds down the bottom
-set noshowmode                  "Hide showmode because of the powerline plugin
-set gdefault                    "Set global flag for search and replace
-set gcr=a:blinkon0              "Disable cursor blink
-set noerrorbells                "No error bells
-set cursorline                  "Highlight current line
-set visualbell                  "No sounds
-set autoread                    "Reload files changed outside vim
-set smartcase                   "Smart case search if there is uppercase
-set ignorecase                  "case insensitive search
-set hlsearch                    "Highlight search term
-set incsearch                   "Jump to found term while searching
-set showmatch                   "Highlight matching bracket
-set mouse=a                     "Enable mouse
-set nostartofline               "Jump to first non-blank character
-set timeoutlen=1000             "Reduce Command timeout for faster escape and O
-set ttimeoutlen=200             "Reduce Command timeout for faster escape and O
-set laststatus=2                "Show statusbar
-set fileencoding=utf-8          "Set utf-8 encoding on write
-set encoding=utf-8              "Set utf-8 encoding on read
-set wrap                        "Enable word wrap
-set linebreak                   "Wrap lines at convenient points
-set tags=tags;/                 "ctags file location, searches to root until it founds it
-set listchars=tab:\ \ ,trail:·  "Set trails for tabs and spaces
-set list                        "Enable listchars
-set completeopt-=preview        "Disable preview for autocomplete
-set background=dark             "Set background to dark
+set t_Co=256                            "Set 256 colors
+set title                               "change the terminal's title
+set number                              "Line numbers are good
+set backspace=indent,eol,start          "Allow backspace in insert mode
+set history=500                         "Store lots of :cmdline history
+set showcmd                             "Show incomplete cmds down the bottom
+set noshowmode                          "Hide showmode because of the powerline plugin
+set gdefault                            "Set global flag for search and replace
+set gcr=a:blinkon0                      "Disable cursor blink
+set noerrorbells                        "No error bells
+set cursorline                          "Highlight current line
+set visualbell                          "No sounds
+set autoread                            "Reload files changed outside vim
+set smartcase                           "Smart case search if there is uppercase
+set ignorecase                          "case insensitive search
+set hlsearch                            "Highlight search term
+set incsearch                           "Jump to found term while searching
+set showmatch                           "Highlight matching bracket
+set mouse=a                             "Enable mouse
+set nostartofline                       "Jump to first non-blank character
+set timeoutlen=1000 ttimeoutlen=200     "Reduce Command timeout for faster escape and O
+set laststatus=2                        "Show statusbar
+set fileencoding=utf-8 encoding=utf-8   "Set utf-8 encoding on write
+set conceallevel=2 concealcursor=i      "Setup for snippets markers
+set wrap                                "Enable word wrap
+set linebreak                           "Wrap lines at convenient points
+set tags=tags;/                         "ctags file location, searches to root until it founds it
+set listchars=tab:\ \ ,trail:·          "Set trails for tabs and spaces
+set list                                "Enable listchars
+set completeopt-=preview                "Disable preview for autocomplete
+set background=dark                     "Set background to dark
+set hidden                              "Hide buffers in background
 
+" Set customized version of hybrid color scheme
 colorscheme hybrid_custom
-
-" This makes vim act like all other editors, buffers can
-" exist in the background without being in a window.
-" http://items.sjbach.com/319/configuring-vim-right
-set hidden
 
 "turn on syntax highlighting
 syntax on
@@ -107,16 +104,14 @@ set nobackup
 set nowb
 
 " ================ Persistent Undo ==================
-" Keep undo history across sessions, by storing in file.
-" Only works all the time.
 
+" Keep undo history across sessions, by storing in file.
 silent !mkdir ~/.vim/backups > /dev/null 2>&1
 set undodir=~/.vim/backups
 set undofile
 
 " ================ Indentation ======================
 
-" Tab setup
 set smarttab
 set shiftwidth=4
 set softtabstop=4
@@ -141,7 +136,6 @@ autocmd BufNewFile,BufRead *.yaml,*.yml source ~/.vim/after/syntax/yaml.vim
 
 " If no file is selected, execute Nerdtree plugin
 autocmd vimenter * if !argc() | NERDTree | endif
-
 
 " ================ Folds ============================
 
@@ -182,19 +176,28 @@ nmap <C-h> <C-w>h
 nmap <C-j> <C-w>j
 nmap <C-k> <C-w>k
 nmap <C-l> <C-w>l
+" Trigger easy align with Vim movement
+nmap <Leader>a <Plug>(EasyAlign)
 " Delete all buffers
 nmap <silent> <Leader>da :exec "1," . bufnr('$') . "bd"<cr>
 
 " Trigger omnicomplete with Ctrl + space
 imap <c-space> <c-x><c-o>
+"
+" SuperTab like snippets behavior.
+imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)"
+\: pumvisible() ? "\<C-n>" : "\<TAB>"
+imap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)"
+\: "\<TAB>"
 
 " Map for Escape key
 inoremap jj <Esc>
-" Paste from system clipboard
+" Paste from system clipboard with Ctrl + v
 inoremap <C-v> <Esc>"+p
-
-" Trigger easy align with Vim movement
-nmap <Leader>a <Plug>(EasyAlign)
 
 " Down is really the next line
 nnoremap j gj
@@ -207,9 +210,9 @@ nnoremap <Leader>n :NERDTreeToggle<CR>
 nnoremap <leader><tab> <c-^>
 " Switch jump half page to Ctrl-f so multiple cursors can be bind to Ctrl-d ( Sublime text like )
 nnoremap <C-f> <C-d>
-"Auto change directory to match current file ,cd
+"Auto change directory to match current file
 nnoremap <Leader>cd :cd %:p:h<CR>:pwd<CR>
-" Paste from system clipboard
+" Paste from system clipboard with Ctrl + v
 nnoremap <C-v> "+p
 " Paste from yank register
 nnoremap <Leader>p "0p
@@ -241,20 +244,6 @@ vnoremap <C-c> "+y
 vnoremap <tab> >
 vnoremap <s-tab> <
 
-" SuperTab like snippets behavior.
-imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-\ "\<Plug>(neosnippet_expand_or_jump)"
-\: pumvisible() ? "\<C-n>" : "\<TAB>"
-smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-\ "\<Plug>(neosnippet_expand_or_jump)"
-\: "\<TAB>"
-imap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-
-" For snippet_complete marker.
-if has('conceal')
-  set conceallevel=2 concealcursor=i
-endif
-
 " ================ Abbreviations ========================
 
 cnoreabbrev Wq wq
@@ -272,44 +261,45 @@ cnoreabbrev T tabe
 
 " ================ plugins setups ========================
 
-let g:airline_powerline_fonts = 1       "Enable powerline fonts
-let g:airline_theme = "powerlineish"      "Set theme to powerline default theme
+let g:ctrlp_match_window = 'bottom,order:ttb,min:1,max:25,results:25' "Ctrlp window setup
+
+let g:airline_powerline_fonts = 1                           "Enable powerline fonts
+let g:airline_theme = "powerlineish"                        "Set theme to powerline default theme
 let g:airline_section_y = '%{(&fenc == "" ? &enc : &fenc)}'                       "set encoding type info
 let g:airline_section_z = '%{substitute(getcwd(), expand("$HOME"), "~", "g")}'    "Set relative path
 let g:airline_section_c = '%<%f %#__accent_red#%m%#__restore__# %#__accent_red#%{airline#util#wrap(airline#parts#readonly(),0)}%#__restore__#' "Adds red modified
-let g:airline#extensions#whitespace#enabled = 0     "Disable whitespace extension
+let g:airline#extensions#whitespace#enabled = 0             "Disable whitespace extension
 
-let g:user_emmet_expandabbr_key = '<c-e>'           "Change trigger emmet key
-let g:user_emmet_next_key = '<c-n>'                 "Change trigger jump to next for emmet
+let g:user_emmet_expandabbr_key = '<c-e>'                   "Change trigger emmet key
+let g:user_emmet_next_key = '<c-n>'                         "Change trigger jump to next for emmet
 
-let g:NERDTreeChDirMode = 2                           "NERDTree change directory only on root change
-let g:NERDTreeShowHidden = 1                          "Show hidden files in NERDTree
+let g:NERDTreeChDirMode = 2                                 "NERDTree change directory only on root change
+let g:NERDTreeShowHidden = 1                                "Show hidden files in NERDTree
 
-let g:filesearch_viewport_split_policy = "T"          "Filesearch plugin window appears on top
-let g:filesearch_autoexpand_on_split = 0              "Prevent Filesearch plugin to expand gvim window
-let g:filesearch_split_size = 20                      "Filesearch window size
-let g:filesearch_autodismiss_on_select = 0            "Filesearch window stay open
+let g:filesearch_viewport_split_policy = "T"                "Filesearch plugin window appears on top
+let g:filesearch_autoexpand_on_split = 0                    "Prevent Filesearch plugin to expand gvim window
+let g:filesearch_split_size = 20                            "Filesearch window size
+let g:filesearch_autodismiss_on_select = 0                  "Filesearch window stay open
 
-let g:ctrlp_match_window = 'bottom,order:ttb,min:1,max:25,results:25' "Ctrlp window setup
 
-let g:syntastic_quiet_messages = {'level': 'warnings'}  "Syntastic ignore warnings
-let g:syntastic_auto_loc_list = 1                         "Show syntastic window when there are errors, otherwise close
-let g:syntastic_always_populate_loc_list = 1              "Always popuplate syntastic error list
+let g:syntastic_quiet_messages = {'level': 'warnings'}      "Syntastic ignore warnings
+let g:syntastic_auto_loc_list = 1                           "Show syntastic window when there are errors, otherwise close
+let g:syntastic_always_populate_loc_list = 1                "Always popuplate syntastic error list
 
-let g:multi_cursor_use_default_mapping = 0            "Disable default mappings for multiple cursors
-let g:multi_cursor_next_key = '<C-d>'                 "Set start and next multiple cursor to Ctrl-d ( Sublime text like  )
-let g:multi_cursor_prev_key = '<C-r>'                 "Set prev multiple cursor
-let g:multi_cursor_skip_key = '<C-x>'                 "Set skip cursor
-let g:multi_cursor_quit_key = '<Esc>'                 "Exit multiple cursor mode
+let g:multi_cursor_use_default_mapping = 0                  "Disable default mappings for multiple cursors
+let g:multi_cursor_next_key = '<C-d>'                       "Set start and next multiple cursor to Ctrl-d ( Sublime text like  )
+let g:multi_cursor_prev_key = '<C-r>'                       "Set prev multiple cursor
+let g:multi_cursor_skip_key = '<C-x>'                       "Set skip cursor
+let g:multi_cursor_quit_key = '<Esc>'                       "Exit multiple cursor mode
 
-let g:neocomplete#enable_at_startup = 1                   "Enable autocomplete
-let g:neocomplete#enable_smart_case = 1                   "Use smartcase.
-let g:neocomplete#data_directory = '~/.vim/.neocomplete'  "Folder where neocomplete saves cache
+let g:neocomplete#enable_at_startup = 1                     "Enable autocomplete
+let g:neocomplete#enable_smart_case = 1                     "Use smartcase.
+let g:neocomplete#data_directory = '~/.vim/.neocomplete'    "Folder where neocomplete saves cache
 
-let g:vim_json_syntax_conceal = 0                   "Disable setting quotes for json syntax
+let g:vim_json_syntax_conceal = 0                           "Disable setting quotes for json syntax
 
-let g:neosnippet#enable_snipmate_compatibility = 1      "Enable snipMate compatibility feature.
-let g:neosnippet#snippets_directory = '~/.vim/snippets'   " Tell Neosnippet about the other snippets
+let g:neosnippet#enable_snipmate_compatibility = 1          "Enable snipMate compatibility feature.
+let g:neosnippet#snippets_directory = '~/.vim/snippets'     "Tell Neosnippet about the other snippets
 
 " ================ Functions ========================
 
@@ -369,7 +359,6 @@ function! GitPush()
         exe "Git push origin ".branch
     endif
 endfunction
-
 
 " ================ Function calls ========================
 
