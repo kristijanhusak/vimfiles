@@ -27,6 +27,7 @@ NeoBundle 'bling/vim-airline'
 NeoBundle 'duff/vim-bufonly'
 NeoBundle 'gregsexton/MatchTag'
 NeoBundle 'kris89/vim-multiple-cursors'
+NeoBundle 'kris89/vim-hybrid'
 NeoBundle 'Shougo/neocomplete.vim'
 NeoBundle 'Shougo/neosnippet'
 NeoBundle 'othree/html5.vim'
@@ -44,9 +45,6 @@ NeoBundleCheck
 
 " Change leader to a comma because the backslash is too far away
 let mapleader = ","
-
-" Enable bold fonts for some syntax highlight (functions, types, todo, preproc)
-let g:force_bold_font = 1
 
 " ================ GUI options ====================
 
@@ -92,7 +90,7 @@ set background=dark                     "Set background to dark
 set hidden                              "Hide buffers in background
 
 " Set customized version of hybrid color scheme
-colorscheme hybrid_custom
+colorscheme hybrid_reverse
 
 "turn on syntax highlighting
 syntax on
@@ -298,6 +296,7 @@ let g:neocomplete#data_directory = '~/.vim/.neocomplete'    "Folder where neocom
 
 let g:vim_json_syntax_conceal = 0                           "Disable setting quotes for json syntax
 
+let g:neosnippet#disable_runtime_snippets = 1               "Disable default runtime snippets
 let g:neosnippet#enable_snipmate_compatibility = 1          "Enable snipMate compatibility feature.
 let g:neosnippet#snippets_directory = '~/.vim/snippets'     "Tell Neosnippet about the other snippets
 
