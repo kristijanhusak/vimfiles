@@ -47,6 +47,7 @@ Plugins
 * Php syntax
 * Javascript syntax
 * Scss syntax
+* Hybrid colorscheme
 
 License
 -------
