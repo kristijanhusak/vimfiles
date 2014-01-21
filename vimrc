@@ -45,6 +45,9 @@ NeoBundleCheck
 " Change leader to a comma because the backslash is too far away
 let mapleader = ","
 
+" Enable bold fonts for some syntax highlight (functions, types, todo, preproc)
+let g:force_bold_font = 1
+
 " ================ GUI options ====================
 set guioptions-=m                       "remove menu bar
 set guioptions-=T                       "remove toolbar

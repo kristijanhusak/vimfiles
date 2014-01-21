@@ -65,6 +65,10 @@ if !exists("g:hybrid_use_iTerm_colors")
   let g:hybrid_use_iTerm_colors = 0
 endif
 
+if !exists("g:force_bold_font")
+    let g:force_bold_font = 0
+endif
+
 set background=dark
 hi clear
 
@@ -257,6 +261,12 @@ else
   let s:sp_changefg   = ""
 endif
 
+if g:force_bold_font == 1
+    let s:fg_bold = s:fmt_bold
+else
+    let s:fg_bold = s:fmt_none
+endif
+
 "}}}
 " Vim Highlighting: (see :help highlight-groups)"{{{
 " ----------------------------------------------------------------------------
@@ -325,9 +335,9 @@ exe "hi! String"          .s:fg_green       .s:bg_none        .s:fmt_none
 "		Float"
 
 exe "hi! Identifier"      .s:fg_purple      .s:bg_none        .s:fmt_none
-exe "hi! Function"        .s:fg_yellow      .s:bg_none        .s:fmt_none
+exe "hi! Function"        .s:fg_yellow      .s:bg_none        .s:fg_bold
 
-exe "hi! Statement"       .s:fg_blue        .s:bg_none        .s:fmt_bold
+exe "hi! Statement"       .s:fg_blue        .s:bg_none        .s:fg_bold
 "		Conditional"
 "		Repeat"
 "		Label"
@@ -335,13 +345,13 @@ exe "hi! Operator"        .s:fg_aqua        .s:bg_none        .s:fmt_none
 "		Keyword"
 "		Exception"
 
-exe "hi! PreProc"         .s:fg_aqua        .s:bg_none        .s:fmt_none
+exe "hi! PreProc"         .s:fg_aqua        .s:bg_none        .s:fg_bold
 "		Include"
 "		Define"
 "		Macro"
 "		PreCondit"
 
-exe "hi! Type"            .s:fg_orange      .s:bg_none        .s:fmt_bold
+exe "hi! Type"            .s:fg_orange      .s:bg_none        .s:fg_bold
 "		StorageClass"
 exe "hi! Structure"       .s:fg_aqua        .s:bg_none        .s:fmt_none
 "		Typedef"
@@ -359,7 +369,7 @@ exe "hi! Ignore"          .s:fg_none        .s:bg_none        .s:fmt_none
 
 exe "hi! Error"           .s:fg_red         .s:bg_none        .s:fmt_undr
 
-exe "hi! Todo"            .s:fg_addfg       .s:bg_none        .s:fmt_none
+exe "hi! Todo"            .s:fg_addfg       .s:bg_none        .s:fg_bold
 
 " Quickfix window highlighting
 exe "hi! qfLineNr"        .s:fg_yellow      .s:bg_none        .s:fmt_none
