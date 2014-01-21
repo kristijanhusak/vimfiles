@@ -190,6 +190,8 @@ imap <c-space> <c-x><c-o>
 
 " Map for Escape key
 inoremap jj <Esc>
+" Paste from system clipboard
+inoremap <C-v> <Esc>"+p
 
 " Trigger easy align with Vim movement
 nmap <Leader>a <Plug>(EasyAlign)
@@ -207,13 +209,12 @@ nnoremap <leader><tab> <c-^>
 nnoremap <C-f> <C-d>
 "Auto change directory to match current file ,cd
 nnoremap <Leader>cd :cd %:p:h<CR>:pwd<CR>
-" Copy and paste from clipboard
-nnoremap <Leader>y "+y
-nnoremap <Leader>v "+p
+" Paste from system clipboard
+nnoremap <C-v> "+p
+" Paste from yank register
+nnoremap <Leader>p "0p
 " Filesearch plugin map for searching in whole folder
 nnoremap <Leader>f :Fsgrep /
-" Ctrlp plugin fuzzy search files
-nnoremap <Leader>p :CtrlP<CR>
 " Toggle buffer list
 nnoremap <Leader>b :CtrlPBuffer<CR>
 " Ctrlp plugin fuzzy search tags
@@ -235,7 +236,7 @@ nnoremap <Leader>gp :call GitPush()<CR>
 vmap <Leader>a <Plug>(EasyAlign)
 
 " Copy to system clipboard
-vnoremap <Leader>y "+y
+vnoremap <C-c> "+y
 " Maps for indentation in visual mode
 vnoremap <tab> >
 vnoremap <s-tab> <
