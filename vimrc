@@ -296,7 +296,7 @@ let g:neocomplete#data_directory = '~/.vim/.neocomplete'    "Folder where neocom
 
 let g:vim_json_syntax_conceal = 0                           "Disable setting quotes for json syntax
 
-let g:neosnippet#disable_runtime_snippets = 1               "Disable default runtime snippets
+let g:neosnippet#disable_runtime_snippets = { '_' : 1 }     "Disable default runtime snippets
 let g:neosnippet#enable_snipmate_compatibility = 1          "Enable snipMate compatibility feature.
 let g:neosnippet#snippets_directory = '~/.vim/snippets'     "Tell Neosnippet about the other snippets
 
