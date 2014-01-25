@@ -209,7 +209,7 @@ nnoremap <leader><tab> <c-^>
 " Switch jump half page to Ctrl-f so multiple cursors can be bind to Ctrl-d ( Sublime text like )
 nnoremap <C-f> <C-d>
 "Auto change directory to match current file
-nnoremap <Leader>cd :cd %:p:h<CR>:pwd<CR>
+nnoremap <Leader>dc :cd %:p:h<CR>:pwd<CR>
 " Paste from system clipboard with Ctrl + v
 nnoremap <C-v> "+p
 " Paste from yank register
