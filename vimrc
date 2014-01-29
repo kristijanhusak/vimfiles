@@ -117,6 +117,7 @@ set tabstop=4
 set expandtab
 set smartindent
 set autoindent
+set nofoldenable
 
 " ================ Auto commands ======================
 
@@ -134,12 +135,6 @@ autocmd BufNewFile,BufRead *.yaml,*.yml source ~/.vim/after/syntax/yaml.vim
 
 " If no file is selected, execute Nerdtree plugin
 autocmd vimenter * if !argc() | NERDTree | endif
-
-" ================ Folds ============================
-
-set foldmethod=marker
-set foldmarker={{{,}}}
-set nofoldenable        "dont fold by default
 
 " ================ Completion =======================
 
