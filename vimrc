@@ -261,17 +261,7 @@ cnoreabbrev T tabe
 
 let g:ctrlp_match_window = 'bottom,order:ttb,min:1,max:25,results:25' "Ctrlp window setup
 
-if !exists('g:airline_symbols')
-    let g:airline_symbols = {}
-endif
-
-let g:airline_left_sep = '⮀'
-let g:airline_left_alt_sep = '⮁'
-let g:airline_right_sep = '⮂'
-let g:airline_right_alt_sep = '⮃'
-let g:airline_symbols.branch = '⭠'
-let g:airline_symbols.readonly = '⭤'
-let g:airline_symbols.linenr = '⭡'
+let g:airline_powerline_fonts = 1                             "Enable powerline fonts
 
 let g:airline_theme = "powerlineish"                        "Set theme to powerline default theme
 let g:airline_section_y = '%{(&fenc == "" ? &enc : &fenc)}'                       "set encoding type info
@@ -328,9 +318,9 @@ function! SetFont()
     if has('gui_macvim')
         set guifont=Inconsolata\ for\ Powerline:h14              "Mac OS
     elseif has('win16') || has('win32')
-        set guifont=Inconsolata\ for\ Powerline:h10:cANSI        "Windows
+        set guifont=Inconsolata\ for\ Powerline:h12:cANSI        "Windows
     else
-        set guifont=Inconsolata\ for\ Powerline\ 10              "Other(Linux)
+        set guifont=Inconsolata\ for\ Powerline\ 12              "Other(Linux)
     endif
 endfunction
 
