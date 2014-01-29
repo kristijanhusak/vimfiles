@@ -326,7 +326,7 @@ endfunction
 " Set proper font depending on OS
 function! SetFont()
     if has('gui_macvim')
-        set guifont=Inconsolata\ for\ Powerline:h12              "Mac OS
+        set guifont=Inconsolata\ for\ Powerline:h14              "Mac OS
     elseif has('win16') || has('win32')
         set guifont=Inconsolata\ for\ Powerline:h10:cANSI        "Windows
     else
