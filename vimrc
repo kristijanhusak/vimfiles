@@ -122,7 +122,7 @@ set nofoldenable
 " ================ Auto commands ======================
 
 " Auto-remove trailing spaces
-autocmd BufWritePre * :%s/\s\+$//e
+autocmd BufWritePre * :call StripTrailingWhitespaces()
 
 " call php specific setup function on buff open
 autocmd filetype php call SetPhpOptions()
@@ -354,6 +354,14 @@ function! GitPush()
         exe "Git push origin ".branch
     endif
 endfunction
+
+" Remove trailing spaces on save
+function! StripTrailingWhitespaces()
+    let l = line(".")
+    let c = col(".")
+    %s/\s\+$//e
+    call cursor(l, c)
+endfun
 
 " ================ Function calls ========================
 
