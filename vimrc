@@ -46,6 +46,7 @@ NeoBundleCheck
 " Change leader to a comma because the backslash is too far away
 let mapleader = ","
 
+
 " ================ GUI options ====================
 
 set guioptions-=m                       "remove menu bar
@@ -311,11 +312,11 @@ endfunction
 " Set proper font depending on OS
 function! SetFont()
     if has('gui_macvim')
-        set guifont=Inconsolata\ for\ Powerline:h14              "Mac OS
+        set guifont=Inconsolata-dz\ for\ Powerline:h12              "Mac OS
     elseif has('win16') || has('win32')
-        set guifont=Inconsolata\ for\ Powerline:h12:cANSI        "Windows
+        set guifont=Inconsolata-dz\ for\ Powerline:h10:cANSI        "Windows
     else
-        set guifont=Inconsolata\ for\ Powerline\ 12              "Other(Linux)
+        set guifont=Inconsolata-dz\ for\ Powerline\ 10              "Other(Linux)
     endif
 endfunction
 
