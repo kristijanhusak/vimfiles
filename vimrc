@@ -255,7 +255,8 @@ cnoreabbrev T tabe
 
 " ================ plugins setups ========================
 
-let g:ctrlp_match_window = 'bottom,order:ttb,min:1,max:25,results:25' "Ctrlp window setup
+let g:ctrlp_match_window = 'bottom,order:ttb,min:1,max:25,results:25'   "Ctrlp window setup
+let g:ctrlp_buffer_func = { 'enter': 'MyCtrlPMappings' }                "Ctrlp function for deleting buffers from buffer window
 
 let g:airline_powerline_fonts = 1                             "Enable powerline fonts
 
@@ -362,7 +363,21 @@ function! StripTrailingWhitespaces()
     let c = col(".")
     %s/\s\+$//e
     call cursor(l, c)
-endfun
+endfunction
+
+" Function to bind custom ctrlp mappings
+function! MyCtrlPMappings()
+    nnoremap <buffer> <silent> <c-@> :call <sid>DeleteBuffer()<cr>
+endfunction
+
+" Ctrlp function to delete buffers from buffers window
+function! s:DeleteBuffer()
+    let line = getline('.')
+    let bufid = line =~ '\[\d\+\*No Name\]$' ? str2nr(matchstr(line, '\d\+'))
+        \ : fnamemodify(line[2:], ':p')
+    exec "bd" bufid
+    exec "norm \<F5>"
+endfunction
 
 " ================ Function calls ========================
 
