@@ -38,7 +38,7 @@ NeoBundle 'jelera/vim-javascript-syntax'
 NeoBundle 'joshtronic/php.vim'
 NeoBundle 'cakebaker/scss-syntax.vim'
 
-filetype plugin on
+filetype plugin indent on
 
 " Call NeoBundle command for checking bundles
 NeoBundleCheck
@@ -46,14 +46,13 @@ NeoBundleCheck
 " Change leader to a comma because the backslash is too far away
 let mapleader = ","
 
-
 " ================ GUI options ====================
 
 set guioptions-=m                       "remove menu bar
 set guioptions-=T                       "remove toolbar
 set guioptions-=L                       "remove left scrollbar when vertical split
 set guioptions-=l                       "remove left scrollbar
-set linespace=7                         "Set lineheight in gvim
+set linespace=8                         "Set lineheight in gvim
 
 " ================ General Config ====================
 
@@ -310,11 +309,11 @@ endfunction
 " Set proper font depending on OS
 function! SetFont()
     if has('gui_macvim')
-        set guifont=Inconsolata-dz\ for\ Powerline:h12              "Mac OS
+        set guifont=Inconsolata\ for\ Powerline:h14              "Mac OS
     elseif has('win16') || has('win32')
-        set guifont=Inconsolata-dz\ for\ Powerline:h10:cANSI        "Windows
+        set guifont=Inconsolata\ for\ Powerline:h12:cANSI        "Windows
     else
-        set guifont=Inconsolata-dz\ for\ Powerline\ 10              "Other(Linux)
+        set guifont=Inconsolata\ for\ Powerline\ 12              "Other(Linux)
     endif
 endfunction
 
