@@ -38,7 +38,7 @@ NeoBundle 'jelera/vim-javascript-syntax'
 NeoBundle 'joshtronic/php.vim'
 NeoBundle 'cakebaker/scss-syntax.vim'
 
-filetype plugin indent on
+filetype plugin on
 
 " Call NeoBundle command for checking bundles
 NeoBundleCheck
@@ -124,9 +124,6 @@ set nofoldenable
 
 " Auto-remove trailing spaces
 autocmd BufWritePre * :call StripTrailingWhitespaces()
-
-" call php specific setup function on buff open
-autocmd filetype php call SetPhpOptions()
 
 " Remove unused markers for snippets
 autocmd InsertLeave * NeoSnippetClearMarkers
@@ -319,12 +316,6 @@ function! SetFont()
     else
         set guifont=Inconsolata-dz\ for\ Powerline\ 10              "Other(Linux)
     endif
-endfunction
-
-" Php specific indent options
-function! SetPhpOptions()
-    setlocal autoindent
-    setlocal smartindent
 endfunction
 
 " Disable autocomplete before multiple cursors to avoid conflict
