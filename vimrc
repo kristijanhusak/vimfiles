@@ -52,7 +52,7 @@ set guioptions-=m                       "remove menu bar
 set guioptions-=T                       "remove toolbar
 set guioptions-=L                       "remove left scrollbar when vertical split
 set guioptions-=l                       "remove left scrollbar
-set linespace=8                         "Set lineheight in gvim
+set linespace=10                        "Set lineheight in gvim
 
 " ================ General Config ====================
 
