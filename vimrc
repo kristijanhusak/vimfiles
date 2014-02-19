@@ -23,6 +23,7 @@ NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'tpope/vim-repeat'
 NeoBundle 'scrooloose/syntastic'
 NeoBundle 'scrooloose/nerdtree'
+NeoBundle 'airblade/vim-gitgutter'
 NeoBundle 'bling/vim-airline'
 NeoBundle 'duff/vim-bufonly'
 NeoBundle 'gregsexton/MatchTag'
@@ -192,6 +193,8 @@ inoremap <C-v> <Esc>"+p
 " Down is really the next line
 nnoremap j gj
 nnoremap k gk
+" Also save with ,w
+nnoremap <Leader>w :w<CR>
 " Clear search highlight
 nnoremap <Leader><space> :noh<CR>
 " Open NERDTree
