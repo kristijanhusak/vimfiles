@@ -257,13 +257,15 @@ cnoreabbrev T tabe
 let g:ctrlp_match_window = 'bottom,order:ttb,min:1,max:25,results:25'   "Ctrlp window setup
 let g:ctrlp_buffer_func = { 'enter': 'MyCtrlPMappings' }                "Ctrlp function for deleting buffers from buffer window
 
-let g:airline_powerline_fonts = 1                             "Enable powerline fonts
-
+let g:airline_powerline_fonts = 1                           "Enable powerline fonts
 let g:airline_theme = "powerlineish"                        "Set theme to powerline default theme
 let g:airline_section_y = '%{(&fenc == "" ? &enc : &fenc)}'                       "set encoding type info
 let g:airline_section_z = '%{substitute(getcwd(), expand("$HOME"), "~", "g")}'    "Set relative path
 let g:airline_section_c = '%<%f %#__accent_red#%m%#__restore__# %#__accent_red#%{airline#util#wrap(airline#parts#readonly(),0)}%#__restore__#' "Adds red modified
 let g:airline#extensions#whitespace#enabled = 0             "Disable whitespace extension
+
+let g:gitgutter_realtime = 0                                "Disable gitgutter in realtime
+let g:gitgutter_eager = 0                                   "Disable gitgutter to eager load on tab or buffer switch
 
 let g:user_emmet_expandabbr_key = '<c-e>'                   "Change trigger emmet key
 let g:user_emmet_next_key = '<c-n>'                         "Change trigger jump to next for emmet
