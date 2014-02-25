@@ -196,6 +196,8 @@ inoremap <C-v> <Esc>"+p
 " Down is really the next line
 nnoremap j gj
 nnoremap k gk
+" Yank to the end of the line
+nnoremap Y y$
 " Also save with ,w
 nnoremap <Leader>w :w<CR>
 " Clear search highlight
@@ -234,6 +236,8 @@ nnoremap <Leader>gp :call GitPush()<CR>
 "Trigger easy plugin in visual mode
 vmap <Leader>a <Plug>(EasyAlign)
 
+" Move to the end of yanked text after yank
+vnoremap y y']
 " Copy to system clipboard
 vnoremap <C-c> "+y
 " Maps for indentation in visual mode
