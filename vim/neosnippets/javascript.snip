@@ -76,26 +76,26 @@ options head
 snippet bc
 	var ${1:Collection} = Backbone.Collection.extend({
         "use strict";
-		${0:TARGET}
+		${0}
 	});
 
 snippet bm
 	var ${1:Model} = Backbone.Model.extend({
         "use strict";
-		${0:TARGET}
+		${0}
 	});
 
 snippet bv
 	var ${1:View} = Backbone.View.extend({
         "use strict";
-		${0:TARGET}
+		${0}
 	});
 
 snippet dbc
 	define(['backbone'], function (Backbone) {
         "use strict";
 		var ${1:Collection} = Backbone.Collection.extend({
-			${0:TARGET}
+            ${0}
 		});
 
 		return $1;
@@ -105,7 +105,7 @@ snippet dbm
 	define(['backbone'], function (Backbone) {
         "use strict";
 		var ${1:Model} = Backbone.Model.extend({
-			${0:TARGET}
+			${0}
 		});
 
 		return $1;
@@ -115,7 +115,20 @@ snippet dbv
 	define(['backbone'], function (Backbone) {
         "use strict";
 		var ${1:View} = Backbone.View.extend({
-			${0:TARGET}
+
+            el: '${2:.elem}',
+
+            events: {
+                '${3:click}': '${4:doSomething}'
+            },
+
+            initialize: function (${5:data}) {
+                ${0}
+            },
+
+            $4: function (e) {
+                var $this = $(e.currentTarget);
+            }
 		});
 
 		return $1;
@@ -126,12 +139,12 @@ snippet heading
 	 * ${1:this}
 	---------------------------------------*/
 
-	${0:TARGET}
+	${0}
 
 snippet iife
 	(function(${1:$}) {
         "use strict";
-		${0:TARGET}
+		${0}
 	})(${2:jQuery});
 
 snippet mdl
@@ -143,7 +156,7 @@ snippet mdl
 		App.Views.${1:View} = View.extend({
 			el: '${2}',
 			events: {},
-			initialize: function () {${0:TARGET}},
+			initialize: function () {${0}},
 			render: function () {}
 		});
 	})(App || {}, jQuery);
@@ -154,7 +167,7 @@ snippet module
 		App.${1:module} = (function (me, \$) {
 
 			var _config = {
-				${2:$wrapper}: \$('${3:.wrapper}')${0:TARGET}
+				${2:$wrapper}: \$('${3:.wrapper}')${0}
 			},
 
 			_bindEvents = function () {},
