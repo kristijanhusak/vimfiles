@@ -1,0 +1,172 @@
+snippet :f
+options head
+  ${1:#:method_name}: function(${2:#:attribute}) {
+    ${0:TARGET}
+  }
+
+snippet function
+abbr    func
+options word
+  function ${1:#:function_name}(${2:#:argument}) {
+    ${0:TARGET}
+  }
+
+snippet function2
+abbr    func2
+options head
+  function ${1:function_name}(${2:argument}) {
+    ${0:TARGET}
+  }
+
+snippet proto
+options head
+  ${1:#:class_name}.prototype.${2:#:method_name} = function(${3:#:first_argument}) {
+    ${0:TARGET}
+  };
+
+
+snippet f
+options word
+  function(${1}) { ${0:TARGET} };
+
+snippet if
+options head
+  if (${1:true}) {
+    ${0:TARGET}
+  }
+
+snippet if-else
+abbr ife
+options head
+  if (${1:#:condition}) {
+    ${0:TARGET}
+  } else {
+  }
+
+snippet for
+options head
+  for (var ${1:i}=0; $1 < ${2:#:Things}.length; ++$1) {
+    ${0:TARGET}
+  }
+
+snippet forin
+options head
+  for (var ${1:i} in ${2:#:Things}) {
+    ${0:TARGET}
+  }
+
+snippet key-value
+abbr :,
+options word
+  ${1:#:value_name}: ${0:#:value},
+
+#snippet key
+#options word
+#  ${1:#:key}: "${2:#:value}"}${3:, }
+
+snippet setTimeout-function
+options head
+  setTimeout(function() { ${0} }, ${1:10});
+
+snippet console-log
+alias cl
+options head
+  console.log(${0:TARGET});
+
+snippet bc
+	var ${1:Collection} = Backbone.Collection.extend({
+        "use strict";
+		${0:TARGET}
+	});
+
+snippet bm
+	var ${1:Model} = Backbone.Model.extend({
+        "use strict";
+		${0:TARGET}
+	});
+
+snippet bv
+	var ${1:View} = Backbone.View.extend({
+        "use strict";
+		${0:TARGET}
+	});
+
+snippet dbc
+	define(['backbone'], function (Backbone) {
+        "use strict";
+		var ${1:Collection} = Backbone.Collection.extend({
+			${0:TARGET}
+		});
+
+		return $1;
+	});
+
+snippet dbm
+	define(['backbone'], function (Backbone) {
+        "use strict";
+		var ${1:Model} = Backbone.Model.extend({
+			${0:TARGET}
+		});
+
+		return $1;
+	});
+
+snippet dbv
+	define(['backbone'], function (Backbone) {
+        "use strict";
+		var ${1:View} = Backbone.View.extend({
+			${0:TARGET}
+		});
+
+		return $1;
+	});
+
+snippet heading
+	/*--------------------------------------
+	 * ${1:this}
+	---------------------------------------*/
+
+	${0:TARGET}
+
+snippet iife
+	(function(${1:$}) {
+        "use strict";
+		${0:TARGET}
+	})(${2:jQuery});
+
+snippet mdl
+	;(function (App, \$) {
+        "use strict";
+		var View = App.Core.View,
+			Utils = App.Utils;
+
+		App.Views.${1:View} = View.extend({
+			el: '${2}',
+			events: {},
+			initialize: function () {${0:TARGET}},
+			render: function () {}
+		});
+	})(App || {}, jQuery);
+
+snippet module
+	;(function () {
+        "use strict";
+		App.${1:module} = (function (me, \$) {
+
+			var _config = {
+				${2:$wrapper}: \$('${3:.wrapper}')${0:TARGET}
+			},
+
+			_bindEvents = function () {},
+
+			_render = function () {};
+
+			me.init = function () {
+				_bindEvents();
+				_render();
+			};
+
+			return me;
+
+		})(App.$1 || {}, jQuery);
+	})();
