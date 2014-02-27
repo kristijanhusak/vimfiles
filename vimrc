@@ -241,8 +241,8 @@ vnoremap y y']
 " Copy to system clipboard
 vnoremap <C-c> "+y
 " Maps for indentation in visual mode
-vnoremap <tab> >
-vnoremap <s-tab> <
+vnoremap <tab> >gv
+vnoremap <s-tab> <gv
 
 " ================ Abbreviations ========================
 
