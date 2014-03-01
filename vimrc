@@ -174,16 +174,15 @@ nmap <silent> <Leader>da :exec "1," . bufnr('$') . "bd"<cr>
 
 " Trigger omnicomplete with Ctrl + space
 imap <c-space> <c-x><c-o>
-"
-" SuperTab like snippets behavior.
+" Map save to ctrl+s
+imap <c-s> <C-o>:w<CR>
+
+" Expand snippets on tab if snippets exists, otherwise do autocompletion
 imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
 \ "\<Plug>(neosnippet_expand_or_jump)"
 \: pumvisible() ? "\<C-n>" : "\<TAB>"
+" If popup window is visible do autocompletion from back
 imap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-
-smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-\ "\<Plug>(neosnippet_expand_or_jump)"
-\: "\<TAB>"
 
 " Map for Escape key
 inoremap jj <Esc>
@@ -233,12 +232,21 @@ nnoremap <Leader>gp :call GitPush()<CR>
 "Trigger easy plugin in visual mode
 vmap <Leader>a <Plug>(EasyAlign)
 
+"Jump over placeholder with tab, otherwise do intentation of the selected block
+vmap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)"
+\: "\>gv"
+
+"Fix for jumping over placeholders for neosnippet
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)"
+\: "\<TAB>"
+
 " Move to the end of yanked text after yank
 vnoremap y y']
 " Copy to system clipboard
 vnoremap <C-c> "+y
-" Maps for indentation in visual mode
-vnoremap <tab> >gv
+" Unindent in visual mode with shift tab
 vnoremap <s-tab> <gv
 
 " ================ Abbreviations ========================
