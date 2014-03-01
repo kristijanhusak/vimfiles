@@ -134,9 +134,6 @@ autocmd BufNewFile,BufRead *.yaml,*.yml source ~/.vim/after/syntax/yaml.vim
 " If no file is selected, execute Nerdtree plugin
 autocmd vimenter * if !argc() | NERDTree | endif
 
-" Fix blade auto-indent
-autocmd BufNewFile,BufRead *.blade.php set ft=html | set ft=phtml | set ft=blade
-
 " ================ Completion =======================
 
 set wildmode=list:longest
