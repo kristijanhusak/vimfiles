@@ -11,6 +11,24 @@ options word
     ${0:TARGET}
   }
 
+snippet it
+options word
+  it('${1:#:description}', function () {
+    ${0}
+  });
+
+snippet desc
+options word
+  describe('${1:#:description}', function () {
+    ${0}
+  });
+
+snippet rjs
+options word
+  require(['${1:backbone}'], function (${2:Backbone}) {
+    ${0}
+  });
+
 snippet function2
 abbr    func2
 options head
