@@ -38,6 +38,7 @@ NeoBundle 'evidens/vim-twig'
 NeoBundle 'jelera/vim-javascript-syntax'
 NeoBundle 'joshtronic/php.vim'
 NeoBundle 'cakebaker/scss-syntax.vim'
+NeoBundle "kchmck/vim-coffee-script"
 
 filetype plugin indent on
 
