@@ -136,7 +136,7 @@ autocmd vimenter * if !argc() | NERDTree | endif
 
 " ================ Completion =======================
 
-set wildmode=list:longest
+set wildmode=list:full
 set wildmenu                "enable ctrl-n and ctrl-p to scroll thru matches
 set wildignore=*.o,*.obj,*~ "stuff to ignore when tab completing
 set wildignore+=*vim/backups*
