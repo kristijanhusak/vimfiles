@@ -184,6 +184,11 @@ imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
 " If popup window is visible do autocompletion from back
 imap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
+"Fix for jumping over placeholders for neosnippet
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)"
+\: "\<TAB>"
+
 " Map for Escape key
 inoremap jj <Esc>
 " Paste from system clipboard with Ctrl + v
@@ -229,25 +234,16 @@ nnoremap <Leader>gs :Gstatus<CR>
 nnoremap <Leader>gc :call GitCommit()<CR>
 nnoremap <Leader>gp :call GitPush()<CR>
 
+"Trigger easy plugin in visual mode
+vmap <Leader>a <Plug>(EasyAlign)
+
 " Move to the end of yanked text after yank
 vnoremap y y']
 " Copy to system clipboard
 vnoremap <C-c> "+y
-" Unindent in visual mode with shift tab
-vnoremap <s-tab> <gv
-
-"Trigger easy plugin in visual mode
-vmap <Leader>a <Plug>(EasyAlign)
-
-"Fix for jumping over placeholders for neosnippet
-smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-\ "\<Plug>(neosnippet_expand_or_jump)"
-\: "\<TAB>"
-
-"Jump over placeholder with tab, otherwise do intentation of the selected block
-xmap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-\ "\<Plug>(neosnippet_expand_or_jump)"
-\: "\>gv"
+" Indenting in visual mode
+xnoremap <s-tab> <gv
+xnoremap <tab> >gv
 
 " ================ Abbreviations ========================
 
