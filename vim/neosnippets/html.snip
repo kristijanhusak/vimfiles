@@ -24,7 +24,7 @@ snippet head
     </head>${5}
 
 snippet tag
-    <${1:div} class="${2:class-name}" ${3:#:other_attributes} >${0}</$1>
+    <${1:div} class="${2:class-name}"${3:#:other_attributes}>${0}</$1> <!-- /.${4:$2} -->
 
 snippet metaauthor
     <meta name="author" content="${1}">${2}
