@@ -115,9 +115,7 @@ set undofile
 set smarttab
 set shiftwidth=4
 set softtabstop=4
-set tabstop=4
 set expandtab
-set smartindent
 set autoindent
 set nofoldenable
 
@@ -186,8 +184,8 @@ imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
 imap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
 "Fix for jumping over placeholders for neosnippet
-smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-\ "\<Plug>(neosnippet_expand_or_jump)"
+smap <expr><TAB> neosnippet#jumpable() ?
+\ "\<Plug>(neosnippet_jump)"
 \: "\<TAB>"
 
 " Map for Escape key
