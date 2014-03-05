@@ -11,8 +11,8 @@ call neobundle#rc(expand('~/.vim/bundle/'))
 NeoBundleFetch 'Shougo/neobundle.vim'
 
 " Plugins
-NeoBundle 'Yggdroot/indentLine'
 NeoBundle 'tomtom/tcomment_vim'
+NeoBundle 'Yggdroot/indentLine'
 NeoBundle 'jeetsukumaran/vim-filesearch'
 NeoBundle 'kien/ctrlp.vim'
 NeoBundle 'jiangmiao/auto-pairs'

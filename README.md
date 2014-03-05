@@ -38,6 +38,8 @@ Plugins
 * Easy Align
 * Repeat
 * tComment
+* Indent Guide
+* Gitgutter
 * BufOnly
 * Match Tag
 * HTML5 syntax
@@ -47,6 +49,7 @@ Plugins
 * Php syntax
 * Javascript syntax
 * Scss syntax
+* CoffeeScript syntax
 * Hybrid colorscheme
 
 License
