@@ -11,6 +11,7 @@ call neobundle#rc(expand('~/.vim/bundle/'))
 NeoBundleFetch 'Shougo/neobundle.vim'
 
 " Plugins
+NeoBundle 'Yggdroot/indentLine'
 NeoBundle 'tomtom/tcomment_vim'
 NeoBundle 'jeetsukumaran/vim-filesearch'
 NeoBundle 'kien/ctrlp.vim'
@@ -303,7 +304,10 @@ let g:neocomplete#data_directory = '~/.vim/.neocomplete'    "Folder where neocom
 
 let g:vim_json_syntax_conceal = 0                           "Disable setting quotes for json syntax
 
-let g:neosnippet#snippets_directory = '~/.vim/neosnippets'     "Tell Neosnippet about the snippets folder
+let g:neosnippet#snippets_directory = '~/.vim/neosnippets'  "Tell Neosnippet about the snippets folder
+
+let g:indentLine_color_term = '236'                         "Indent line colors for terminal
+let g:indentLine_color_gui = '#333333'                      "Indent line colors for gvim
 
 " ================ Functions ========================
 
