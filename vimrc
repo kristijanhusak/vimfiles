@@ -286,8 +286,6 @@ let g:filesearch_autoexpand_on_split = 0                    "Prevent Filesearch 
 let g:filesearch_split_size = 20                            "Filesearch window size
 let g:filesearch_autodismiss_on_select = 0                  "Filesearch window stay open
 
-
-let g:syntastic_quiet_messages = {'level': 'warnings'}      "Syntastic ignore warnings
 let g:syntastic_auto_loc_list = 1                           "Show syntastic window when there are errors, otherwise close
 let g:syntastic_always_populate_loc_list = 1                "Always popuplate syntastic error list
 let g:syntastic_php_checkers = ['php']                      "Enable only basic syntax checking for php
