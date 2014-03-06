@@ -38,7 +38,6 @@ Plugins
 * Easy Align
 * Repeat
 * tComment
-* Indent Guide
 * Gitgutter
 * BufOnly
 * Match Tag

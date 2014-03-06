@@ -12,7 +12,6 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 
 " Plugins
 NeoBundle 'tomtom/tcomment_vim'
-NeoBundle 'Yggdroot/indentLine'
 NeoBundle 'jeetsukumaran/vim-filesearch'
 NeoBundle 'kien/ctrlp.vim'
 NeoBundle 'jiangmiao/auto-pairs'
@@ -39,7 +38,7 @@ NeoBundle 'evidens/vim-twig'
 NeoBundle 'jelera/vim-javascript-syntax'
 NeoBundle 'joshtronic/php.vim'
 NeoBundle 'cakebaker/scss-syntax.vim'
-NeoBundle "kchmck/vim-coffee-script"
+NeoBundle 'kchmck/vim-coffee-script'
 
 filetype plugin indent on
 
@@ -82,7 +81,6 @@ set nostartofline                       "Jump to first non-blank character
 set timeoutlen=1000 ttimeoutlen=200     "Reduce Command timeout for faster escape and O
 set laststatus=2                        "Show statusbar
 set fileencoding=utf-8 encoding=utf-8   "Set utf-8 encoding on write
-set conceallevel=2 concealcursor=i      "Setup for snippets markers
 set wrap                                "Enable word wrap
 set linebreak                           "Wrap lines at convenient points
 set tags=tags;/                         "ctags file location, searches to root until it founds it
@@ -305,9 +303,6 @@ let g:neocomplete#data_directory = '~/.vim/.neocomplete'    "Folder where neocom
 let g:vim_json_syntax_conceal = 0                           "Disable setting quotes for json syntax
 
 let g:neosnippet#snippets_directory = '~/.vim/neosnippets'  "Tell Neosnippet about the snippets folder
-
-let g:indentLine_color_term = '236'                         "Indent line colors for terminal
-let g:indentLine_color_gui = '#333333'                      "Indent line colors for gvim
 
 " ================ Functions ========================
 
