@@ -290,6 +290,9 @@ let g:filesearch_autodismiss_on_select = 0                  "Filesearch window s
 let g:syntastic_auto_loc_list = 1                           "Show syntastic window when there are errors, otherwise close
 let g:syntastic_always_populate_loc_list = 1                "Always popuplate syntastic error list
 let g:syntastic_php_checkers = ['php']                      "Enable only basic syntax checking for php
+let g:syntastic_mode_map = { 'mode': 'active',
+                           \ 'active_filetypes': ['javascript', 'php'],
+                           \ 'passive_filetypes': ['scss', 'sass', 'html'] }
 
 let g:multi_cursor_use_default_mapping = 0                  "Disable default mappings for multiple cursors
 let g:multi_cursor_next_key = '<C-d>'                       "Set start and next multiple cursor to Ctrl-d ( Sublime text like  )
