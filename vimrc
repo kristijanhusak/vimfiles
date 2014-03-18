@@ -309,6 +309,8 @@ let g:neosnippet#snippets_directory = '~/.vim/neosnippets'  "Tell Neosnippet abo
 let g:indentLine_color_term = '236'                         "Indent line colors for terminal
 let g:indentLine_color_gui = '#333333'                      "Indent line colors for gvim
 
+let g:AutoPairsCenterLine = 0                               "Disable auto pairs center screen option to avoid bug with snippets
+
 " ================ Functions ========================
 
 " Build ctags
