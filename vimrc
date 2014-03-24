@@ -232,6 +232,8 @@ nnoremap <tab> >>
 nnoremap <s-tab> <<
 " Fugitive commands
 nnoremap <Leader>gs :Gstatus<CR>
+" Find current file in NERDTree
+nnoremap <Leader>hf :NERDTreeFind<CR>
 
 "Trigger easy plugin in visual mode
 vmap <Leader>a <Plug>(EasyAlign)
