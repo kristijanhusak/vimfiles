@@ -13,7 +13,6 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 " Plugins
 NeoBundle 'tomtom/tcomment_vim'
 NeoBundle 'jeetsukumaran/vim-filesearch'
-NeoBundle 'Yggdroot/indentLine'
 NeoBundle 'kien/ctrlp.vim'
 NeoBundle 'jiangmiao/auto-pairs'
 NeoBundle 'Lokaltog/vim-easymotion'

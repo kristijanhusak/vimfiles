@@ -1,0 +1,1 @@
+LargeFile.vba: call delete('/home/kristijan/.vim/plugin/LargeFile.vim')|call delete('/home/kristijan/.vim/doc/LargeFile.txt')
