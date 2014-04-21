@@ -39,6 +39,7 @@ NeoBundle 'jelera/vim-javascript-syntax'
 NeoBundle 'joshtronic/php.vim'
 NeoBundle 'cakebaker/scss-syntax.vim'
 NeoBundle 'kchmck/vim-coffee-script'
+NeoBundle 'mhinz/vim-startify'
 
 filetype plugin indent on
 
@@ -131,8 +132,8 @@ autocmd InsertLeave * NeoSnippetClearMarkers
 " load yaml syntax on buffread ( Fixes old slow loading )
 autocmd BufNewFile,BufRead *.yaml,*.yml source ~/.vim/after/syntax/yaml.vim
 
-" If no file is selected, execute Nerdtree plugin
-autocmd vimenter * if !argc() | NERDTree | endif
+" If no file is selected, execute Startify and NERDTree plugin
+autocmd VimEnter * if !argc() | Startify | NERDTree | execute "normal \<c-w>w" | endif
 
 " ================ Completion =======================
 

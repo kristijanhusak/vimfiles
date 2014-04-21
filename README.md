@@ -23,6 +23,7 @@ Plugins
 ----------------
 
 * NERDTree
+* Startify
 * CtrlP
 * Filesearch
 * Surround
