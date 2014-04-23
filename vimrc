@@ -15,7 +15,6 @@ NeoBundle 'tomtom/tcomment_vim'
 NeoBundle 'jeetsukumaran/vim-filesearch'
 NeoBundle 'kien/ctrlp.vim'
 NeoBundle 'jiangmiao/auto-pairs'
-NeoBundle 'Lokaltog/vim-easymotion'
 NeoBundle 'mattn/emmet-vim'
 NeoBundle 'junegunn/vim-easy-align'
 NeoBundle 'tpope/vim-surround'
@@ -31,6 +30,18 @@ NeoBundle 'kris89/vim-multiple-cursors'
 NeoBundle 'kris89/vim-hybrid'
 NeoBundle 'Shougo/neocomplete.vim'
 NeoBundle 'Shougo/neosnippet'
+NeoBundle 'Shougo/vimproc', {
+      \ 'build' : {
+      \     'windows' : 'make -f make_mingw32.mak',
+      \     'cygwin' : 'make -f make_cygwin.mak',
+      \     'mac' : 'make -f make_mac.mak',
+      \     'unix' : 'make -f make_unix.mak',
+      \    },
+      \ }
+NeoBundle 'Shougo/unite.vim/'
+NeoBundle 'm2mdas/phpcomplete-extended'
+NeoBundle 'm2mdas/phpcomplete-extended-laravel'
+NeoBundle 'm2mdas/phpcomplete-extended-symfony'
 NeoBundle 'othree/html5.vim'
 NeoBundle 'xsbeats/vim-blade'
 NeoBundle 'elzr/vim-json'
@@ -134,6 +145,9 @@ autocmd BufNewFile,BufRead *.yaml,*.yml source ~/.vim/after/syntax/yaml.vim
 
 " If no file is selected, execute Startify and NERDTree plugin
 autocmd VimEnter * if !argc() | Startify | NERDTree | execute "normal \<c-w>w" | endif
+
+" Set completePHP autocomplete
+autocmd  FileType  php setlocal omnifunc=phpcomplete_extended#CompletePHP
 
 " ================ Completion =======================
 
@@ -284,7 +298,7 @@ let g:NERDTreeShowHidden = 1                                "Show hidden files i
 
 let g:filesearch_viewport_split_policy = "T"                "Filesearch plugin window appears on top
 let g:filesearch_autoexpand_on_split = 0                    "Prevent Filesearch plugin to expand gvim window
-let g:filesearch_split_size = 20                            "Filesearch window size
+let g:filesearch_split_size = 15                            "Filesearch window size
 let g:filesearch_autodismiss_on_select = 0                  "Filesearch window stay open
 
 let g:syntastic_auto_loc_list = 1                           "Show syntastic window when there are errors, otherwise close
@@ -303,12 +317,16 @@ let g:multi_cursor_quit_key = '<Esc>'                       "Exit multiple curso
 let g:neocomplete#enable_at_startup = 1                     "Enable autocomplete
 let g:neocomplete#enable_smart_case = 1                     "Use smartcase.
 let g:neocomplete#data_directory = '~/.vim/.neocomplete'    "Folder where neocomplete saves cache
+let g:neocomplete#max_list = 15                             "Limit neocomplete list to 10 entries
 
 let g:vim_json_syntax_conceal = 0                           "Disable setting quotes for json syntax
 
 let g:neosnippet#snippets_directory = '~/.vim/neosnippets'  "Tell Neosnippet about the snippets folder
 
 let g:AutoPairsCenterLine = 0                               "Disable auto pairs center screen option to avoid bug with snippets
+
+let g:phpcomplete_index_composer_command = 'composer'       "Set phpcomplete composer path
+
 
 " ================ Functions ========================
 
