@@ -95,7 +95,6 @@ set laststatus=2                        "Show statusbar
 set fileencoding=utf-8 encoding=utf-8   "Set utf-8 encoding on write
 set wrap                                "Enable word wrap
 set linebreak                           "Wrap lines at convenient points
-set tags=tags;/                         "ctags file location, searches to root until it founds it
 set listchars=tab:\ \ ,trail:·          "Set trails for tabs and spaces
 set list                                "Enable listchars
 set completeopt-=preview                "Disable preview for autocomplete
@@ -147,7 +146,7 @@ autocmd BufNewFile,BufRead *.yaml,*.yml source ~/.vim/after/syntax/yaml.vim
 autocmd VimEnter * if !argc() | Startify | NERDTree | execute "normal \<c-w>w" | endif
 
 " Set completePHP autocomplete
-autocmd  FileType  php setlocal omnifunc=phpcomplete_extended#CompletePHP
+autocmd FileType php setlocal omnifunc=phpcomplete_extended#CompletePHP
 
 " ================ Completion =======================
 
@@ -237,10 +236,6 @@ nnoremap <Leader>b :CtrlPBuffer<CR>
 " Ctrlp plugin fuzzy search tags
 nnoremap <Leader>t :CtrlPBufTag<CR>
 nnoremap <Leader>T :CtrlPBufTagAll<CR>
-" Open tag in another tab
-nnoremap <Leader>] :tab tag <c-r><c-w><cr>
-" Build ctags
-nnoremap <Leader>BT :call BuildCtags()<CR>
 " Maps for indentation in normal mode
 nnoremap <tab> >>
 nnoremap <s-tab> <<
@@ -251,6 +246,7 @@ nnoremap <Leader>hf :NERDTreeFind<CR>
 
 "Trigger easy plugin in visual mode
 vmap <Leader>a <Plug>(EasyAlign)
+
 
 " Move to the end of yanked text after yank
 vnoremap y y']
@@ -327,18 +323,7 @@ let g:AutoPairsCenterLine = 0                               "Disable auto pairs 
 
 let g:phpcomplete_index_composer_command = 'composer'       "Set phpcomplete composer path
 
-
 " ================ Functions ========================
-
-" Build ctags
-function! BuildCtags()
-    exe '!ctags --languages=PHP,JavaScript -R .'
-    if filereadable('tags')
-        echo "Build successfully!"
-    else
-        echo "Error! Please try again!"
-    endif
-endfunction
 
 " Set proper font depending on OS
 function! SetFont()
