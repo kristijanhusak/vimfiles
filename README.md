@@ -32,9 +32,6 @@ Plugins
 * Airline
 * NeoComplete
 * NeoSnippets
-* Vimproc
-* Unite
-* PhpComplete Extended (Laravel, Symfony)
 * Fugitive
 * Emmet
 * Syntastic
