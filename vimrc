@@ -66,7 +66,6 @@ set history=500                         "Store lots of :cmdline history
 set showcmd                             "Show incomplete cmds down the bottom
 set noshowmode                          "Hide showmode because of the powerline plugin
 set gdefault                            "Set global flag for search and replace
-set gcr=a:blinkon0                      "Disable cursor blink
 set noerrorbells                        "No error bells
 set cursorline                          "Highlight current line
 set visualbell                          "No sounds
