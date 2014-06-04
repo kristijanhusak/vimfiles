@@ -58,35 +58,36 @@ set linespace=10                        "Set lineheight in gvim
 
 " ================ General Config ====================
 
-set t_Co=256                            "Set 256 colors
-set title                               "change the terminal's title
-set number                              "Line numbers are good
-set backspace=indent,eol,start          "Allow backspace in insert mode
-set history=500                         "Store lots of :cmdline history
-set showcmd                             "Show incomplete cmds down the bottom
-set noshowmode                          "Hide showmode because of the powerline plugin
-set gdefault                            "Set global flag for search and replace
-set noerrorbells                        "No error bells
-set cursorline                          "Highlight current line
-set visualbell                          "No sounds
-set autoread                            "Reload files changed outside vim
-set smartcase                           "Smart case search if there is uppercase
-set ignorecase                          "case insensitive search
-set hlsearch                            "Highlight search term
-set incsearch                           "Jump to found term while searching
-set showmatch                           "Highlight matching bracket
-set mouse=a                             "Enable mouse
-set nostartofline                       "Jump to first non-blank character
-set timeoutlen=1000 ttimeoutlen=200     "Reduce Command timeout for faster escape and O
-set laststatus=2                        "Show statusbar
-set fileencoding=utf-8 encoding=utf-8   "Set utf-8 encoding on write
-set wrap                                "Enable word wrap
-set linebreak                           "Wrap lines at convenient points
-set listchars=tab:\ \ ,trail:·          "Set trails for tabs and spaces
-set list                                "Enable listchars
-set completeopt-=preview                "Disable preview for autocomplete
-set background=dark                     "Set background to dark
-set hidden                              "Hide buffers in background
+set t_Co=256                                        "Set 256 colors
+set title                                           "change the terminal's title
+set number                                          "Line numbers are good
+set backspace=indent,eol,start                      "Allow backspace in insert mode
+set history=500                                     "Store lots of :cmdline history
+set showcmd                                         "Show incomplete cmds down the bottom
+set noshowmode                                      "Hide showmode because of the powerline plugin
+set gdefault                                        "Set global flag for search and replace
+set noerrorbells                                    "No error bells
+set gcr=a:blinkon500-blinkwait500-blinkoff500       "Set cursor blinking rate
+set cursorline                                      "Highlight current line
+set visualbell                                      "No sounds
+set autoread                                        "Reload files changed outside vim
+set smartcase                                       "Smart case search if there is uppercase
+set ignorecase                                      "case insensitive search
+set hlsearch                                        "Highlight search term
+set incsearch                                       "Jump to found term while searching
+set showmatch                                       "Highlight matching bracket
+set mouse=a                                         "Enable mouse
+set nostartofline                                   "Jump to first non-blank character
+set timeoutlen=1000 ttimeoutlen=200                 "Reduce Command timeout for faster escape and O
+set laststatus=2                                    "Show statusbar
+set fileencoding=utf-8 encoding=utf-8               "Set utf-8 encoding on write
+set wrap                                            "Enable word wrap
+set linebreak                                       "Wrap lines at convenient points
+set listchars=tab:\ \ ,trail:·                      "Set trails for tabs and spaces
+set list                                            "Enable listchars
+set completeopt-=preview                            "Disable preview for autocomplete
+set background=dark                                 "Set background to dark
+set hidden                                          "Hide buffers in background
 
 " Set customized version of hybrid color scheme
 colorscheme hybrid_reverse
