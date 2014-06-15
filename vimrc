@@ -89,8 +89,12 @@ set completeopt-=preview                            "Disable preview for autocom
 set background=dark                                 "Set background to dark
 set hidden                                          "Hide buffers in background
 
-" Set customized version of hybrid color scheme
-colorscheme hybrid_reverse
+" Set solarized for gvim, and hybrid for terminal vim
+if (has("gui_running"))
+    colorscheme solarized
+else
+    colorscheme hybrid_reverse
+endif
 
 "turn on syntax highlighting
 syntax on
