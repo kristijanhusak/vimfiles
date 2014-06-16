@@ -89,6 +89,9 @@ set completeopt-=preview                            "Disable preview for autocom
 set background=dark                                 "Set background to dark
 set hidden                                          "Hide buffers in background
 
+"turn on syntax highlighting
+syntax on
+
 " Set solarized for gvim, and hybrid for terminal vim
 if (has("gui_running"))
     colorscheme solarized
@@ -96,8 +99,6 @@ else
     colorscheme hybrid_reverse
 endif
 
-"turn on syntax highlighting
-syntax on
 
 " ================ Turn Off Swap Files ==============
 
@@ -363,6 +364,10 @@ endfunction
 " ================ Function calls ========================
 
 :call SetFont()                                             "Set font depending on OS
+
+" Disable gitgutter and trailing whitespace background
+hi SignColumn guibg=NONE ctermbg=NONE
+hi SpecialKey guibg=NONE ctermbg=NONE
 
 " Include local vimrc if exists
 if filereadable(glob("$HOME/.vimrc.local"))
