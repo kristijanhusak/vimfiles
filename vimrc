@@ -368,6 +368,7 @@ endfunction
 " Disable gitgutter and trailing whitespace background
 hi SignColumn guibg=NONE ctermbg=NONE
 hi SpecialKey guibg=NONE ctermbg=NONE
+hi Folded gui=bold term=bold
 
 " Include local vimrc if exists
 if filereadable(glob("$HOME/.vimrc.local"))
