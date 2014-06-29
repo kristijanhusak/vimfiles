@@ -11,7 +11,7 @@ call neobundle#rc(expand('~/.vim/bundle/'))
 NeoBundleFetch 'Shougo/neobundle.vim'
 
 " Plugins
-NeoBundle 'tomtom/tcomment_vim'
+NeoBundle 'tpope/vim-commentary'
 NeoBundle 'jeetsukumaran/vim-filesearch'
 NeoBundle 'kien/ctrlp.vim'
 NeoBundle 'jiangmiao/auto-pairs'
@@ -22,6 +22,7 @@ NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'tpope/vim-repeat'
 NeoBundle 'scrooloose/syntastic'
 NeoBundle 'scrooloose/nerdtree'
+NeoBundle 'jistr/vim-nerdtree-tabs'
 NeoBundle 'airblade/vim-gitgutter'
 NeoBundle 'bling/vim-airline'
 NeoBundle 'duff/vim-bufonly'
@@ -165,7 +166,7 @@ set sidescroll=1
 " ================ Custom mappings ========================
 
 " Comment map
-map <Leader>c <c-_><c-_>
+nmap <Leader>c gcc
 " Map save to Ctrl + S
 map <c-s> :w<CR>
 
@@ -245,6 +246,10 @@ vmap <Leader>a <Plug>(EasyAlign)
 vnoremap y y']
 " Copy to system clipboard
 vnoremap <C-c> "+y
+
+" Line comment command
+xmap <Leader>c gc
+
 " Indenting in visual mode
 xnoremap <s-tab> <gv
 xnoremap <tab> >gv

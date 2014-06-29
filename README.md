@@ -23,6 +23,7 @@ Plugins
 ----------------
 
 * NERDTree
+* NERDTree Tabs
 * Startify
 * CtrlP
 * Filesearch
@@ -37,7 +38,7 @@ Plugins
 * Syntastic
 * Easy Align
 * Repeat
-* tComment
+* Commentary
 * Gitgutter
 * BufOnly
 * Match Tag
