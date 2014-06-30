@@ -139,9 +139,6 @@ autocmd BufNewFile,BufRead *.yaml,*.yml source ~/.vim/after/syntax/yaml.vim
 " If no file is selected, execute Startify
 autocmd VimEnter * if !argc() | Startify | endif
 
-" Set completePHP autocomplete
-autocmd FileType php setlocal omnifunc=phpcomplete_extended#CompletePHP
-
 " ================ Completion =======================
 
 set wildmode=list:full
