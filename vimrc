@@ -136,8 +136,8 @@ autocmd InsertLeave * NeoSnippetClearMarkers
 " load yaml syntax on buffread ( Fixes old slow loading )
 autocmd BufNewFile,BufRead *.yaml,*.yml source ~/.vim/after/syntax/yaml.vim
 
-" If no file is selected, execute Startify and NERDTree plugin
-autocmd VimEnter * if !argc() | Startify | NERDTree | execute "normal \<c-w>w" | endif
+" If no file is selected, execute Startify
+autocmd VimEnter * if !argc() | Startify | endif
 
 " Set completePHP autocomplete
 autocmd FileType php setlocal omnifunc=phpcomplete_extended#CompletePHP
@@ -307,6 +307,8 @@ let g:multi_cursor_next_key = '<C-d>'                       "Set start and next 
 let g:multi_cursor_prev_key = '<C-r>'                       "Set prev multiple cursor
 let g:multi_cursor_skip_key = '<C-x>'                       "Set skip cursor
 let g:multi_cursor_quit_key = '<Esc>'                       "Exit multiple cursor mode
+
+let g:nerdtree_tabs_smart_startup_focus = 2                 "Always focus window on vim opening
 
 let g:neocomplete#enable_at_startup = 1                     "Enable autocomplete
 let g:neocomplete#enable_smart_case = 1                     "Use smartcase.
