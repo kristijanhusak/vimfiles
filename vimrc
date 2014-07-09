@@ -22,7 +22,6 @@ NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'tpope/vim-repeat'
 NeoBundle 'scrooloose/syntastic'
 NeoBundle 'scrooloose/nerdtree'
-NeoBundle 'jistr/vim-nerdtree-tabs'
 NeoBundle 'airblade/vim-gitgutter'
 NeoBundle 'bling/vim-airline'
 NeoBundle 'duff/vim-bufonly'
@@ -299,8 +298,6 @@ let g:multi_cursor_next_key = '<C-d>'                       "Set start and next 
 let g:multi_cursor_prev_key = '<C-r>'                       "Set prev multiple cursor
 let g:multi_cursor_skip_key = '<C-x>'                       "Set skip cursor
 let g:multi_cursor_quit_key = '<Esc>'                       "Exit multiple cursor mode
-
-let g:nerdtree_tabs_smart_startup_focus = 2                 "Always focus window on vim opening
 
 let g:neocomplete#enable_at_startup = 1                     "Enable autocomplete
 let g:neocomplete#enable_smart_case = 1                     "Use smartcase.
