@@ -50,11 +50,12 @@ let mapleader = ","
 
 " ================ GUI options ====================
 
-set guioptions-=m                       "remove menu bar
-set guioptions-=T                       "remove toolbar
-set guioptions-=L                       "remove left scrollbar when vertical split
-set guioptions-=l                       "remove left scrollbar
-set linespace=10                        "Set lineheight in gvim
+set guioptions-=m                           "remove menu bar
+set guioptions-=T                           "remove toolbar
+set guioptions-=L                           "remove left scrollbar when vertical split
+set guioptions-=l                           "remove left scrollbar
+set guifont=Inconsolata\ for\ Powerline\ 12 "font setup
+set linespace=10                            "Set lineheight in gvim
 
 " ================ General Config ====================
 
@@ -264,6 +265,13 @@ cnoreabbrev T tabe
 
 let g:ctrlp_match_window = 'bottom,order:ttb,min:1,max:25,results:25'   "Ctrlp window setup
 let g:ctrlp_buffer_func = { 'enter': 'MyCtrlPMappings' }                "Ctrlp function for deleting buffers from buffer window
+"jsctags setup for ctrlp
+let g:ctrlp_buftag_types = {
+    \ 'javascript' : {
+      \ 'bin': 'jsctags',
+      \ 'args': '-f -',
+      \ },
+    \ }
 
 let g:airline_powerline_fonts = 1                           "Enable powerline fonts
 let g:airline_theme = "powerlineish"                        "Set theme to powerline default theme
@@ -314,17 +322,6 @@ let g:phpcomplete_index_composer_command = 'composer'       "Set phpcomplete com
 
 " ================ Functions ========================
 
-" Set proper font depending on OS
-function! SetFont()
-    if has('gui_macvim')
-        set guifont=Inconsolata\ for\ Powerline:h14              "Mac OS
-    elseif has('win16') || has('win32')
-        set guifont=Inconsolata\ for\ Powerline:h12:cANSI        "Windows
-    else
-        set guifont=Inconsolata\ for\ Powerline\ 12              "Other(Linux)
-    endif
-endfunction
-
 " Disable autocomplete before multiple cursors to avoid conflict
 function! Multiple_cursors_before()
     exe 'NeoCompleteLock'
@@ -358,8 +355,6 @@ function! s:DeleteBuffer()
 endfunction
 
 " ================ Function calls ========================
-
-:call SetFont()                                             "Set font depending on OS
 
 " Include local vimrc if exists
 if filereadable(glob("$HOME/.vimrc.local"))
