@@ -17,7 +17,7 @@ Instalation
     $ ln -s vimfiles/vim .vim
     $ ln -s vimfiles/vimrc .vimrc
 
-Run Vim and accept Bundles(Plugins) Installation
+Run Vim and accept Bundles(Plugins) Installation.
 
 Plugins
 ----------------
