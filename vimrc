@@ -230,6 +230,10 @@ nnoremap <Leader>gs :Gstatus<CR>
 " Find current file in NERDTree
 nnoremap <Leader>hf :NERDTreeFind<CR>
 
+"Resize window with shift + and shift -
+nnoremap + <c-w>5>
+nnoremap _ <c-w>5<
+
 "Trigger easy plugin in visual mode
 vmap <Leader>a <Plug>(EasyAlign)
 
