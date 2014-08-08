@@ -156,6 +156,66 @@ set scrolloff=8         "Start scrolling when we're 8 lines away from margins
 set sidescrolloff=15
 set sidescroll=1
 
+" ================ Abbreviations ========================
+
+cnoreabbrev Wq wq
+cnoreabbrev WQ wq
+cnoreabbrev W w
+cnoreabbrev Q q
+cnoreabbrev Qa qa
+cnoreabbrev Bd bd
+cnoreabbrev bD bd
+cnoreabbrev wrap set wrap
+cnoreabbrev nowrap set nowrap
+cnoreabbrev bda BufOnly
+cnoreabbrev t tabe
+cnoreabbrev T tabe
+
+" ================ Functions ========================
+
+" Disable autocomplete before multiple cursors to avoid conflict
+function! Multiple_cursors_before()
+    exe 'NeoCompleteLock'
+endfunction
+
+" Enable autocomplete after multiple cursors
+function! Multiple_cursors_after()
+    exe 'NeoCompleteUnlock'
+endfunction
+
+" Remove trailing spaces on save
+function! StripTrailingWhitespaces()
+    let l = line(".")
+    let c = col(".")
+    %s/\s\+$//e
+    call cursor(l, c)
+endfunction
+
+" Function to bind custom ctrlp mappings
+function! MyCtrlPMappings()
+    nnoremap <buffer> <silent> <c-@> :call <sid>DeleteBuffer()<cr>
+endfunction
+
+" Ctrlp function to delete buffers from buffers window
+function! s:DeleteBuffer()
+    let line = getline('.')
+    let bufid = line =~ '\[\d\+\*No Name\]$' ? str2nr(matchstr(line, '\d\+'))
+        \ : fnamemodify(line[2:], ':p')
+    exec "bd" bufid
+    exec "norm \<F5>"
+endfunction
+
+" vp doesn't replace paste buffer
+function! RestoreRegister()
+    let @" = s:restore_reg
+    return ''
+endfunction
+
+function! s:Repl()
+    let s:restore_reg = @"
+    return "p@=RestoreRegister()\<cr>"
+endfunction
+
 " ================ Custom mappings ========================
 
 " Comment map
@@ -230,41 +290,30 @@ nnoremap <s-tab> <<
 nnoremap <Leader>gs :Gstatus<CR>
 " Find current file in NERDTree
 nnoremap <Leader>hf :NERDTreeFind<CR>
-
 "Resize window with shift + and shift -
 nnoremap + <c-w>5>
 nnoremap _ <c-w>5<
+" go to end of pasted text
+nnoremap p p`]
+
+"Indenting in visual mode
+xnoremap <s-tab> <gv
+xnoremap <tab> >gv
+
+"Line comment command
+xmap <Leader>c gc
+
+"Move to the end of yanked text after yank and paste
+vnoremap y y']
+vnoremap p p`]
+"Copy to system clipboard
+vnoremap <C-c> "+y
 
 "Trigger easy plugin in visual mode
 vmap <Leader>a <Plug>(EasyAlign)
 
-
-" Move to the end of yanked text after yank
-vnoremap y y']
-" Copy to system clipboard
-vnoremap <C-c> "+y
-
-" Line comment command
-xmap <Leader>c gc
-
-" Indenting in visual mode
-xnoremap <s-tab> <gv
-xnoremap <tab> >gv
-
-" ================ Abbreviations ========================
-
-cnoreabbrev Wq wq
-cnoreabbrev WQ wq
-cnoreabbrev W w
-cnoreabbrev Q q
-cnoreabbrev Qa qa
-cnoreabbrev Bd bd
-cnoreabbrev bD bd
-cnoreabbrev wrap set wrap
-cnoreabbrev nowrap set nowrap
-cnoreabbrev bda BufOnly
-cnoreabbrev t tabe
-cnoreabbrev T tabe
+"Prevent overriding yank register with overriten text, must be near end of file
+vmap <expr>p <sid>Repl()
 
 " ================ plugins setups ========================
 
@@ -293,6 +342,7 @@ let g:user_emmet_next_key = '<c-n>'                         "Change trigger jump
 
 let g:NERDTreeChDirMode = 2                                 "NERDTree change directory only on root change
 let g:NERDTreeShowHidden = 1                                "Show hidden files in NERDTree
+let g:NERDTreeIgnore=['\.git$', '\.sass-cache$']
 
 let g:filesearch_viewport_split_policy = "T"                "Filesearch plugin window appears on top
 let g:filesearch_autoexpand_on_split = 0                    "Prevent Filesearch plugin to expand gvim window
@@ -322,44 +372,6 @@ let g:vim_json_syntax_conceal = 0                           "Disable setting quo
 let g:neosnippet#snippets_directory = '~/.vim/neosnippets'  "Tell Neosnippet about the snippets folder
 
 let g:AutoPairsCenterLine = 0                               "Disable auto pairs center screen option to avoid bug with snippets
-
-let g:phpcomplete_index_composer_command = 'composer'       "Set phpcomplete composer path
-
-" ================ Functions ========================
-
-" Disable autocomplete before multiple cursors to avoid conflict
-function! Multiple_cursors_before()
-    exe 'NeoCompleteLock'
-endfunction
-
-" Enable autocomplete after multiple cursors
-function! Multiple_cursors_after()
-    exe 'NeoCompleteUnlock'
-endfunction
-
-" Remove trailing spaces on save
-function! StripTrailingWhitespaces()
-    let l = line(".")
-    let c = col(".")
-    %s/\s\+$//e
-    call cursor(l, c)
-endfunction
-
-" Function to bind custom ctrlp mappings
-function! MyCtrlPMappings()
-    nnoremap <buffer> <silent> <c-@> :call <sid>DeleteBuffer()<cr>
-endfunction
-
-" Ctrlp function to delete buffers from buffers window
-function! s:DeleteBuffer()
-    let line = getline('.')
-    let bufid = line =~ '\[\d\+\*No Name\]$' ? str2nr(matchstr(line, '\d\+'))
-        \ : fnamemodify(line[2:], ':p')
-    exec "bd" bufid
-    exec "norm \<F5>"
-endfunction
-
-" ================ Function calls ========================
 
 " Include local vimrc if exists
 if filereadable(glob("$HOME/.vimrc.local"))
