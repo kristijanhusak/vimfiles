@@ -15,6 +15,7 @@ NeoBundle 'tpope/vim-commentary'
 NeoBundle 'Lokaltog/vim-easymotion'
 NeoBundle 'jeetsukumaran/vim-filesearch'
 NeoBundle 'kien/ctrlp.vim'
+NeoBundle 'd11wtq/ctrlp_bdelete.vim'
 NeoBundle 'jiangmiao/auto-pairs'
 NeoBundle 'mattn/emmet-vim'
 NeoBundle 'junegunn/vim-easy-align'
@@ -191,20 +192,6 @@ function! StripTrailingWhitespaces()
     call cursor(l, c)
 endfunction
 
-" Function to bind custom ctrlp mappings
-function! MyCtrlPMappings()
-    nnoremap <buffer> <silent> <c-@> :call <sid>DeleteBuffer()<cr>
-endfunction
-
-" Ctrlp function to delete buffers from buffers window
-function! s:DeleteBuffer()
-    let line = getline('.')
-    let bufid = line =~ '\[\d\+\*No Name\]$' ? str2nr(matchstr(line, '\d\+'))
-        \ : fnamemodify(line[2:], ':p')
-    exec "bd" bufid
-    exec "norm \<F5>"
-endfunction
-
 " vp doesn't replace paste buffer
 function! RestoreRegister()
     let @" = s:restore_reg
@@ -215,6 +202,9 @@ function! s:Repl()
     let s:restore_reg = @"
     return "p@=RestoreRegister()\<cr>"
 endfunction
+
+"Initialize ctrlp plugin for deleting buffers from list
+call ctrlp_bdelete#init()
 
 " ================ Custom mappings ========================
 
@@ -318,7 +308,6 @@ vmap <expr>p <sid>Repl()
 " ================ plugins setups ========================
 
 let g:ctrlp_match_window = 'bottom,order:ttb,min:1,max:25,results:25'   "Ctrlp window setup
-let g:ctrlp_buffer_func = { 'enter': 'MyCtrlPMappings' }                "Ctrlp function for deleting buffers from buffer window
 "jsctags setup for ctrlp
 let g:ctrlp_buftag_types = {
     \ 'javascript' : {

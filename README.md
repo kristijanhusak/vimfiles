@@ -26,6 +26,7 @@ Plugins
 * Easymotion
 * Startify
 * CtrlP
+* CtrlP bdelete
 * Filesearch
 * Surround
 * Auto pairs
