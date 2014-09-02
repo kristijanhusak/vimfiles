@@ -16,6 +16,11 @@ NeoBundle 'Lokaltog/vim-easymotion'
 NeoBundle 'jeetsukumaran/vim-filesearch'
 NeoBundle 'kien/ctrlp.vim'
 NeoBundle 'd11wtq/ctrlp_bdelete.vim'
+NeoBundle 'marijnh/tern_for_vim', {
+\ 'build' : {
+\     'unix' : 'npm install',
+\    },
+\ }
 NeoBundle 'jiangmiao/auto-pairs'
 NeoBundle 'mattn/emmet-vim'
 NeoBundle 'junegunn/vim-easy-align'
