@@ -27,6 +27,7 @@ Plugins
 * Startify
 * CtrlP
 * CtrlP bdelete
+* Tern
 * Filesearch
 * Surround
 * Auto pairs
