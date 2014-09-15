@@ -28,7 +28,7 @@ Plugins
 * CtrlP
 * CtrlP bdelete
 * Tern
-* Filesearch
+* Ack
 * Surround
 * Auto pairs
 * Multiple cursors

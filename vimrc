@@ -13,7 +13,7 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 " Plugins
 NeoBundle 'tpope/vim-commentary'
 NeoBundle 'Lokaltog/vim-easymotion'
-NeoBundle 'jeetsukumaran/vim-filesearch'
+NeoBundle 'mileszs/ack.vim'
 NeoBundle 'kien/ctrlp.vim'
 NeoBundle 'd11wtq/ctrlp_bdelete.vim'
 NeoBundle 'marijnh/tern_for_vim', {
@@ -272,7 +272,7 @@ nnoremap <C-v> "+p
 " Paste from yank register
 nnoremap <Leader>p "0p
 " Filesearch plugin map for searching in whole folder
-nnoremap <Leader>f :Fsgrep /
+nnoremap <Leader>f :Ack
 " Toggle buffer list
 nnoremap <Leader>b :CtrlPBuffer<CR>
 " Ctrlp plugin fuzzy search tags
@@ -338,10 +338,7 @@ let g:NERDTreeChDirMode = 2                                 "NERDTree change dir
 let g:NERDTreeShowHidden = 1                                "Show hidden files in NERDTree
 let g:NERDTreeIgnore=['\.git$', '\.sass-cache$']
 
-let g:filesearch_viewport_split_policy = "T"                "Filesearch plugin window appears on top
-let g:filesearch_autoexpand_on_split = 0                    "Prevent Filesearch plugin to expand gvim window
-let g:filesearch_split_size = 15                            "Filesearch window size
-let g:filesearch_autodismiss_on_select = 0                  "Filesearch window stay open
+let g:ackhighlight = 1                                      "Highlight current search
 
 let g:syntastic_auto_loc_list = 1                           "Show syntastic window when there are errors, otherwise close
 let g:syntastic_always_populate_loc_list = 1                "Always popuplate syntastic error list
