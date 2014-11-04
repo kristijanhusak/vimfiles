@@ -177,16 +177,6 @@ cnoreabbrev T tabe
 
 " ================ Functions ========================
 
-" Disable autocomplete before multiple cursors to avoid conflict
-function! Multiple_cursors_before()
-    exe 'NeoCompleteLock'
-endfunction
-
-" Enable autocomplete after multiple cursors
-function! Multiple_cursors_after()
-    exe 'NeoCompleteUnlock'
-endfunction
-
 " Remove trailing spaces on save
 function! StripTrailingWhitespaces()
     let l = line(".")
