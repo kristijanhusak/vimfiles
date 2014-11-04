@@ -33,8 +33,9 @@ Plugins
 * Auto pairs
 * Multiple cursors
 * Airline
-* NeoComplete
-* NeoSnippets
+* YouCompleteMe
+* UltiSnips
+* vim-snippets
 * Fugitive
 * Emmet
 * Syntastic
