@@ -35,7 +35,7 @@ NeoBundle 'duff/vim-bufonly'
 NeoBundle 'gregsexton/MatchTag'
 NeoBundle 'kris89/vim-multiple-cursors'
 NeoBundle 'kris89/vim-hybrid'
-NeoBundle 'Shougo/neocomplete.vim'
+NeoBundle 'Valloric/YouCompleteMe'
 NeoBundle 'Shougo/neosnippet'
 NeoBundle 'othree/html5.vim'
 NeoBundle 'xsbeats/vim-blade'
@@ -352,11 +352,6 @@ let g:multi_cursor_next_key = '<C-d>'                       "Set start and next 
 let g:multi_cursor_prev_key = '<C-r>'                       "Set prev multiple cursor
 let g:multi_cursor_skip_key = '<C-x>'                       "Set skip cursor
 let g:multi_cursor_quit_key = '<Esc>'                       "Exit multiple cursor mode
-
-let g:neocomplete#enable_at_startup = 1                     "Enable autocomplete
-let g:neocomplete#enable_smart_case = 1                     "Use smartcase.
-let g:neocomplete#data_directory = '~/.vim/.neocomplete'    "Folder where neocomplete saves cache
-let g:neocomplete#max_list = 15                             "Limit neocomplete list to 10 entries
 
 let g:vim_json_syntax_conceal = 0                           "Disable setting quotes for json syntax
 
