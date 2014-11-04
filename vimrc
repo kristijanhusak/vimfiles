@@ -228,8 +228,6 @@ nmap <Leader>a <Plug>(EasyAlign)
 " Delete all buffers
 nmap <silent> <Leader>da :exec "1," . bufnr('$') . "bd"<cr>
 
-" Trigger omnicomplete with Ctrl + space
-imap <c-space> <c-x><c-o>
 " Map save to ctrl+s
 imap <c-s> <C-o>:w<CR>
 
