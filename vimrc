@@ -19,7 +19,7 @@ NeoBundle 'd11wtq/ctrlp_bdelete.vim'
 NeoBundle 'marijnh/tern_for_vim', {
 \ 'build' : {
 \     'unix' : 'npm install'
-\    }
+\ }
 \ }
 NeoBundle 'jiangmiao/auto-pairs'
 NeoBundle 'mattn/emmet-vim'
@@ -37,7 +37,11 @@ NeoBundle 'SirVer/ultisnips'
 NeoBundle 'honza/vim-snippets'
 NeoBundle 'kris89/vim-multiple-cursors'
 NeoBundle 'kris89/vim-hybrid'
-NeoBundle 'Valloric/YouCompleteMe'
+NeoBundle 'Valloric/YouCompleteMe', {
+\ 'build' : {
+\    'unix': './install.sh --clang-completer'
+\ }
+\ }
 NeoBundle 'othree/html5.vim'
 NeoBundle 'xsbeats/vim-blade'
 NeoBundle 'elzr/vim-json'
