@@ -5,7 +5,7 @@ scriptencoding utf-8    "Set scriptencoding to utf-8 (listchars)
 set runtimepath+=~/.vim/bundle/neobundle.vim/
 
 " Initialize neobundle
-call neobundle#rc(expand('~/.vim/bundle/'))
+call neobundle#begin(expand('~/.vim/bundle/'))
 
 " Let NeoBundle manage NeoBundle
 NeoBundleFetch 'Shougo/neobundle.vim'
@@ -55,6 +55,10 @@ NeoBundle 'cakebaker/scss-syntax.vim'
 NeoBundle 'kchmck/vim-coffee-script'
 NeoBundle 'mhinz/vim-startify'
 
+" Finish NeoBundle initialization
+call neobundle#end()
+
+" Enable plugins and indents by filetype
 filetype plugin indent on
 
 " Call NeoBundle command for checking bundles
