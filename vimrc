@@ -108,6 +108,7 @@ set list                                            "Enable listchars
 set completeopt-=preview                            "Disable preview for autocomplete
 set background=dark                                 "Set background to dark
 set hidden                                          "Hide buffers in background
+set colorcolumn=80                                  "Add right margin
 
 "turn on syntax highlighting
 syntax on
@@ -325,9 +326,6 @@ let g:syntastic_auto_loc_list = 1                           "Show syntastic wind
 let g:syntastic_always_populate_loc_list = 1                "Always popuplate syntastic error list
 let g:syntastic_php_checkers = ['php']                      "Enable only basic syntax checking for php
 let g:syntastic_javascript_checkers = ['jshint', 'jscs']    "Enable these linters for js
-let g:syntastic_mode_map = { 'mode': 'active',
-                           \ 'active_filetypes': ['javascript', 'php'],
-                           \ 'passive_filetypes': ['scss', 'sass', 'html', 'css'] }
 
 let g:multi_cursor_use_default_mapping = 0                  "Disable default mappings for multiple cursors
 let g:multi_cursor_next_key = '<C-d>'                       "Set start and next multiple cursor to Ctrl-d ( Sublime text like  )
