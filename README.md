@@ -27,6 +27,7 @@ Plugins
 * Startify
 * CtrlP
 * CtrlP bdelete
+* CtrlP Funky
 * Tern
 * Ack
 * Surround
@@ -50,6 +51,7 @@ Plugins
 * Json syntax
 * Twig syntax
 * Php syntax
+* Yaml syntax
 * Javascript syntax
 * Scss syntax
 * CoffeeScript syntax

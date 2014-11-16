@@ -16,6 +16,7 @@ NeoBundle 'Lokaltog/vim-easymotion'
 NeoBundle 'mileszs/ack.vim'
 NeoBundle 'kien/ctrlp.vim'
 NeoBundle 'd11wtq/ctrlp_bdelete.vim'
+NeoBundle 'tacahiroy/ctrlp-funky'
 NeoBundle 'marijnh/tern_for_vim', {
 \ 'build' : {
 \     'unix' : 'npm install'
@@ -47,7 +48,9 @@ NeoBundle 'xsbeats/vim-blade'
 NeoBundle 'elzr/vim-json'
 NeoBundle 'evidens/vim-twig'
 NeoBundle 'jelera/vim-javascript-syntax'
+NeoBundle 'pangloss/vim-javascript'
 NeoBundle 'joshtronic/php.vim'
+NeoBundle 'stephpy/vim-yaml'
 NeoBundle 'cakebaker/scss-syntax.vim'
 NeoBundle 'kchmck/vim-coffee-script'
 NeoBundle 'mhinz/vim-startify'
@@ -136,9 +139,6 @@ set nofoldenable
 
 " Auto-remove trailing spaces
 autocmd BufWritePre * :call StripTrailingWhitespaces()
-
-" load yaml syntax on buffread ( Fixes old slow loading )
-autocmd BufNewFile,BufRead *.yaml,*.yml source ~/.vim/after/syntax/yaml.vim
 
 " If no file is selected, execute Startify
 autocmd VimEnter * if !argc() | Startify | endif
@@ -254,8 +254,8 @@ nnoremap <Leader>f :Ack
 " Toggle buffer list
 nnoremap <Leader>b :CtrlPBuffer<CR>
 " Ctrlp plugin fuzzy search tags
-nnoremap <Leader>t :CtrlPBufTag<CR>
-nnoremap <Leader>T :CtrlPBufTagAll<CR>
+nnoremap <Leader>t :CtrlPFunky<CR>
+nnoremap <Leader>T :CtrlPBufTag<CR>
 " Maps for indentation in normal mode
 nnoremap <tab> >>
 nnoremap <s-tab> <<
@@ -291,13 +291,7 @@ vmap <expr>p <sid>Repl()
 " ================ plugins setups ========================
 
 let g:ctrlp_match_window = 'bottom,order:ttb,min:1,max:25,results:25'   "Ctrlp window setup
-"jsctags setup for ctrlp
-let g:ctrlp_buftag_types = {
-    \ 'javascript' : {
-      \ 'bin': 'jsctags',
-      \ 'args': '-f -',
-      \ },
-    \ }
+let g:ctrlp_extensions = ['funky']
 
 let g:airline_powerline_fonts = 1                           "Enable powerline fonts
 let g:airline_theme = "powerlineish"                        "Set theme to powerline default theme
@@ -306,7 +300,10 @@ let g:airline_section_z = '%{substitute(getcwd(), expand("$HOME"), "~", "g")}'  
 let g:airline_section_c = '%<%f %#__accent_red#%m%#__restore__# %#__accent_red#%{airline#util#wrap(airline#parts#readonly(),0)}%#__restore__#' "Adds red modified
 let g:airline#extensions#whitespace#enabled = 0             "Disable whitespace extension
 
-let g:UltiSnipsExpandTrigger="<c-j>"
+let g:UltiSnipsExpandTrigger="<c-j>"                        "Trigger snippets with Ctrl + j
+
+let g:ycm_add_preview_to_completeopt = 0                    "Disable preview window
+let g:ycm_confirm_extra_conf = 0                            "Disable question for loading
 
 let g:gitgutter_realtime = 0                                "Disable gitgutter in realtime
 let g:gitgutter_eager = 0                                   "Disable gitgutter to eager load on tab or buffer switch
@@ -323,6 +320,7 @@ let g:ackhighlight = 1                                      "Highlight current s
 let g:syntastic_auto_loc_list = 1                           "Show syntastic window when there are errors, otherwise close
 let g:syntastic_always_populate_loc_list = 1                "Always popuplate syntastic error list
 let g:syntastic_php_checkers = ['php']                      "Enable only basic syntax checking for php
+let g:syntastic_javascript_checkers = ['jshint', 'jscs']    "Enable these linters for js
 let g:syntastic_mode_map = { 'mode': 'active',
                            \ 'active_filetypes': ['javascript', 'php'],
                            \ 'passive_filetypes': ['scss', 'sass', 'html', 'css'] }
