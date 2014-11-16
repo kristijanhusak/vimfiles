@@ -8,14 +8,10 @@ and submit a pull request if you found any bug.
 Instalation
 -----------
 
-    $ cd ~
-    $ git clone https://github.com/kris89/vimfiles.git
-    $ cd vimfiles
-    $ git submodule init
-    $ git submodule update
-    $ cd ~
-    $ ln -s vimfiles/vim .vim
-    $ ln -s vimfiles/vimrc .vimrc
+    $ git clone https://github.com/kris89/vimfiles.git ~/vimfiles
+    $ cd ~/vimfiles
+    $ chmod +x ./install.sh
+    $ ./install.sh
 
 Run Vim and accept Bundles(Plugins) Installation.
 
