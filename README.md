@@ -30,8 +30,8 @@ Plugins
 * Auto pairs
 * Multiple cursors
 * Airline
-* YouCompleteMe
-* UltiSnips
+* Neocomplete
+* Neosnippets
 * vim-snippets
 * Fugitive
 * Emmet

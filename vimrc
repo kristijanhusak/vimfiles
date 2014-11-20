@@ -34,15 +34,11 @@ NeoBundle 'airblade/vim-gitgutter'
 NeoBundle 'bling/vim-airline'
 NeoBundle 'duff/vim-bufonly'
 NeoBundle 'gregsexton/MatchTag'
-NeoBundle 'SirVer/ultisnips'
-NeoBundle 'honza/vim-snippets'
 NeoBundle 'kris89/vim-multiple-cursors'
 NeoBundle 'kris89/vim-hybrid'
-NeoBundle 'Valloric/YouCompleteMe', {
-\ 'build' : {
-\    'unix': './install.sh --clang-completer'
-\ }
-\ }
+NeoBundle 'Shougo/neocomplete.vim'
+NeoBundle 'Shougo/neosnippet'
+NeoBundle 'honza/vim-snippets'
 NeoBundle 'othree/html5.vim'
 NeoBundle 'xsbeats/vim-blade'
 NeoBundle 'elzr/vim-json'
@@ -145,6 +141,9 @@ set nofoldenable
 " Auto-remove trailing spaces
 autocmd BufWritePre * :call StripTrailingWhitespaces()
 
+" Remove unused markers for snippets
+autocmd InsertLeave * NeoSnippetClearMarkers
+
 " If no file is selected, execute Startify
 autocmd VimEnter * if !argc() | Startify | endif
 
@@ -185,6 +184,16 @@ cnoreabbrev t tabe
 cnoreabbrev T tabe
 
 " ================ Functions ========================
+
+" Disable autocomplete before multiple cursors to avoid conflict
+function! Multiple_cursors_before()
+    exe 'NeoCompleteLock'
+endfunction
+
+" Enable autocomplete after multiple cursors
+function! Multiple_cursors_after()
+    exe 'NeoCompleteUnlock'
+endfunction
 
 " Remove trailing spaces on save
 function! StripTrailingWhitespaces()
@@ -227,6 +236,18 @@ nmap <silent> <Leader>da :exec "1," . bufnr('$') . "bd"<cr>
 
 " Map save to ctrl+s
 imap <c-s> <C-o>:w<CR>
+
+" Expand snippets on tab if snippets exists, otherwise do autocompletion
+imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)"
+\: pumvisible() ? "\<C-n>" : "\<TAB>"
+" If popup window is visible do autocompletion from back
+imap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
+"Fix for jumping over placeholders for neosnippet
+smap <expr><TAB> neosnippet#jumpable() ?
+\ "\<Plug>(neosnippet_jump)"
+\: "\<TAB>"
 
 " Map for Escape key
 inoremap jj <Esc>
@@ -319,6 +340,14 @@ let g:user_emmet_next_key = '<c-n>'                         "Change trigger jump
 let g:NERDTreeChDirMode = 2                                 "NERDTree change directory only on root change
 let g:NERDTreeShowHidden = 1                                "Show hidden files in NERDTree
 let g:NERDTreeIgnore=['\.git$', '\.sass-cache$']
+
+let g:neocomplete#enable_at_startup = 1                     "Enable autocomplete
+let g:neocomplete#enable_smart_case = 1                     "Use smartcase.
+let g:neocomplete#data_directory = '~/.vim/.neocomplete'    "Folder where neocomplete saves cache
+let g:neocomplete#max_list = 15                             "Limit neocomplete list to 10 entries
+
+let g:neosnippet#snippets_directory = '~/.vim/bundle/vim-snippets/snippets'  "Tell Neosnippet about the snippets folder
+let g:neosnippet#disable_runtime_snippets = {'_' : 1}
 
 let g:ackhighlight = 1                                      "Highlight current search
 
