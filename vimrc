@@ -11,6 +11,7 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 NeoBundleFetch 'Shougo/neobundle.vim'
 
 " Plugins
+NeoBundle 'chrisbra/vim-show-whitespace'
 NeoBundle 'tpope/vim-commentary'
 NeoBundle 'Lokaltog/vim-easymotion'
 NeoBundle 'mileszs/ack.vim'
@@ -365,6 +366,8 @@ let g:multi_cursor_quit_key = '<Esc>'                       "Exit multiple curso
 let g:vim_json_syntax_conceal = 0                           "Disable setting quotes for json syntax
 
 let g:AutoPairsCenterLine = 0                               "Disable auto pairs center screen option to avoid bug with snippets
+
+let g:showwhite_highlighting = 'guibg=NONE guifg=#555555 ctermbg=NONE ctermfg=LightGrey'
 
 " Include local vimrc if exists
 if filereadable(glob("$HOME/.vimrc.local"))
