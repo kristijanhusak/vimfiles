@@ -11,7 +11,6 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 NeoBundleFetch 'Shougo/neobundle.vim'
 
 " Plugins
-NeoBundle 'chrisbra/vim-show-whitespace'
 NeoBundle 'tpope/vim-commentary'
 NeoBundle 'Lokaltog/vim-easymotion'
 NeoBundle 'mileszs/ack.vim'
@@ -40,6 +39,7 @@ NeoBundle 'kris89/vim-hybrid'
 NeoBundle 'Shougo/neocomplete.vim'
 NeoBundle 'Shougo/neosnippet'
 NeoBundle 'honza/vim-snippets'
+NeoBundle 'Yggdroot/indentLine'
 NeoBundle 'othree/html5.vim'
 NeoBundle 'xsbeats/vim-blade'
 NeoBundle 'elzr/vim-json'
@@ -367,7 +367,9 @@ let g:vim_json_syntax_conceal = 0                           "Disable setting quo
 
 let g:AutoPairsCenterLine = 0                               "Disable auto pairs center screen option to avoid bug with snippets
 
-let g:showwhite_highlighting = 'guibg=NONE guifg=#555555 ctermbg=NONE ctermfg=LightGrey'
+let g:indentLine_char = '┆'                                 "Set higher line for indentLine
+let g:indentLine_color_term = '236'                         "Indent line color for terminal
+let g:indentLine_color_gui = '#333333'                      "Indent line color for gvim
 
 " Include local vimrc if exists
 if filereadable(glob("$HOME/.vimrc.local"))

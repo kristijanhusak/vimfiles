@@ -33,6 +33,7 @@ Plugins
 * Neocomplete
 * Neosnippets
 * vim-snippets
+* Indent Line
 * Fugitive
 * Emmet
 * Syntastic
