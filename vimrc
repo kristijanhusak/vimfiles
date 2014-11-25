@@ -370,6 +370,7 @@ let g:AutoPairsCenterLine = 0                               "Disable auto pairs 
 let g:indentLine_char = '┆'                                 "Set higher line for indentLine
 let g:indentLine_color_term = '236'                         "Indent line color for terminal
 let g:indentLine_color_gui = '#333333'                      "Indent line color for gvim
+let g:indentLine_faster = 1                                 "Better performance while using indentLine
 
 " Include local vimrc if exists
 if filereadable(glob("$HOME/.vimrc.local"))
