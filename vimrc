@@ -272,8 +272,6 @@ nnoremap <leader><tab> <c-^>
 nnoremap <C-f> <C-d>
 "Auto change directory to match current file
 nnoremap <Leader>dc :cd %:p:h<CR>:pwd<CR>
-" Paste from system clipboard with Ctrl + v
-nnoremap <C-v> "+p
 " Paste from yank register
 nnoremap <Leader>p "0p
 " Filesearch plugin map for searching in whole folder
