@@ -17,11 +17,6 @@ NeoBundle 'mileszs/ack.vim'
 NeoBundle 'kien/ctrlp.vim'
 NeoBundle 'd11wtq/ctrlp_bdelete.vim'
 NeoBundle 'tacahiroy/ctrlp-funky'
-NeoBundle 'marijnh/tern_for_vim', {
-\ 'build' : {
-\     'unix' : 'npm install'
-\ }
-\ }
 NeoBundle 'jiangmiao/auto-pairs'
 NeoBundle 'mattn/emmet-vim'
 NeoBundle 'junegunn/vim-easy-align'
@@ -39,7 +34,6 @@ NeoBundle 'kris89/vim-hybrid'
 NeoBundle 'Shougo/neocomplete.vim'
 NeoBundle 'Shougo/neosnippet'
 NeoBundle 'honza/vim-snippets'
-NeoBundle 'Yggdroot/indentLine'
 NeoBundle 'othree/html5.vim'
 NeoBundle 'xsbeats/vim-blade'
 NeoBundle 'elzr/vim-json'
@@ -354,6 +348,7 @@ let g:syntastic_auto_loc_list = 1                           "Show syntastic wind
 let g:syntastic_always_populate_loc_list = 1                "Always popuplate syntastic error list
 let g:syntastic_php_checkers = ['php']                      "Enable only basic syntax checking for php
 let g:syntastic_javascript_checkers = ['jshint', 'jscs']    "Enable these linters for js
+let g:syntastic_scss_checkers = []                          "Disable scss checking
 
 let g:multi_cursor_use_default_mapping = 0                  "Disable default mappings for multiple cursors
 let g:multi_cursor_next_key = '<C-d>'                       "Set start and next multiple cursor to Ctrl-d ( Sublime text like  )
