@@ -24,7 +24,6 @@ Plugins
 * CtrlP
 * CtrlP bdelete
 * CtrlP Funky
-* Tern
 * Ack
 * Surround
 * Auto pairs
@@ -33,7 +32,6 @@ Plugins
 * Neocomplete
 * Neosnippets
 * vim-snippets
-* Indent Line
 * Fugitive
 * Emmet
 * Syntastic
