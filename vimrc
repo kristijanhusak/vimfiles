@@ -77,10 +77,8 @@ set history=500                                     "Store lots of :cmdline hist
 set showcmd                                         "Show incomplete cmds down the bottom
 set noshowmode                                      "Hide showmode because of the powerline plugin
 set gdefault                                        "Set global flag for search and replace
-set noerrorbells                                    "No error bells
 set gcr=a:blinkon500-blinkwait500-blinkoff500       "Set cursor blinking rate
 set cursorline                                      "Highlight current line
-set visualbell                                      "No sounds
 set autoread                                        "Reload files changed outside vim
 set smartcase                                       "Smart case search if there is uppercase
 set ignorecase                                      "case insensitive search
@@ -141,6 +139,10 @@ autocmd InsertLeave * NeoSnippetClearMarkers
 
 " If no file is selected, execute Startify
 autocmd VimEnter * if !argc() | Startify | endif
+
+" Disable visual bell completely
+autocmd GUIEnter * set vb t_vb=
+autocmd VimEnter * set vb t_vb=
 
 " ================ Completion =======================
 
@@ -287,6 +289,9 @@ nnoremap + <c-w>5>
 nnoremap _ <c-w>5<
 " go to end of pasted text
 nnoremap p p`]
+" Center highlighted search
+nnoremap n nzz
+nnoremap N Nzz
 
 "Indenting in visual mode
 xnoremap <s-tab> <gv
@@ -319,11 +324,6 @@ let g:airline_section_z = '%{substitute(getcwd(), expand("$HOME"), "~", "g")}'  
 let g:airline_section_c = '%<%f %#__accent_red#%m%#__restore__# %#__accent_red#%{airline#util#wrap(airline#parts#readonly(),0)}%#__restore__#' "Adds red modified
 let g:airline#extensions#whitespace#enabled = 0             "Disable whitespace extension
 
-let g:UltiSnipsExpandTrigger="<c-j>"                        "Trigger snippets with Ctrl + j
-
-let g:ycm_add_preview_to_completeopt = 0                    "Disable preview window
-let g:ycm_confirm_extra_conf = 0                            "Disable question for loading
-
 let g:gitgutter_realtime = 0                                "Disable gitgutter in realtime
 let g:gitgutter_eager = 0                                   "Disable gitgutter to eager load on tab or buffer switch
 
@@ -339,7 +339,7 @@ let g:neocomplete#enable_smart_case = 1                     "Use smartcase.
 let g:neocomplete#data_directory = '~/.vim/.neocomplete'    "Folder where neocomplete saves cache
 let g:neocomplete#max_list = 15                             "Limit neocomplete list to 10 entries
 
-let g:neosnippet#snippets_directory = '~/.vim/bundle/vim-snippets/snippets'  "Tell Neosnippet about the snippets folder
+let g:neosnippet#snippets_directory = ['~/.vim/bundle/vim-snippets/snippets', '~/.vim/snippets']  "Tell Neosnippet about the snippets folder
 let g:neosnippet#disable_runtime_snippets = {'_' : 1}
 
 let g:ackhighlight = 1                                      "Highlight current search
@@ -359,11 +359,6 @@ let g:multi_cursor_quit_key = '<Esc>'                       "Exit multiple curso
 let g:vim_json_syntax_conceal = 0                           "Disable setting quotes for json syntax
 
 let g:AutoPairsCenterLine = 0                               "Disable auto pairs center screen option to avoid bug with snippets
-
-let g:indentLine_char = '┆'                                 "Set higher line for indentLine
-let g:indentLine_color_term = '236'                         "Indent line color for terminal
-let g:indentLine_color_gui = '#333333'                      "Indent line color for gvim
-let g:indentLine_faster = 1                                 "Better performance while using indentLine
 
 " Include local vimrc if exists
 if filereadable(glob("$HOME/.vimrc.local"))
