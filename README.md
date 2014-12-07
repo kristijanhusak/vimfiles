@@ -19,7 +19,6 @@ Plugins
 ----------------
 
 * NERDTree
-* Easymotion
 * Startify
 * CtrlP
 * CtrlP bdelete
@@ -35,8 +34,6 @@ Plugins
 * Fugitive
 * Emmet
 * Syntastic
-* Easy Align
-* Repeat
 * Commentary
 * Gitgutter
 * BufOnly

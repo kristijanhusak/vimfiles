@@ -12,17 +12,14 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 
 " Plugins
 NeoBundle 'tpope/vim-commentary'
-NeoBundle 'Lokaltog/vim-easymotion'
 NeoBundle 'mileszs/ack.vim'
 NeoBundle 'kien/ctrlp.vim'
 NeoBundle 'd11wtq/ctrlp_bdelete.vim'
 NeoBundle 'tacahiroy/ctrlp-funky'
 NeoBundle 'jiangmiao/auto-pairs'
 NeoBundle 'mattn/emmet-vim'
-NeoBundle 'junegunn/vim-easy-align'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'tpope/vim-repeat'
 NeoBundle 'scrooloose/syntastic'
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'airblade/vim-gitgutter'
@@ -226,8 +223,6 @@ nmap <C-h> <C-w>h
 nmap <C-j> <C-w>j
 nmap <C-k> <C-w>k
 nmap <C-l> <C-w>l
-" Trigger easy align with Vim movement
-nmap <Leader>a <Plug>(EasyAlign)
 " Delete all buffers
 nmap <silent> <Leader>da :exec "1," . bufnr('$') . "bd"<cr>
 
