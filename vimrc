@@ -296,13 +296,10 @@ xnoremap <tab> >gv
 xmap <Leader>c gc
 
 "Move to the end of yanked text after yank and paste
-vnoremap y y']
+vnoremap y y`]
 vnoremap p p`]
 "Copy to system clipboard
 vnoremap <C-c> "+y
-
-"Trigger easy plugin in visual mode
-vmap <Leader>a <Plug>(EasyAlign)
 
 "Prevent overriding yank register with overriten text, must be near end of file
 vmap <expr>p <sid>Repl()
