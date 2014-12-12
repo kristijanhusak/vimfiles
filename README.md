@@ -25,7 +25,7 @@ Plugins
 * CtrlP Funky
 * Ack
 * Surround
-* Auto pairs
+* DelimitMate
 * Multiple cursors
 * Airline
 * Neocomplete

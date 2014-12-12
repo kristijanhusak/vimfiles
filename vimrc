@@ -16,7 +16,7 @@ NeoBundle 'mileszs/ack.vim'
 NeoBundle 'kien/ctrlp.vim'
 NeoBundle 'd11wtq/ctrlp_bdelete.vim'
 NeoBundle 'tacahiroy/ctrlp-funky'
-NeoBundle 'jiangmiao/auto-pairs'
+NeoBundle 'Raimondi/delimitMate'
 NeoBundle 'mattn/emmet-vim'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'tpope/vim-fugitive'
@@ -350,7 +350,7 @@ let g:multi_cursor_quit_key = '<Esc>'                       "Exit multiple curso
 
 let g:vim_json_syntax_conceal = 0                           "Disable setting quotes for json syntax
 
-let g:AutoPairsCenterLine = 0                               "Disable auto pairs center screen option to avoid bug with snippets
+let delimitMate_expand_cr = 1                               "auto indent on enter
 
 " Include local vimrc if exists
 if filereadable(glob("$HOME/.vimrc.local"))
