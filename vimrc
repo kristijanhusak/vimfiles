@@ -337,6 +337,7 @@ let g:neosnippet#disable_runtime_snippets = {'_' : 1}
 let g:ackhighlight = 1                                      "Highlight current search
 
 let g:syntastic_auto_loc_list = 1                           "Show syntastic window when there are errors, otherwise close
+let g:syntastic_loc_list_height = 5                         "Height of the errors window
 let g:syntastic_always_populate_loc_list = 1                "Always popuplate syntastic error list
 let g:syntastic_php_checkers = ['php']                      "Enable only basic syntax checking for php
 let g:syntastic_javascript_checkers = ['jshint', 'jscs']    "Enable these linters for js
