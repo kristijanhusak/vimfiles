@@ -1,56 +1,51 @@
 set nocompatible        "This must be first, because it changes other options as a side effect.
-scriptencoding utf-8    "Set scriptencoding to utf-8 (listchars)
+filetype off            "required
 
-" Add NeoBundle to runtimepath
-set runtimepath+=~/.vim/bundle/neobundle.vim/
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
-" Initialize neobundle
-call neobundle#begin(expand('~/.vim/bundle/'))
-
-" Let NeoBundle manage NeoBundle
-NeoBundleFetch 'Shougo/neobundle.vim'
+Plugin 'gmarik/Vundle.vim'
 
 " Plugins
-NeoBundle 'tpope/vim-commentary'
-NeoBundle 'mileszs/ack.vim'
-NeoBundle 'kien/ctrlp.vim'
-NeoBundle 'd11wtq/ctrlp_bdelete.vim'
-NeoBundle 'tacahiroy/ctrlp-funky'
-NeoBundle 'Raimondi/delimitMate'
-NeoBundle 'mattn/emmet-vim'
-NeoBundle 'tpope/vim-surround'
-NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'scrooloose/syntastic'
-NeoBundle 'scrooloose/nerdtree'
-NeoBundle 'airblade/vim-gitgutter'
-NeoBundle 'bling/vim-airline'
-NeoBundle 'duff/vim-bufonly'
-NeoBundle 'gregsexton/MatchTag'
-NeoBundle 'terryma/vim-multiple-cursors'
-NeoBundle 'kris89/vim-hybrid'
-NeoBundle 'Shougo/neocomplete.vim'
-NeoBundle 'Shougo/neosnippet'
-NeoBundle 'honza/vim-snippets'
-NeoBundle 'othree/html5.vim'
-NeoBundle 'xsbeats/vim-blade'
-NeoBundle 'elzr/vim-json'
-NeoBundle 'evidens/vim-twig'
-NeoBundle 'jelera/vim-javascript-syntax'
-NeoBundle 'pangloss/vim-javascript'
-NeoBundle 'joshtronic/php.vim'
-NeoBundle 'stephpy/vim-yaml'
-NeoBundle 'cakebaker/scss-syntax.vim'
-NeoBundle 'kchmck/vim-coffee-script'
-NeoBundle 'mhinz/vim-startify'
+Plugin 'tpope/vim-commentary'
+Plugin 'mileszs/ack.vim'
+Plugin 'kien/ctrlp.vim'
+Plugin 'd11wtq/ctrlp_bdelete.vim'
+Plugin 'tacahiroy/ctrlp-funky'
+Plugin 'Raimondi/delimitMate'
+Plugin 'mattn/emmet-vim'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-fugitive'
+Plugin 'scrooloose/syntastic'
+Plugin 'scrooloose/nerdtree'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'bling/vim-airline'
+Plugin 'duff/vim-bufonly'
+Plugin 'gregsexton/MatchTag'
+Plugin 'terryma/vim-multiple-cursors'
+Plugin 'kris89/vim-hybrid'
+Plugin 'Shougo/neocomplete.vim'
+Plugin 'Shougo/neosnippet'
+Plugin 'honza/vim-snippets'
+Plugin 'othree/html5.vim'
+Plugin 'xsbeats/vim-blade'
+Plugin 'elzr/vim-json'
+Plugin 'evidens/vim-twig'
+Plugin 'jelera/vim-javascript-syntax'
+Plugin 'pangloss/vim-javascript'
+Plugin 'joshtronic/php.vim'
+Plugin 'stephpy/vim-yaml'
+Plugin 'cakebaker/scss-syntax.vim'
+Plugin 'kchmck/vim-coffee-script'
+Plugin 'mhinz/vim-startify'
 
-" Finish NeoBundle initialization
-call neobundle#end()
+" Finish Vundle initialization
+call vundle#end()
 
 " Enable plugins and indents by filetype
 filetype plugin indent on
 
-" Call NeoBundle command for checking bundles
-NeoBundleCheck
+scriptencoding utf-8    "Set scriptencoding to utf-8 (listchars)
 
 " Change leader to a comma because the backslash is too far away
 let mapleader = ","
@@ -96,11 +91,10 @@ set background=dark                                 "Set background to dark
 set hidden                                          "Hide buffers in background
 set colorcolumn=80                                  "Add right margin
 
-"turn on syntax highlighting
+" turn on syntax highlighting
 syntax on
 
 colorscheme hybrid_reverse
-
 
 " ================ Turn Off Swap Files ==============
 
@@ -144,8 +138,8 @@ autocmd VimEnter * set vb t_vb=
 " ================ Completion =======================
 
 set wildmode=list:full
-set wildmenu                "enable ctrl-n and ctrl-p to scroll thru matches
-set wildignore=*.o,*.obj,*~ "stuff to ignore when tab completing
+set wildmenu                        "enable ctrl-n and ctrl-p to scroll thru matches
+set wildignore=*.o,*.obj,*~         "stuff to ignore when tab completing
 set wildignore+=*vim/backups*
 set wildignore+=*sass-cache*
 set wildignore+=*vendor/**
@@ -158,9 +152,9 @@ set wildignore+=*.png,*.jpg,*.gif
 
 " ================ Scrolling ========================
 
-set scrolloff=8         "Start scrolling when we're 8 lines away from margins
+set scrolloff=8                     "Start scrolling when we're 8 lines away from margins
 set sidescrolloff=15
-set sidescroll=1
+set sidescroll=5
 
 " ================ Abbreviations ========================
 
@@ -208,26 +202,31 @@ function! s:Repl()
     return "p@=RestoreRegister()\<cr>"
 endfunction
 
-"Initialize ctrlp plugin for deleting buffers from list
+" Initialize ctrlp plugin for deleting buffers from list
 call ctrlp_bdelete#init()
 
 " ================ Custom mappings ========================
 
 " Comment map
 nmap <Leader>c gcc
+" Line comment command
+xmap <Leader>c gc
+
 " Map save to Ctrl + S
 map <c-s> :w<CR>
+imap <c-s> <C-o>:w<CR>
+" Also save with ,w
+nnoremap <Leader>w :w<CR>
 
 " Easier window navigation
 nmap <C-h> <C-w>h
 nmap <C-j> <C-w>j
 nmap <C-k> <C-w>k
 nmap <C-l> <C-w>l
-" Delete all buffers
-nmap <silent> <Leader>da :exec "1," . bufnr('$') . "bd"<cr>
 
-" Map save to ctrl+s
-imap <c-s> <C-o>:w<CR>
+" Down is really the next line
+nnoremap j gj
+nnoremap k gk
 
 " Expand snippets on tab if snippets exists, otherwise do autocompletion
 imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
@@ -235,73 +234,74 @@ imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
 \: pumvisible() ? "\<C-n>" : "\<TAB>"
 " If popup window is visible do autocompletion from back
 imap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-
-"Fix for jumping over placeholders for neosnippet
+" Fix for jumping over placeholders for neosnippet
 smap <expr><TAB> neosnippet#jumpable() ?
 \ "\<Plug>(neosnippet_jump)"
 \: "\<TAB>"
 
 " Map for Escape key
 inoremap jj <Esc>
-" Paste from system clipboard with Ctrl + v
-inoremap <C-v> <Esc>"+p
 
-" Down is really the next line
-nnoremap j gj
-nnoremap k gk
 " Yank to the end of the line
 nnoremap Y y$
-" Also save with ,w
-nnoremap <Leader>w :w<CR>
+
+" Copy to system clipboard
+vnoremap <C-c> "+y
+" Paste from system clipboard with Ctrl + v
+inoremap <C-v> <Esc>"+p
+nnoremap <Leader>p "0p
+
+" Move to the end of yanked text after yank and paste
+nnoremap p p`]
+vnoremap y y`]
+vnoremap p p`]
+
 " Clear search highlight
 nnoremap <Leader><space> :noh<CR>
+
+" Find current file in NERDTree
+nnoremap <Leader>hf :NERDTreeFind<CR>
 " Open NERDTree
 nnoremap <Leader>n :NERDTreeToggle<CR>
+
 " Toggle between last 2 buffers
 nnoremap <leader><tab> <c-^>
+
 " Switch jump half page to Ctrl-f so multiple cursors can be bind to Ctrl-d ( Sublime text like )
 nnoremap <C-f> <C-d>
-"Auto change directory to match current file
+
+" Auto change directory to match current file
 nnoremap <Leader>dc :cd %:p:h<CR>:pwd<CR>
-" Paste from yank register
-nnoremap <Leader>p "0p
+
 " Filesearch plugin map for searching in whole folder
 nnoremap <Leader>f :Ack
+
 " Toggle buffer list
 nnoremap <Leader>b :CtrlPBuffer<CR>
 " Ctrlp plugin fuzzy search tags
 nnoremap <Leader>t :CtrlPFunky<CR>
 nnoremap <Leader>T :CtrlPBufTag<CR>
+
 " Maps for indentation in normal mode
 nnoremap <tab> >>
 nnoremap <s-tab> <<
+
+" Indenting in visual mode
+xnoremap <s-tab> <gv
+xnoremap <tab> >gv
+
 " Fugitive commands
 nnoremap <Leader>gs :Gstatus<CR>
-" Find current file in NERDTree
-nnoremap <Leader>hf :NERDTreeFind<CR>
-"Resize window with shift + and shift -
+
+" Resize window with shift + and shift -
 nnoremap + <c-w>5>
 nnoremap _ <c-w>5<
-" go to end of pasted text
-nnoremap p p`]
+
 " Center highlighted search
 nnoremap n nzz
 nnoremap N Nzz
 
-"Indenting in visual mode
-xnoremap <s-tab> <gv
-xnoremap <tab> >gv
-
-"Line comment command
-xmap <Leader>c gc
-
-"Move to the end of yanked text after yank and paste
-vnoremap y y`]
-vnoremap p p`]
-"Copy to system clipboard
-vnoremap <C-c> "+y
-
-"Prevent overriding yank register with overriten text, must be near end of file
+" Prevent overriding yank register with overriten text, must be near end of file
 vmap <expr>p <sid>Repl()
 
 " ================ plugins setups ========================

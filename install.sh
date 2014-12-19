@@ -1,2 +1,2 @@
 #/bin/sh
-rm -rf ~/.vim ~/.vimrc && git clone git@github.com:Shougo/neobundle.vim.git ~/.vim/bundle/neobundle.vim && ln -s $(pwd)/vimrc ~/.vimrc && ln -s $(pwd)/snippets ~/.vim/snippets && vim
+rm -rf ~/.vim ~/.vimrc && git clone git@github.com:gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim && ln -s $(pwd)/vimrc ~/.vimrc && ln -s $(pwd)/snippets ~/.vim/snippets && vim +PluginInstall +qall
