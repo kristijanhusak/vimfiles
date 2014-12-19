@@ -1,12 +1,11 @@
-set nocompatible        "This must be first, because it changes other options as a side effect.
-filetype off            "required
+set nocompatible                                                                "This must be first, because it changes other options as a side effect.
+filetype off                                                                    "required
 
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 Plugin 'gmarik/Vundle.vim'
 
-" Plugins
 Plugin 'tpope/vim-commentary'
 Plugin 'mileszs/ack.vim'
 Plugin 'kien/ctrlp.vim'
@@ -39,60 +38,55 @@ Plugin 'cakebaker/scss-syntax.vim'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'mhinz/vim-startify'
 
-" Finish Vundle initialization
-call vundle#end()
+call vundle#end()                                                               "Finish Vundle initialization
 
-" Enable plugins and indents by filetype
-filetype plugin indent on
-
-scriptencoding utf-8    "Set scriptencoding to utf-8 (listchars)
+filetype plugin indent on                                                       "Enable plugins and indents by filetype
 
 " Change leader to a comma because the backslash is too far away
 let mapleader = ","
 
 " ================ GUI options ====================
 
-set guioptions-=m                           "remove menu bar
-set guioptions-=T                           "remove toolbar
-set guioptions-=L                           "remove left scrollbar when vertical split
-set guioptions-=l                           "remove left scrollbar
-set guifont=Inconsolata\ for\ Powerline\ 12 "font setup
-set linespace=10                            "Set lineheight in gvim
+set guioptions-=m                                                               "remove menu bar
+set guioptions-=T                                                               "remove toolbar
+set guioptions-=L                                                               "remove left scrollbar when vertical split
+set guioptions-=l                                                               "remove left scrollbar
+set guifont=Inconsolata\ for\ Powerline\ 12                                     "font setup
+set linespace=10                                                                "Set lineheight in gvim
 
 " ================ General Config ====================
 
-set t_Co=256                                        "Set 256 colors
-set title                                           "change the terminal's title
-set number                                          "Line numbers are good
-set backspace=indent,eol,start                      "Allow backspace in insert mode
-set history=500                                     "Store lots of :cmdline history
-set showcmd                                         "Show incomplete cmds down the bottom
-set noshowmode                                      "Hide showmode because of the powerline plugin
-set gdefault                                        "Set global flag for search and replace
-set gcr=a:blinkon500-blinkwait500-blinkoff500       "Set cursor blinking rate
-set cursorline                                      "Highlight current line
-set autoread                                        "Reload files changed outside vim
-set smartcase                                       "Smart case search if there is uppercase
-set ignorecase                                      "case insensitive search
-set hlsearch                                        "Highlight search term
-set incsearch                                       "Jump to found term while searching
-set showmatch                                       "Highlight matching bracket
-set mouse=a                                         "Enable mouse
-set nostartofline                                   "Jump to first non-blank character
-set timeoutlen=1000 ttimeoutlen=200                 "Reduce Command timeout for faster escape and O
-set laststatus=2                                    "Show statusbar
-set fileencoding=utf-8 encoding=utf-8               "Set utf-8 encoding on write
-set wrap                                            "Enable word wrap
-set linebreak                                       "Wrap lines at convenient points
-set listchars=tab:\ \ ,trail:·                      "Set trails for tabs and spaces
-set list                                            "Enable listchars
-set completeopt-=preview                            "Disable preview for autocomplete
-set background=dark                                 "Set background to dark
-set hidden                                          "Hide buffers in background
-set colorcolumn=80                                  "Add right margin
+set t_Co=256                                                                    "Set 256 colors
+set title                                                                       "change the terminal's title
+set number                                                                      "Line numbers are good
+set backspace=indent,eol,start                                                  "Allow backspace in insert mode
+set history=500                                                                 "Store lots of :cmdline history
+set showcmd                                                                     "Show incomplete cmds down the bottom
+set noshowmode                                                                  "Hide showmode because of the powerline plugin
+set gdefault                                                                    "Set global flag for search and replace
+set gcr=a:blinkon500-blinkwait500-blinkoff500                                   "Set cursor blinking rate
+set cursorline                                                                  "Highlight current line
+set autoread                                                                    "Reload files changed outside vim
+set smartcase                                                                   "Smart case search if there is uppercase
+set ignorecase                                                                  "case insensitive search
+set hlsearch                                                                    "Highlight search term
+set incsearch                                                                   "Jump to found term while searching
+set showmatch                                                                   "Highlight matching bracket
+set mouse=a                                                                     "Enable mouse
+set nostartofline                                                               "Jump to first non-blank character
+set timeoutlen=1000 ttimeoutlen=200                                             "Reduce Command timeout for faster escape and O
+set laststatus=2                                                                "Show statusbar
+set fileencoding=utf-8 encoding=utf-8                                           "Set utf-8 encoding on write
+set wrap                                                                        "Enable word wrap
+set linebreak                                                                   "Wrap lines at convenient points
+set listchars=tab:\ \ ,trail:·                                                  "Set trails for tabs and spaces
+set list                                                                        "Enable listchars
+set completeopt-=preview                                                        "Disable preview for autocomplete
+set background=dark                                                             "Set background to dark
+set hidden                                                                      "Hide buffers in background
+set colorcolumn=80                                                              "Add right margin
 
-" turn on syntax highlighting
-syntax on
+syntax on                                                                       "turn on syntax highlighting
 
 colorscheme hybrid_reverse
 
@@ -122,24 +116,19 @@ set nofoldenable
 
 " ================ Auto commands ======================
 
-" Auto-remove trailing spaces
-autocmd BufWritePre * :call StripTrailingWhitespaces()
+autocmd BufWritePre * :call StripTrailingWhitespaces()                          "Auto-remove trailing spaces
+autocmd InsertLeave * NeoSnippetClearMarkers                                    "Remove unused markers for snippets
+autocmd VimEnter * if !argc() | Startify | endif                                "If no file is selected, execute Startify
+autocmd filetype html setlocal shiftwidth=2 softtabstop=2 tabstop=2             "Set 2 indent for html
 
-" Remove unused markers for snippets
-autocmd InsertLeave * NeoSnippetClearMarkers
-
-" If no file is selected, execute Startify
-autocmd VimEnter * if !argc() | Startify | endif
-
-" Disable visual bell completely
-autocmd GUIEnter * set vb t_vb=
+autocmd GUIEnter * set vb t_vb=                                                 "Disable visual bell completely
 autocmd VimEnter * set vb t_vb=
 
 " ================ Completion =======================
 
 set wildmode=list:full
-set wildmenu                        "enable ctrl-n and ctrl-p to scroll thru matches
-set wildignore=*.o,*.obj,*~         "stuff to ignore when tab completing
+set wildmenu                                                                    "enable ctrl-n and ctrl-p to scroll thru matches
+set wildignore=*.o,*.obj,*~                                                     "stuff to ignore when tab completing
 set wildignore+=*vim/backups*
 set wildignore+=*sass-cache*
 set wildignore+=*vendor/**
@@ -152,11 +141,11 @@ set wildignore+=*.png,*.jpg,*.gif
 
 " ================ Scrolling ========================
 
-set scrolloff=8                     "Start scrolling when we're 8 lines away from margins
+set scrolloff=8                                                                 "Start scrolling when we're 8 lines away from margins
 set sidescrolloff=15
 set sidescroll=5
 
-" ================ Abbreviations ========================
+" ================ Abbreviations ====================
 
 cnoreabbrev Wq wq
 cnoreabbrev WQ wq
@@ -173,17 +162,14 @@ cnoreabbrev T tabe
 
 " ================ Functions ========================
 
-" Disable autocomplete before multiple cursors to avoid conflict
 function! Multiple_cursors_before()
     exe 'NeoCompleteLock'
 endfunction
 
-" Enable autocomplete after multiple cursors
 function! Multiple_cursors_after()
     exe 'NeoCompleteUnlock'
 endfunction
 
-" Remove trailing spaces on save
 function! StripTrailingWhitespaces()
     let l = line(".")
     let c = col(".")
@@ -267,7 +253,7 @@ nnoremap <Leader>n :NERDTreeToggle<CR>
 " Toggle between last 2 buffers
 nnoremap <leader><tab> <c-^>
 
-" Switch jump half page to Ctrl-f so multiple cursors can be bind to Ctrl-d ( Sublime text like )
+" Switch jump half page to Ctrl-f so multiple cursors can be bind to Ctrl-d
 nnoremap <C-f> <C-d>
 
 " Auto change directory to match current file
@@ -306,52 +292,53 @@ vmap <expr>p <sid>Repl()
 
 " ================ plugins setups ========================
 
-let g:ctrlp_match_window = 'bottom,order:ttb,min:1,max:25,results:25'   "Ctrlp window setup
+let g:ctrlp_match_window = 'bottom,order:ttb,min:1,max:25,results:25'           "Ctrlp window setup
 let g:ctrlp_extensions = ['funky']
 
-let g:airline_powerline_fonts = 1                           "Enable powerline fonts
-let g:airline_theme = "powerlineish"                        "Set theme to powerline default theme
-let g:airline_section_y = '%{(&fenc == "" ? &enc : &fenc)}'                       "set encoding type info
-let g:airline_section_z = '%{substitute(getcwd(), expand("$HOME"), "~", "g")}'    "Set relative path
-let g:airline_section_c = '%<%f %#__accent_red#%m%#__restore__# %#__accent_red#%{airline#util#wrap(airline#parts#readonly(),0)}%#__restore__#' "Adds red modified
-let g:airline#extensions#whitespace#enabled = 0             "Disable whitespace extension
+let g:airline_powerline_fonts = 1                                               "Enable powerline fonts
+let g:airline_theme = "hybrid"                                                  "Set theme to powerline default theme
+let g:airline_section_y = '%{(&fenc == "" ? &enc : &fenc)}'                     "set encoding type info
+let g:airline_section_z = '%{substitute(getcwd(), expand("$HOME"), "~", "g")}'  "Set relative path
+let g:airline#extensions#whitespace#enabled = 0                                 "Disable whitespace extension
 
-let g:gitgutter_realtime = 0                                "Disable gitgutter in realtime
-let g:gitgutter_eager = 0                                   "Disable gitgutter to eager load on tab or buffer switch
+let g:gitgutter_realtime = 0                                                    "Disable gitgutter in realtime
+let g:gitgutter_eager = 0                                                       "Disable gitgutter to eager load on tab or buffer switch
 
-let g:user_emmet_expandabbr_key = '<c-e>'                   "Change trigger emmet key
-let g:user_emmet_next_key = '<c-n>'                         "Change trigger jump to next for emmet
+let g:user_emmet_expandabbr_key = '<c-e>'                                       "Change trigger emmet key
+let g:user_emmet_next_key = '<c-n>'                                             "Change trigger jump to next for emmet
 
-let g:NERDTreeChDirMode = 2                                 "NERDTree change directory only on root change
-let g:NERDTreeShowHidden = 1                                "Show hidden files in NERDTree
+let g:NERDTreeChDirMode = 2                                                     "NERDTree change directory only on root change
+let g:NERDTreeShowHidden = 1                                                    "Show hidden files in NERDTree
 let g:NERDTreeIgnore=['\.git$', '\.sass-cache$']
 
-let g:neocomplete#enable_at_startup = 1                     "Enable autocomplete
-let g:neocomplete#enable_smart_case = 1                     "Use smartcase.
-let g:neocomplete#data_directory = '~/.vim/.neocomplete'    "Folder where neocomplete saves cache
-let g:neocomplete#max_list = 15                             "Limit neocomplete list to 10 entries
+let g:neocomplete#enable_at_startup = 1                                         "Enable autocomplete
+let g:neocomplete#enable_smart_case = 1                                         "Use smartcase.
+let g:neocomplete#data_directory = '~/.vim/.neocomplete'                        "Folder where neocomplete saves cache
+let g:neocomplete#max_list = 15                                                 "Limit neocomplete list to 10 entries
 
-let g:neosnippet#snippets_directory = ['~/.vim/bundle/vim-snippets/snippets', '~/.vim/snippets']  "Tell Neosnippet about the snippets folder
-let g:neosnippet#disable_runtime_snippets = {'_' : 1}
+let g:neosnippet#disable_runtime_snippets = {'_' : 1}                           "Snippets setup
+let g:neosnippet#snippets_directory = [
+            \ '~/.vim/bundle/vim-snippets/snippets',
+            \ '~/.vim/snippets']
 
-let g:ackhighlight = 1                                      "Highlight current search
+let g:ackhighlight = 1                                                          "Highlight current search
 
-let g:syntastic_auto_loc_list = 1                           "Show syntastic window when there are errors, otherwise close
-let g:syntastic_loc_list_height = 5                         "Height of the errors window
-let g:syntastic_always_populate_loc_list = 1                "Always popuplate syntastic error list
-let g:syntastic_php_checkers = ['php']                      "Enable only basic syntax checking for php
-let g:syntastic_javascript_checkers = ['jshint', 'jscs']    "Enable these linters for js
-let g:syntastic_scss_checkers = []                          "Disable scss checking
+let g:syntastic_auto_loc_list = 1                                               "Show syntastic window when there are errors, otherwise close
+let g:syntastic_loc_list_height = 5                                             "Height of the errors window
+let g:syntastic_always_populate_loc_list = 1                                    "Always popuplate syntastic error list
+let g:syntastic_php_checkers = ['php']                                          "Enable only basic syntax checking for php
+let g:syntastic_javascript_checkers = ['jshint', 'jscs']                        "Enable these linters for js
+let g:syntastic_scss_checkers = []                                              "Disable scss checking
 
-let g:multi_cursor_use_default_mapping = 0                  "Disable default mappings for multiple cursors
-let g:multi_cursor_next_key = '<C-d>'                       "Set start and next multiple cursor to Ctrl-d ( Sublime text like  )
-let g:multi_cursor_prev_key = '<C-r>'                       "Set prev multiple cursor
-let g:multi_cursor_skip_key = '<C-x>'                       "Set skip cursor
-let g:multi_cursor_quit_key = '<Esc>'                       "Exit multiple cursor mode
+let g:multi_cursor_use_default_mapping = 0                                      "Disable default mappings for multiple cursors
+let g:multi_cursor_next_key = '<C-d>'                                           "Set start and next multiple cursor to Ctrl-d
+let g:multi_cursor_prev_key = '<C-r>'                                           "Set prev multiple cursor
+let g:multi_cursor_skip_key = '<C-x>'                                           "Set skip cursor
+let g:multi_cursor_quit_key = '<Esc>'                                           "Exit multiple cursor mode
 
-let g:vim_json_syntax_conceal = 0                           "Disable setting quotes for json syntax
+let g:vim_json_syntax_conceal = 0                                               "Disable setting quotes for json syntax
 
-let delimitMate_expand_cr = 1                               "auto indent on enter
+let delimitMate_expand_cr = 1                                                   "auto indent on enter
 
 " Include local vimrc if exists
 if filereadable(glob("$HOME/.vimrc.local"))
