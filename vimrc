@@ -45,6 +45,8 @@ filetype plugin indent on                                                       
 " Change leader to a comma because the backslash is too far away
 let mapleader = ","
 
+let g:enable_bold_font = 1
+
 " ================ GUI options ====================
 
 set guioptions-=m                                                               "remove menu bar
@@ -245,6 +247,10 @@ vnoremap p p`]
 " Clear search highlight
 nnoremap <Leader><space> :noh<CR>
 
+" Handle syntastic error window
+nnoremap <Leader>es :Errors<CR>
+nnoremap <Leader>ec :lclose<CR>
+
 " Find current file in NERDTree
 nnoremap <Leader>hf :NERDTreeFind<CR>
 " Open NERDTree
@@ -323,9 +329,14 @@ let g:neosnippet#snippets_directory = [
 
 let g:ackhighlight = 1                                                          "Highlight current search
 
-let g:syntastic_auto_loc_list = 1                                               "Show syntastic window when there are errors, otherwise close
+let g:syntastic_enable_signs = 1
+let g:syntastic_error_symbol = "✗"
+let g:syntastic_style_error_symbol = "✗"
+let g:syntastic_warning_symbol = "⚠"
+let g:syntastic_style_warning_symbol = "⚠"
 let g:syntastic_loc_list_height = 5                                             "Height of the errors window
 let g:syntastic_always_populate_loc_list = 1                                    "Always popuplate syntastic error list
+let g:syntastic_auto_jump = 3                                                   "Jump to first error detected
 let g:syntastic_php_checkers = ['php']                                          "Enable only basic syntax checking for php
 let g:syntastic_javascript_checkers = ['jshint', 'jscs']                        "Enable these linters for js
 let g:syntastic_scss_checkers = []                                              "Disable scss checking
