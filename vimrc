@@ -329,10 +329,10 @@ let g:neosnippet#snippets_directory = [
 let g:ackhighlight = 1                                                          "Highlight current search
 
 let g:syntastic_enable_signs = 1
-let g:syntastic_error_symbol = "✗"
-let g:syntastic_style_error_symbol = "✗"
-let g:syntastic_warning_symbol = "⚠"
-let g:syntastic_style_warning_symbol = "⚠"
+let g:syntastic_error_symbol = "x"
+let g:syntastic_style_error_symbol = "x"
+let g:syntastic_warning_symbol = "▵"
+let g:syntastic_style_warning_symbol = "▵"
 let g:syntastic_loc_list_height = 5                                             "Height of the errors window
 let g:syntastic_always_populate_loc_list = 1                                    "Always popuplate syntastic error list
 let g:syntastic_auto_jump = 3                                                   "Jump to first error detected
