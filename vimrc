@@ -42,10 +42,9 @@ call vundle#end()                                                               
 
 filetype plugin indent on                                                       "Enable plugins and indents by filetype
 
-" Change leader to a comma because the backslash is too far away
-let mapleader = ","
+let mapleader = ","                                                             "Change leader to a comma
 
-let g:enable_bold_font = 1
+let g:enable_bold_font = 1                                                      "Enable bold font in colorscheme
 
 " ================ GUI options ====================
 
@@ -342,6 +341,8 @@ let g:syntastic_javascript_checkers = ['jshint', 'jscs']                        
 let g:syntastic_scss_checkers = []                                              "Disable scss checking
 
 let g:multi_cursor_use_default_mapping = 0                                      "Disable default mappings for multiple cursors
+let g:multi_cursor_exit_from_insert_mode = 0                                    "Do not clear multi cursors selection on <Esc> press
+let g:multi_cursor_exit_from_visual_mode = 0                                    "Do not clear multi cursors selection on <Esc> press
 let g:multi_cursor_next_key = '<C-d>'                                           "Set start and next multiple cursor to Ctrl-d
 let g:multi_cursor_prev_key = '<C-r>'                                           "Set prev multiple cursor
 let g:multi_cursor_skip_key = '<C-x>'                                           "Set skip cursor
