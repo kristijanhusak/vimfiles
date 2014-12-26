@@ -23,8 +23,8 @@ Plugin 'duff/vim-bufonly'
 Plugin 'gregsexton/MatchTag'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'kristijanhusak/vim-hybrid'
-Plugin 'Shougo/neocomplete.vim'
-Plugin 'Shougo/neosnippet'
+Plugin 'ervandew/supertab'
+Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'othree/html5.vim'
 Plugin 'xsbeats/vim-blade'
@@ -118,7 +118,7 @@ set nofoldenable
 " ================ Auto commands ======================
 
 autocmd BufWritePre * :call StripTrailingWhitespaces()                          "Auto-remove trailing spaces
-autocmd InsertLeave * NeoSnippetClearMarkers                                    "Remove unused markers for snippets
+
 autocmd VimEnter * if !argc() | Startify | endif                                "If no file is selected, execute Startify
 autocmd filetype html setlocal shiftwidth=2 softtabstop=2 tabstop=2             "Set 2 indent for html
 
@@ -163,14 +163,6 @@ cnoreabbrev T tabe
 
 " ================ Functions ========================
 
-function! Multiple_cursors_before()
-    exe 'NeoCompleteLock'
-endfunction
-
-function! Multiple_cursors_after()
-    exe 'NeoCompleteUnlock'
-endfunction
-
 function! StripTrailingWhitespaces()
     let l = line(".")
     let c = col(".")
@@ -214,17 +206,6 @@ nmap <C-l> <C-w>l
 " Down is really the next line
 nnoremap j gj
 nnoremap k gk
-
-" Expand snippets on tab if snippets exists, otherwise do autocompletion
-imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-\ "\<Plug>(neosnippet_expand_or_jump)"
-\: pumvisible() ? "\<C-n>" : "\<TAB>"
-" If popup window is visible do autocompletion from back
-imap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-" Fix for jumping over placeholders for neosnippet
-smap <expr><TAB> neosnippet#jumpable() ?
-\ "\<Plug>(neosnippet_jump)"
-\: "\<TAB>"
 
 " Map for Escape key
 inoremap jj <Esc>
@@ -316,15 +297,9 @@ let g:NERDTreeChDirMode = 2                                                     
 let g:NERDTreeShowHidden = 1                                                    "Show hidden files in NERDTree
 let g:NERDTreeIgnore=['\.git$', '\.sass-cache$']
 
-let g:neocomplete#enable_at_startup = 1                                         "Enable autocomplete
-let g:neocomplete#enable_smart_case = 1                                         "Use smartcase.
-let g:neocomplete#data_directory = '~/.vim/.neocomplete'                        "Folder where neocomplete saves cache
-let g:neocomplete#max_list = 15                                                 "Limit neocomplete list to 10 entries
-
-let g:neosnippet#disable_runtime_snippets = {'_' : 1}                           "Snippets setup
-let g:neosnippet#snippets_directory = [
-            \ '~/.vim/bundle/vim-snippets/snippets',
-            \ '~/.vim/snippets']
+let g:UltiSnipsExpandTrigger="<tab>"                                            "Expand snippets with tab
+let g:UltiSnipsJumpForwardTrigger="<tab>"                                       "Jump forward snippet
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"                                    "Jump backward snippet
 
 let g:ackhighlight = 1                                                          "Highlight current search
 
