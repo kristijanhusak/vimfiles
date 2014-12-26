@@ -86,6 +86,7 @@ set completeopt-=preview                                                        
 set background=dark                                                             "Set background to dark
 set hidden                                                                      "Hide buffers in background
 set colorcolumn=80                                                              "Add right margin
+set conceallevel=2 concealcursor=i                                              "neosnippets conceal marker
 
 syntax on                                                                       "turn on syntax highlighting
 
