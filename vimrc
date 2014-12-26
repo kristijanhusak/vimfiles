@@ -245,6 +245,10 @@ nnoremap p p`]
 vnoremap y y`]
 vnoremap p p`]
 
+" Move selected lines up and down
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
+
 " Clear search highlight
 nnoremap <Leader><space> :noh<CR>
 
