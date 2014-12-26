@@ -122,6 +122,7 @@ autocmd BufWritePre * :call StripTrailingWhitespaces()                          
 autocmd InsertLeave * NeoSnippetClearMarkers                                    "Remove unused markers for snippets
 autocmd VimEnter * if !argc() | Startify | endif                                "If no file is selected, execute Startify
 autocmd filetype html setlocal shiftwidth=2 softtabstop=2 tabstop=2             "Set 2 indent for html
+autocmd filetype css,scss setlocal iskeyword+=-                                 "Treat words with hyphens as whole word
 
 autocmd GUIEnter * set vb t_vb=                                                 "Disable visual bell completely
 autocmd VimEnter * set vb t_vb=
