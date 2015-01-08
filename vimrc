@@ -42,7 +42,7 @@ call vundle#end()                                                               
 
 filetype plugin indent on                                                       "Enable plugins and indents by filetype
 
-let mapleader = ","                                                             "Change leader to a comma
+let g:mapleader = ","                                                             "Change leader to a comma
 
 let g:enable_bold_font = 1                                                      "Enable bold font in colorscheme
 
@@ -118,14 +118,18 @@ set nofoldenable
 
 " ================ Auto commands ======================
 
-autocmd BufWritePre * :call StripTrailingWhitespaces()                          "Auto-remove trailing spaces
-autocmd InsertLeave * NeoSnippetClearMarkers                                    "Remove unused markers for snippets
-autocmd VimEnter * if !argc() | Startify | endif                                "If no file is selected, execute Startify
-autocmd filetype html setlocal shiftwidth=2 softtabstop=2 tabstop=2             "Set 2 indent for html
-autocmd filetype css,scss setlocal iskeyword+=-                                 "Treat words with hyphens as whole word
+augroup vimrc
+    autocmd!
+augroup END
 
-autocmd GUIEnter * set vb t_vb=                                                 "Disable visual bell completely
-autocmd VimEnter * set vb t_vb=
+autocmd vimrc BufWritePre * :call StripTrailingWhitespaces()                          "Auto-remove trailing spaces
+autocmd vimrc InsertLeave * NeoSnippetClearMarkers                                    "Remove unused markers for snippets
+autocmd vimrc VimEnter * if !argc() | Startify | endif                                "If no file is selected, execute Startify
+autocmd vimrc FileType html,javascript setlocal shiftwidth=2 softtabstop=2 tabstop=2  "Set 2 indent for html
+autocmd vimrc FileType css,scss setlocal iskeyword+=-                                 "Treat words with hyphens as whole word
+
+autocmd vimrc GUIEnter * set vb t_vb=                                                 "Disable visual bell completely
+autocmd vimrc VimEnter * set vb t_vb=
 
 " ================ Completion =======================
 
@@ -174,10 +178,10 @@ function! Multiple_cursors_after()
 endfunction
 
 function! StripTrailingWhitespaces()
-    let l = line(".")
-    let c = col(".")
+    let l:l = line(".")
+    let l:c = col(".")
     %s/\s\+$//e
-    call cursor(l, c)
+    call cursor(l:l, l:c)
 endfunction
 
 " vp doesn't replace paste buffer
@@ -356,7 +360,7 @@ let g:multi_cursor_quit_key = '<Esc>'                                           
 
 let g:vim_json_syntax_conceal = 0                                               "Disable setting quotes for json syntax
 
-let delimitMate_expand_cr = 1                                                   "auto indent on enter
+let g:delimitMate_expand_cr = 1                                                   "auto indent on enter
 
 " Include local vimrc if exists
 if filereadable(glob("$HOME/.vimrc.local"))
