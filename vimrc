@@ -345,6 +345,7 @@ let g:syntastic_warning_symbol = "▵"
 let g:syntastic_style_warning_symbol = "▵"
 let g:syntastic_loc_list_height = 5                                             "Height of the errors window
 let g:syntastic_always_populate_loc_list = 1                                    "Always popuplate syntastic error list
+let g:syntastic_aggregate_errors = 1                                            "Show errors from all checkers
 let g:syntastic_auto_jump = 3                                                   "Jump to first error detected
 let g:syntastic_php_checkers = ['php']                                          "Enable only basic syntax checking for php
 let g:syntastic_javascript_checkers = ['jshint', 'jscs']                        "Enable these linters for js
