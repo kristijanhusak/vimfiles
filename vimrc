@@ -131,6 +131,8 @@ autocmd vimrc FileType css,scss setlocal iskeyword+=-                           
 autocmd vimrc GUIEnter * set vb t_vb=                                                 "Disable visual bell completely
 autocmd vimrc VimEnter * set vb t_vb=
 
+autocmd vimrc BufNewFile,BufReadPost *.md set filetype=markdown                       "Set *.md extension to markdown filetype
+
 " ================ Completion =======================
 
 set wildmode=list:full
