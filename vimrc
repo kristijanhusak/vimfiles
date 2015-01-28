@@ -7,6 +7,7 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
 Plugin 'tpope/vim-commentary'
+Plugin 'nelstrom/vim-visual-star-search'
 Plugin 'mileszs/ack.vim'
 Plugin 'kien/ctrlp.vim'
 Plugin 'd11wtq/ctrlp_bdelete.vim'
