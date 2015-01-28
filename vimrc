@@ -283,7 +283,6 @@ nnoremap <Leader>f :Ack
 nnoremap <Leader>b :CtrlPBuffer<CR>
 " Ctrlp plugin fuzzy search tags
 nnoremap <Leader>t :CtrlPFunky<CR>
-nnoremap <Leader>T :CtrlPBufTag<CR>
 
 " Maps for indentation in normal mode
 nnoremap <tab> >>
