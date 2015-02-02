@@ -42,7 +42,7 @@ call vundle#end()                                                               
 
 filetype plugin indent on                                                       "Enable plugins and indents by filetype
 
-let g:mapleader = ","                                                             "Change leader to a comma
+let g:mapleader = ","                                                           "Change leader to a comma
 
 let g:enable_bold_font = 1                                                      "Enable bold font in colorscheme
 
@@ -122,16 +122,16 @@ augroup vimrc
     autocmd!
 augroup END
 
-autocmd vimrc BufWritePre * :call StripTrailingWhitespaces()                          "Auto-remove trailing spaces
-autocmd vimrc InsertLeave * NeoSnippetClearMarkers                                    "Remove unused markers for snippets
-autocmd vimrc VimEnter * if !argc() | Startify | endif                                "If no file is selected, execute Startify
-autocmd vimrc FileType html,javascript setlocal shiftwidth=2 softtabstop=2 tabstop=2  "Set 2 indent for html
-autocmd vimrc FileType css,scss setlocal iskeyword+=-                                 "Treat words with hyphens as whole word
+autocmd vimrc BufWritePre * :call StripTrailingWhitespaces()                    "Auto-remove trailing spaces
+autocmd vimrc InsertLeave * NeoSnippetClearMarkers                              "Remove unused markers for snippets
+autocmd vimrc VimEnter * if !argc() | Startify | endif                          "If no file is selected, execute Startify
+autocmd vimrc FileType html,javascript setlocal sw=2 sts=2 ts=2                 "Set 2 indent for html
+autocmd vimrc FileType css,scss setlocal iskeyword+=-                           "Treat words with hyphens as whole word
 
-autocmd vimrc GUIEnter * set vb t_vb=                                                 "Disable visual bell completely
+autocmd vimrc GUIEnter * set vb t_vb=                                           "Disable visual bell completely
 autocmd vimrc VimEnter * set vb t_vb=
 
-autocmd vimrc BufNewFile,BufReadPost *.md set filetype=markdown                       "Set *.md extension to markdown filetype
+autocmd vimrc BufNewFile,BufReadPost *.md set filetype=markdown                 "Set *.md extension to markdown filetype
 
 " ================ Completion =======================
 
@@ -270,9 +270,6 @@ nnoremap <s-tab> <<
 xnoremap <s-tab> <gv
 xnoremap <tab> >gv
 
-" Fugitive commands
-nnoremap <Leader>gs :Gstatus<CR>
-
 " Resize window with shift + and shift -
 nnoremap + <c-w>5>
 nnoremap _ <c-w>5<
@@ -329,7 +326,7 @@ let g:syntastic_scss_checkers = []                                              
 
 let g:vim_json_syntax_conceal = 0                                               "Disable setting quotes for json syntax
 
-let g:delimitMate_expand_cr = 1                                                   "auto indent on enter
+let g:delimitMate_expand_cr = 1                                                 "auto indent on enter
 
 " Include local vimrc if exists
 if filereadable(glob("$HOME/.vimrc.local"))
