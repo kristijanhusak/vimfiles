@@ -187,17 +187,6 @@ function! StripTrailingWhitespaces()
     call cursor(l:l, l:c)
 endfunction
 
-" vp doesn't replace paste buffer
-function! RestoreRegister()
-    let @" = s:restore_reg
-    return ''
-endfunction
-
-function! s:Repl()
-    let s:restore_reg = @"
-    return "p@=RestoreRegister()\<cr>"
-endfunction
-
 " Initialize ctrlp plugin for deleting buffers from list
 call ctrlp_bdelete#init()
 
@@ -303,9 +292,6 @@ nnoremap _ <c-w>5<
 " Center highlighted search
 nnoremap n nzz
 nnoremap N Nzz
-
-" Prevent overriding yank register with overriten text, must be near end of file
-vmap <expr>p <sid>Repl()
 
 " ================ plugins setups ========================
 
