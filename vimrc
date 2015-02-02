@@ -22,7 +22,6 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'bling/vim-airline'
 Plugin 'duff/vim-bufonly'
 Plugin 'gregsexton/MatchTag'
-Plugin 'terryma/vim-multiple-cursors'
 Plugin 'kristijanhusak/vim-hybrid'
 Plugin 'Shougo/neocomplete.vim'
 Plugin 'Shougo/neosnippet'
@@ -172,14 +171,6 @@ cnoreabbrev T tabe
 
 " ================ Functions ========================
 
-function! Multiple_cursors_before()
-    exe 'NeoCompleteLock'
-endfunction
-
-function! Multiple_cursors_after()
-    exe 'NeoCompleteUnlock'
-endfunction
-
 function! StripTrailingWhitespaces()
     let l:l = line(".")
     let l:c = col(".")
@@ -260,9 +251,6 @@ nnoremap <Leader>n :NERDTreeToggle<CR>
 " Toggle between last 2 buffers
 nnoremap <leader><tab> <c-^>
 
-" Switch jump half page to Ctrl-f so multiple cursors can be bind to Ctrl-d
-nnoremap <C-f> <C-d>
-
 " Auto change directory to match current file
 nnoremap <Leader>dc :cd %:p:h<CR>:pwd<CR>
 
@@ -338,14 +326,6 @@ let g:syntastic_auto_jump = 3                                                   
 let g:syntastic_php_checkers = ['php']                                          "Enable only basic syntax checking for php
 let g:syntastic_javascript_checkers = ['jshint', 'jscs']                        "Enable these linters for js
 let g:syntastic_scss_checkers = []                                              "Disable scss checking
-
-let g:multi_cursor_use_default_mapping = 0                                      "Disable default mappings for multiple cursors
-let g:multi_cursor_exit_from_insert_mode = 0                                    "Do not clear multi cursors selection on <Esc> press
-let g:multi_cursor_exit_from_visual_mode = 0                                    "Do not clear multi cursors selection on <Esc> press
-let g:multi_cursor_next_key = '<C-d>'                                           "Set start and next multiple cursor to Ctrl-d
-let g:multi_cursor_prev_key = '<C-r>'                                           "Set prev multiple cursor
-let g:multi_cursor_skip_key = '<C-x>'                                           "Set skip cursor
-let g:multi_cursor_quit_key = '<Esc>'                                           "Exit multiple cursor mode
 
 let g:vim_json_syntax_conceal = 0                                               "Disable setting quotes for json syntax
 
