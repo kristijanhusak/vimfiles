@@ -19,6 +19,7 @@ Plugins
 ----------------
 
 * NERDTree
+* Visual star search
 * Startify
 * CtrlP
 * CtrlP bdelete
@@ -26,7 +27,6 @@ Plugins
 * Ack
 * Surround
 * DelimitMate
-* Multiple cursors
 * Airline
 * Neocomplete
 * Neosnippets
@@ -38,6 +38,7 @@ Plugins
 * Gitgutter
 * BufOnly
 * Match Tag
+* Matchit
 * HTML5 syntax
 * Blade syntax
 * Json syntax
