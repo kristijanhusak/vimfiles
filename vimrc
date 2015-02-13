@@ -301,10 +301,11 @@ let g:NERDTreeChDirMode = 2                                                     
 let g:NERDTreeShowHidden = 1                                                    "Show hidden files in NERDTree
 let g:NERDTreeIgnore=['\.git$', '\.sass-cache$']
 
-let g:neocomplete#enable_at_startup = 1                                         "Enable autocomplete
 let g:neocomplete#enable_smart_case = 1                                         "Use smartcase.
+let g:neocomplete#enable_fuzzy_completion = 0                                   "Disable fuzzy completion, bugs dot repeat
 let g:neocomplete#data_directory = '~/.vim/.neocomplete'                        "Folder where neocomplete saves cache
 let g:neocomplete#max_list = 15                                                 "Limit neocomplete list to 10 entries
+let g:neocomplete#enable_at_startup = 1                                         "Enable autocomplete
 
 let g:neosnippet#disable_runtime_snippets = {'_' : 1}                           "Snippets setup
 let g:neosnippet#snippets_directory = [
