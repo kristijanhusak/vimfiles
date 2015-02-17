@@ -303,6 +303,7 @@ let g:NERDTreeIgnore=['\.git$', '\.sass-cache$']
 
 let g:neocomplete#enable_smart_case = 1                                         "Use smartcase.
 let g:neocomplete#enable_fuzzy_completion = 0                                   "Disable fuzzy completion, bugs dot repeat
+let g:neocomplete#enable_insert_char_pre = 1                                    "Enable autocomplete before char insert
 let g:neocomplete#data_directory = '~/.vim/.neocomplete'                        "Folder where neocomplete saves cache
 let g:neocomplete#max_list = 15                                                 "Limit neocomplete list to 10 entries
 let g:neocomplete#enable_at_startup = 1                                         "Enable autocomplete
