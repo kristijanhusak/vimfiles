@@ -88,6 +88,7 @@ set completeopt-=preview                                                        
 set background=dark                                                             "Set background to dark
 set hidden                                                                      "Hide buffers in background
 set conceallevel=2 concealcursor=i                                              "neosnippets conceal marker
+set splitright splitbelow                                                       "Set up new splits positions
 
 syntax on                                                                       "turn on syntax highlighting
 
@@ -200,9 +201,8 @@ nmap <C-h> <C-w>h
 nmap <C-j> <C-w>j
 nmap <C-k> <C-w>k
 nmap <C-l> <C-w>l
-
-" Open vertical split and focus it
-nnoremap <Leader>v <C-w>v<C-w>w
+" Open vertical split
+nnoremap <Leader>v <C-w>v
 
 " Down is really the next line
 nnoremap j gj
