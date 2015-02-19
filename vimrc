@@ -87,7 +87,6 @@ set list                                                                        
 set completeopt-=preview                                                        "Disable preview for autocomplete
 set background=dark                                                             "Set background to dark
 set hidden                                                                      "Hide buffers in background
-set colorcolumn=80                                                              "Add right margin
 set conceallevel=2 concealcursor=i                                              "neosnippets conceal marker
 
 syntax on                                                                       "turn on syntax highlighting
@@ -128,7 +127,7 @@ autocmd vimrc BufWritePre * :call StripTrailingWhitespaces()                    
 autocmd vimrc InsertLeave * NeoSnippetClearMarkers                              "Remove unused markers for snippets
 autocmd vimrc VimEnter * if !argc() | Startify | endif                          "If no file is selected, execute Startify
 autocmd vimrc FileType html,javascript setlocal sw=2 sts=2 ts=2                 "Set 2 indent for html
-autocmd vimrc FileType css,scss setlocal iskeyword+=-                           "Treat words with hyphens as whole word
+autocmd vimrc FileType php,javascript setlocal cc=80                            "Set right margin only for php and js
 
 autocmd vimrc GUIEnter * set vb t_vb=                                           "Disable visual bell completely
 autocmd vimrc VimEnter * set vb t_vb=
