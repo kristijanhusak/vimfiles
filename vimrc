@@ -88,7 +88,7 @@ set completeopt-=preview                                                        
 set background=dark                                                             "Set background to dark
 set hidden                                                                      "Hide buffers in background
 set conceallevel=2 concealcursor=i                                              "neosnippets conceal marker
-set splitright splitbelow                                                       "Set up new splits positions
+set splitright                                                                  "Set up new splits positions
 
 syntax on                                                                       "turn on syntax highlighting
 
@@ -124,7 +124,7 @@ augroup vimrc
     autocmd!
 augroup END
 
-autocmd vimrc BufWritePre * :call StripTrailingWhitespaces()                    "Auto-remove trailing spaces
+autocmd vimrc BufWritePre * :call s:StripTrailingWhitespaces()                  "Auto-remove trailing spaces
 autocmd vimrc InsertLeave * NeoSnippetClearMarkers                              "Remove unused markers for snippets
 autocmd vimrc VimEnter * if !argc() | Startify | endif                          "If no file is selected, execute Startify
 autocmd vimrc FileType html,javascript setlocal sw=2 sts=2 ts=2                 "Set 2 indent for html
@@ -173,11 +173,16 @@ cnoreabbrev T tabe
 
 " ================ Functions ========================
 
-function! StripTrailingWhitespaces()
+function! s:StripTrailingWhitespaces()
     let l:l = line(".")
     let l:c = col(".")
     %s/\s\+$//e
     call cursor(l:l, l:c)
+endfunction
+
+function! s:check_back_space()
+    let col = col('.') - 1
+    return !col || getline('.')[col - 1]  =~ '\s'
 endfunction
 
 " Initialize ctrlp plugin for deleting buffers from list
@@ -211,7 +216,9 @@ nnoremap k gk
 " Expand snippets on tab if snippets exists, otherwise do autocompletion
 imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
 \ "\<Plug>(neosnippet_expand_or_jump)"
-\: pumvisible() ? "\<C-n>" : "\<TAB>"
+\ : pumvisible() ? "\<C-n>" :
+\ <SID>check_back_space() ? "\<TAB>" :
+\ neocomplete#start_manual_complete()
 " If popup window is visible do autocompletion from back
 imap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 " Fix for jumping over placeholders for neosnippet
@@ -304,10 +311,9 @@ let g:NERDTreeShowHidden = 1                                                    
 let g:NERDTreeIgnore=['\.git$', '\.sass-cache$']
 
 let g:neocomplete#enable_smart_case = 1                                         "Use smartcase.
-let g:neocomplete#enable_fuzzy_completion = 0                                   "Disable fuzzy completion, bugs dot repeat
-let g:neocomplete#enable_insert_char_pre = 1                                    "Enable autocomplete before char insert
 let g:neocomplete#data_directory = '~/.vim/.neocomplete'                        "Folder where neocomplete saves cache
 let g:neocomplete#max_list = 15                                                 "Limit neocomplete list to 10 entries
+let g:neocomplete#disable_auto_complete = 1                                     "Disable automatic autocomplete
 let g:neocomplete#enable_at_startup = 1                                         "Enable autocomplete
 
 let g:neosnippet#disable_runtime_snippets = {'_' : 1}                           "Snippets setup
