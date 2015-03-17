@@ -46,6 +46,7 @@ Plugins
 * Twig syntax
 * Php syntax
 * Yaml syntax
+* Mustache handlebars
 * Javascript syntax
 * Scss syntax
 * CoffeeScript syntax

@@ -38,6 +38,7 @@ Plugin 'joshtronic/php.vim'
 Plugin 'stephpy/vim-yaml'
 Plugin 'cakebaker/scss-syntax.vim'
 Plugin 'kchmck/vim-coffee-script'
+Plugin 'mustache/vim-mustache-handlebars'
 Plugin 'mhinz/vim-startify'
 
 call vundle#end()                                                               "Finish Vundle initialization
