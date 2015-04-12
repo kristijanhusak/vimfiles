@@ -7,11 +7,12 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
 Plugin 'tpope/vim-commentary'
+Plugin 'arnaud-lb/vim-php-namespace'
+Plugin 'shawncplus/phpcomplete.vim'
 Plugin 'nelstrom/vim-visual-star-search'
 Plugin 'mileszs/ack.vim'
 Plugin 'kien/ctrlp.vim'
 Plugin 'd11wtq/ctrlp_bdelete.vim'
-Plugin 'tacahiroy/ctrlp-funky'
 Plugin 'Raimondi/delimitMate'
 Plugin 'mattn/emmet-vim'
 Plugin 'tpope/vim-surround'
@@ -32,9 +33,10 @@ Plugin 'othree/html5.vim'
 Plugin 'xsbeats/vim-blade'
 Plugin 'elzr/vim-json'
 Plugin 'evidens/vim-twig'
+Plugin 'majutsushi/tagbar'
 Plugin 'jelera/vim-javascript-syntax'
 Plugin 'pangloss/vim-javascript'
-Plugin 'joshtronic/php.vim'
+Plugin 'StanAngeloff/php.vim'
 Plugin 'stephpy/vim-yaml'
 Plugin 'cakebaker/scss-syntax.vim'
 Plugin 'kchmck/vim-coffee-script'
@@ -90,6 +92,7 @@ set background=dark                                                             
 set hidden                                                                      "Hide buffers in background
 set conceallevel=2 concealcursor=i                                              "neosnippets conceal marker
 set splitright                                                                  "Set up new splits positions
+set tags=./tags;/                                                               "Find tags file
 
 syntax on                                                                       "turn on syntax highlighting
 
@@ -130,11 +133,13 @@ autocmd vimrc InsertLeave * NeoSnippetClearMarkers                              
 autocmd vimrc VimEnter * if !argc() | Startify | endif                          "If no file is selected, execute Startify
 autocmd vimrc FileType html,javascript setlocal sw=2 sts=2 ts=2                 "Set 2 indent for html
 autocmd vimrc FileType php,javascript setlocal cc=80                            "Set right margin only for php and js
+autocmd vimrc FileType php setlocal omnifunc=phpcomplete#CompletePHP            "Use phpcomplete omni complete
 
 autocmd vimrc GUIEnter * set vb t_vb=                                           "Disable visual bell completely
 autocmd vimrc VimEnter * set vb t_vb=
 
 autocmd vimrc BufNewFile,BufReadPost *.md set filetype=markdown                 "Set *.md extension to markdown filetype
+autocmd vimrc BufWritePost * if filereadable('tags') | call GenerateTags(1) | endif
 
 " ================ Completion =======================
 
@@ -143,7 +148,6 @@ set wildmenu                                                                    
 set wildignore=*.o,*.obj,*~                                                     "stuff to ignore when tab completing
 set wildignore+=*vim/backups*
 set wildignore+=*sass-cache*
-set wildignore+=*vendor/**
 set wildignore+=*node_modules/**
 set wildignore+=*DS_Store*
 set wildignore+=*.gem
@@ -186,10 +190,27 @@ function! s:check_back_space()
     return !col || getline('.')[col - 1]  =~ '\s'
 endfunction
 
+function GenerateTags(...)
+    let command = '!ctags -f tags -h ".php" -R '
+    let commandEnd = "
+                \ --exclude='.git'
+                \ --exclude='.cache'
+                \ --exclude='tags'
+                \ --totals=yes
+                \ --PHP-kinds=+cf"
+    if a:0
+        let command = 'silent ! ctags -a % '
+    endif
+
+    exec command.commandEnd
+endfunction
+
 " Initialize ctrlp plugin for deleting buffers from list
 call ctrlp_bdelete#init()
 
 " ================ Custom mappings ========================
+
+map <Leader>tags :call GenerateTags()<CR>
 
 " Comment map
 nmap <Leader>c gcc
@@ -271,8 +292,11 @@ nnoremap <Leader>f :Ack
 
 " Toggle buffer list
 nnoremap <Leader>b :CtrlPBuffer<CR>
+nnoremap <Leader>t :CtrlPBufTag<CR>
+nnoremap <Leader>T :TagbarToggle<CR>
+nnoremap <Leader>m :CtrlPMRU<CR>
 " Ctrlp plugin fuzzy search tags
-nnoremap <Leader>t :CtrlPFunky<CR>
+nnoremap <Leader>u <C-O>:call PhpInsertUse()<CR>
 
 " Maps for indentation in normal mode
 nnoremap <tab> >>
@@ -293,7 +317,6 @@ nnoremap N Nzz
 " ================ plugins setups ========================
 
 let g:ctrlp_match_window = 'bottom,order:ttb,min:1,max:25,results:25'           "Ctrlp window setup
-let g:ctrlp_extensions = ['funky']
 
 let g:airline_powerline_fonts = 1                                               "Enable powerline fonts
 let g:airline_theme = "hybrid"                                                  "Set theme to powerline default theme
@@ -307,6 +330,8 @@ let g:gitgutter_eager = 0                                                       
 let g:user_emmet_expandabbr_key = '<c-e>'                                       "Change trigger emmet key
 let g:user_emmet_next_key = '<c-n>'                                             "Change trigger jump to next for emmet
 
+let g:tagbar_autofocus = 1                                                      "Focus tagbar when opened
+
 let g:NERDTreeChDirMode = 2                                                     "NERDTree change directory only on root change
 let g:NERDTreeShowHidden = 1                                                    "Show hidden files in NERDTree
 let g:NERDTreeIgnore=['\.git$', '\.sass-cache$']
@@ -316,6 +341,10 @@ let g:neocomplete#data_directory = '~/.vim/.neocomplete'                        
 let g:neocomplete#max_list = 15                                                 "Limit neocomplete list to 10 entries
 let g:neocomplete#disable_auto_complete = 1                                     "Disable automatic autocomplete
 let g:neocomplete#enable_at_startup = 1                                         "Enable autocomplete
+if !exists('g:neocomplete#sources#omni#input_patterns')
+    let g:neocomplete#sources#omni#input_patterns = {}
+endif
+let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\%(\h\w*\)\?\|\h\w*::\%(\h\w*\)\?'
 
 let g:neosnippet#disable_runtime_snippets = {'_' : 1}                           "Snippets setup
 let g:neosnippet#snippets_directory = [
@@ -341,7 +370,9 @@ let g:vim_json_syntax_conceal = 0                                               
 
 let g:delimitMate_expand_cr = 1                                                 "auto indent on enter
 
+
 " Include local vimrc if exists
 if filereadable(glob("$HOME/.vimrc.local"))
     source $HOME/.vimrc.local
 endif
+
