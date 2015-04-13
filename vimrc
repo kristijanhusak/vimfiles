@@ -42,6 +42,7 @@ Plugin 'cakebaker/scss-syntax.vim'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'mustache/vim-mustache-handlebars'
 Plugin 'mhinz/vim-startify'
+Plugin 'adoy/vim-php-refactoring-toolbox'
 
 call vundle#end()                                                               "Finish Vundle initialization
 
@@ -190,7 +191,7 @@ function! s:check_back_space()
     return !col || getline('.')[col - 1]  =~ '\s'
 endfunction
 
-function GenerateTags(...)
+function! GenerateTags(...)
     let command = '!ctags -f tags -h ".php" -R '
     let commandEnd = "
                 \ --exclude='.git'
