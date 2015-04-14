@@ -198,7 +198,8 @@ function! GenerateTags(...)
                 \ --exclude='.cache'
                 \ --exclude='tags'
                 \ --totals=yes
-                \ --PHP-kinds=+cf"
+                \ --PHP-kinds=+cf
+                \ --exclude='*.js'"
     if a:0
         let command = 'silent ! ctags -a % '
     endif
@@ -333,7 +334,7 @@ let g:user_emmet_next_key = '<c-n>'                                             
 
 let g:tagbar_autofocus = 1                                                      "Focus tagbar when opened
 
-let g:NERDTreeChDirMode = 2                                                     "NERDTree change directory only on root change
+let g:NERDTreeMinimalUI = 1                                                     "Disable help text and bookmark title
 let g:NERDTreeShowHidden = 1                                                    "Show hidden files in NERDTree
 let g:NERDTreeIgnore=['\.git$', '\.sass-cache$', '\.vagrant', '\.idea']
 
