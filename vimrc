@@ -335,7 +335,7 @@ let g:tagbar_autofocus = 1                                                      
 
 let g:NERDTreeChDirMode = 2                                                     "NERDTree change directory only on root change
 let g:NERDTreeShowHidden = 1                                                    "Show hidden files in NERDTree
-let g:NERDTreeIgnore=['\.git$', '\.sass-cache$']
+let g:NERDTreeIgnore=['\.git$', '\.sass-cache$', '\.vagrant', '\.idea']
 
 let g:neocomplete#enable_smart_case = 1                                         "Use smartcase.
 let g:neocomplete#data_directory = '~/.vim/.neocomplete'                        "Folder where neocomplete saves cache
