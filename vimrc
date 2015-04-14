@@ -134,7 +134,6 @@ autocmd vimrc InsertLeave * NeoSnippetClearMarkers                              
 autocmd vimrc VimEnter * if !argc() | Startify | endif                          "If no file is selected, execute Startify
 autocmd vimrc FileType html,javascript setlocal sw=2 sts=2 ts=2                 "Set 2 indent for html
 autocmd vimrc FileType php,javascript setlocal cc=80                            "Set right margin only for php and js
-autocmd vimrc FileType php setlocal omnifunc=phpcomplete#CompletePHP            "Use phpcomplete omni complete
 
 autocmd vimrc GUIEnter * set vb t_vb=                                           "Disable visual bell completely
 autocmd vimrc VimEnter * set vb t_vb=
