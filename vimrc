@@ -333,6 +333,7 @@ let g:user_emmet_next_key = '<c-n>'                                             
 
 let g:tagbar_autofocus = 1                                                      "Focus tagbar when opened
 
+let g:NERDTreeChDirMode = 2                                                     "Always change the root directory
 let g:NERDTreeMinimalUI = 1                                                     "Disable help text and bookmark title
 let g:NERDTreeShowHidden = 1                                                    "Show hidden files in NERDTree
 let g:NERDTreeIgnore=['\.git$', '\.sass-cache$', '\.vagrant', '\.idea']
