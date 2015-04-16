@@ -148,6 +148,8 @@ set wildmenu                                                                    
 set wildignore=*.o,*.obj,*~                                                     "stuff to ignore when tab completing
 set wildignore+=*vim/backups*
 set wildignore+=*sass-cache*
+set wildignore+=*cache*
+set wildignore+=*logs*
 set wildignore+=*node_modules/**
 set wildignore+=*DS_Store*
 set wildignore+=*.gem
