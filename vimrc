@@ -7,8 +7,6 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
 Plugin 'tpope/vim-commentary'
-Plugin 'arnaud-lb/vim-php-namespace'
-Plugin 'shawncplus/phpcomplete.vim'
 Plugin 'nelstrom/vim-visual-star-search'
 Plugin 'mileszs/ack.vim'
 Plugin 'kien/ctrlp.vim'
@@ -42,7 +40,6 @@ Plugin 'cakebaker/scss-syntax.vim'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'mustache/vim-mustache-handlebars'
 Plugin 'mhinz/vim-startify'
-Plugin 'adoy/vim-php-refactoring-toolbox'
 
 call vundle#end()                                                               "Finish Vundle initialization
 
@@ -139,7 +136,6 @@ autocmd vimrc GUIEnter * set vb t_vb=                                           
 autocmd vimrc VimEnter * set vb t_vb=
 
 autocmd vimrc BufNewFile,BufReadPost *.md set filetype=markdown                 "Set *.md extension to markdown filetype
-autocmd vimrc BufWritePost * if filereadable('tags') | call GenerateTags(1) | endif
 
 " ================ Completion =======================
 
@@ -192,28 +188,10 @@ function! s:check_back_space()
     return !col || getline('.')[col - 1]  =~ '\s'
 endfunction
 
-function! GenerateTags(...)
-    let command = '!ctags -f tags -h ".php" -R '
-    let commandEnd = "
-                \ --exclude='.git'
-                \ --exclude='.cache'
-                \ --exclude='tags'
-                \ --totals=yes
-                \ --PHP-kinds=+cf
-                \ --exclude='*.js'"
-    if a:0
-        let command = 'silent ! ctags -a % '
-    endif
-
-    exec command.commandEnd
-endfunction
-
 " Initialize ctrlp plugin for deleting buffers from list
 call ctrlp_bdelete#init()
 
 " ================ Custom mappings ========================
-
-map <Leader>tags :call GenerateTags()<CR>
 
 " Comment map
 nmap <Leader>c gcc
@@ -298,8 +276,6 @@ nnoremap <Leader>b :CtrlPBuffer<CR>
 nnoremap <Leader>t :CtrlPBufTag<CR>
 nnoremap <Leader>T :TagbarToggle<CR>
 nnoremap <Leader>m :CtrlPMRU<CR>
-" Ctrlp plugin fuzzy search tags
-nnoremap <Leader>u <C-O>:call PhpInsertUse()<CR>
 
 " Maps for indentation in normal mode
 nnoremap <tab> >>
@@ -348,10 +324,6 @@ let g:neocomplete#data_directory = '~/.vim/.neocomplete'                        
 let g:neocomplete#max_list = 15                                                 "Limit neocomplete list to 10 entries
 let g:neocomplete#disable_auto_complete = 1                                     "Disable automatic autocomplete
 let g:neocomplete#enable_at_startup = 1                                         "Enable autocomplete
-if !exists('g:neocomplete#sources#omni#input_patterns')
-    let g:neocomplete#sources#omni#input_patterns = {}
-endif
-let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\%(\h\w*\)\?\|\h\w*::\%(\h\w*\)\?'
 
 let g:neosnippet#disable_runtime_snippets = {'_' : 1}                           "Snippets setup
 let g:neosnippet#snippets_directory = [
@@ -372,7 +344,6 @@ let g:syntastic_auto_jump = 3                                                   
 let g:syntastic_php_checkers = ['php', 'phpcs', 'phpmd']                        "Enable only basic syntax checking for php
 let g:syntastic_javascript_checkers = ['jshint', 'jscs']                        "Enable these linters for js
 let g:syntastic_scss_checkers = []                                              "Disable scss checking
-let g:syntastic_php_phpcs_args="--standard=PSR2"
 
 let g:vim_json_syntax_conceal = 0                                               "Disable setting quotes for json syntax
 
