@@ -6,6 +6,7 @@ call vundle#begin()
 
 Plugin 'gmarik/Vundle.vim'
 
+Plugin 'ryanoasis/vim-webdevicons'
 Plugin 'tpope/vim-commentary'
 Plugin 'nelstrom/vim-visual-star-search'
 Plugin 'mileszs/ack.vim'
@@ -85,6 +86,7 @@ set wrap                                                                        
 set linebreak                                                                   "Wrap lines at convenient points
 set listchars=tab:\ \ ,trail:·                                                  "Set trails for tabs and spaces
 set list                                                                        "Enable listchars
+set lazyredraw                                                                  "Do not redraw on registers and macros
 set completeopt-=preview                                                        "Disable preview for autocomplete
 set background=dark                                                             "Set background to dark
 set hidden                                                                      "Hide buffers in background
@@ -136,6 +138,8 @@ autocmd vimrc GUIEnter * set vb t_vb=                                           
 autocmd vimrc VimEnter * set vb t_vb=
 
 autocmd vimrc BufNewFile,BufReadPost *.md set filetype=markdown                 "Set *.md extension to markdown filetype
+autocmd vimrc FileType nerdtree syntax match hideBracketsInNerdTree
+            \ "\]" contained conceal containedin=ALL
 
 " ================ Completion =======================
 
@@ -349,9 +353,9 @@ let g:vim_json_syntax_conceal = 0                                               
 
 let g:delimitMate_expand_cr = 1                                                 "auto indent on enter
 
+let g:WebDevIconsNerdTreeAfterGlyphPadding = ' '                                "Add additional space for icons in nerdtree
 
 " Include local vimrc if exists
 if filereadable(glob("$HOME/.vimrc.local"))
     source $HOME/.vimrc.local
 endif
-
