@@ -24,7 +24,7 @@ Plugin 'bling/vim-airline'
 Plugin 'duff/vim-bufonly'
 Plugin 'tmhedberg/matchit'
 Plugin 'gregsexton/MatchTag'
-Plugin 'kristijanhusak/vim-hybrid'
+Plugin 'kristijanhusak/vim-hybrid-material'
 Plugin 'Shougo/neocomplete.vim'
 Plugin 'Shougo/neosnippet'
 Plugin 'honza/vim-snippets'
@@ -96,7 +96,7 @@ set tags=./tags;/                                                               
 
 syntax on                                                                       "turn on syntax highlighting
 
-colorscheme hybrid_reverse
+colorscheme hybrid_material
 
 " ================ Turn Off Swap Files ==============
 
@@ -352,8 +352,6 @@ let g:syntastic_scss_checkers = []                                              
 let g:vim_json_syntax_conceal = 0                                               "Disable setting quotes for json syntax
 
 let g:delimitMate_expand_cr = 1                                                 "auto indent on enter
-
-let g:WebDevIconsNerdTreeAfterGlyphPadding = ' '                                "Add additional space for icons in nerdtree
 
 " Include local vimrc if exists
 if filereadable(glob("$HOME/.vimrc.local"))
