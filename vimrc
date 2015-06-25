@@ -353,6 +353,8 @@ let g:vim_json_syntax_conceal = 0                                               
 
 let g:delimitMate_expand_cr = 1                                                 "auto indent on enter
 
+let g:WebDevIconsNerdTreeAfterGlyphPadding = ' '                                "Set up spacing for sidebar icons
+
 " Include local vimrc if exists
 if filereadable(glob("$HOME/.vimrc.local"))
     source $HOME/.vimrc.local
