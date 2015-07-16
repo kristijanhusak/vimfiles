@@ -41,6 +41,7 @@ Plugin 'cakebaker/scss-syntax.vim'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'mustache/vim-mustache-handlebars'
 Plugin 'mhinz/vim-startify'
+Plugin 'marijnh/tern_for_vim'
 
 call vundle#end()                                                               "Finish Vundle initialization
 
