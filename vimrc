@@ -148,7 +148,6 @@ set wildmode=list:full
 set wildmenu                                                                    "enable ctrl-n and ctrl-p to scroll thru matches
 set wildignore=*.o,*.obj,*~                                                     "stuff to ignore when tab completing
 set wildignore+=*vim/backups*
-set wildignore+=*.meteor*
 set wildignore+=*sass-cache*
 set wildignore+=*cache*
 set wildignore+=*logs*
@@ -302,6 +301,7 @@ nnoremap N Nzz
 " ================ plugins setups ========================
 
 let g:ctrlp_match_window = 'bottom,order:ttb,min:1,max:25,results:25'           "Ctrlp window setup
+let g:ctrlp_custom_ignore = {'dir':  '\v[\/]\.(meteor)$'}                       "Ignore .meteor folder
 
 let g:airline_powerline_fonts = 1                                               "Enable powerline fonts
 let g:airline_theme = "hybrid"                                                  "Set theme to powerline default theme
