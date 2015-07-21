@@ -148,6 +148,7 @@ set wildmode=list:full
 set wildmenu                                                                    "enable ctrl-n and ctrl-p to scroll thru matches
 set wildignore=*.o,*.obj,*~                                                     "stuff to ignore when tab completing
 set wildignore+=*vim/backups*
+set wildignore+=*.meteor*
 set wildignore+=*sass-cache*
 set wildignore+=*cache*
 set wildignore+=*logs*
