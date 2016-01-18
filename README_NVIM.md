@@ -35,7 +35,7 @@ Plugins
 * vim-snippets
 * Fugitive
 * Emmet
-* Syntastic
+* Neomake
 * Commentary
 * Gitgutter
 * BufOnly

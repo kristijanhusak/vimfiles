@@ -1,6 +1,7 @@
 call plug#begin('~/.config/nvim/bundle')
 
 Plug 'ryanoasis/vim-webdevicons'
+Plug 'benekastah/neomake'
 Plug 'tpope/vim-commentary'
 Plug 'nelstrom/vim-visual-star-search'
 Plug 'mileszs/ack.vim'
@@ -11,7 +12,6 @@ Plug 'mattn/emmet-vim'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-fugitive'
-Plug 'scrooloose/syntastic'
 Plug 'scrooloose/nerdtree'
 Plug 'airblade/vim-gitgutter'
 Plug 'bling/vim-airline'
@@ -43,15 +43,6 @@ filetype plugin indent on                                                       
 let g:mapleader = ","                                                           "Change leader to a comma
 
 let g:enable_bold_font = 1                                                      "Enable bold font in colorscheme
-
-" ================ GUI options ====================
-
-set guioptions-=m                                                               "remove menu bar
-set guioptions-=T                                                               "remove toolbar
-set guioptions-=L                                                               "remove left scrollbar when vertical split
-set guioptions-=l                                                               "remove left scrollbar
-set guifont=Inconsolata\ for\ Powerline\ 12                                     "font setup
-set linespace=10                                                                "Set lineheight in gvim
 
 " ================ General Config ====================
 
@@ -113,13 +104,13 @@ augroup vimrc
     autocmd!
 augroup END
 
+autocmd vimrc BufWritePost * Neomake
 autocmd vimrc BufWritePre * :call s:StripTrailingWhitespaces()                  "Auto-remove trailing spaces
 autocmd vimrc InsertLeave * NeoSnippetClearMarkers                              "Remove unused markers for snippets
 autocmd vimrc VimEnter * if !argc() | Startify | endif                          "If no file is selected, execute Startify
 autocmd vimrc FileType html,javascript,coffee,cucumber setlocal sw=2 sts=2 ts=2 "Set 2 indent for html
 autocmd vimrc FileType php,javascript setlocal cc=80                            "Set right margin only for php and js
 
-autocmd vimrc GUIEnter * set vb t_vb=                                           "Disable visual bell completely
 autocmd vimrc VimEnter * set vb t_vb=
 
 autocmd vimrc BufNewFile,BufReadPost *.md set filetype=markdown                 "Set *.md extension to markdown filetype
@@ -235,8 +226,8 @@ vnoremap K :m '<-2<CR>gv=gv
 nnoremap <Leader><space> :noh<CR>
 
 " Handle syntastic error window
-nnoremap <Leader>es :Errors<CR>
-nnoremap <Leader>ec :lclose<CR>
+nnoremap <Leader>e :lopen<CR>
+nnoremap <Leader>q :lclose<CR>
 
 " Find current file in NERDTree
 nnoremap <Leader>hf :NERDTreeFind<CR>
@@ -303,25 +294,17 @@ let g:NERDTreeIgnore=['\.git$', '\.sass-cache$', '\.vagrant', '\.idea']
 
 let g:neosnippet#disable_runtime_snippets = {'_' : 1}                           "Snippets setup
 let g:neosnippet#snippets_directory = [
-            \ '~/.vim/bundle/vim-snippets/snippets',
-            \ '~/.vim/snippets']
+            \ '~/.config/nvim/bundle/vim-snippets/snippets',
+            \ '~/.config/nvim/snippets']
 
 let g:deoplete#enable_at_startup = 1                                            "Enable deoplete autocompletion
 
 let g:ackhighlight = 1                                                          "Highlight current search
 
-let g:syntastic_enable_signs = 1
-let g:syntastic_error_symbol = "x"
-let g:syntastic_style_error_symbol = "x"
-let g:syntastic_warning_symbol = "▵"
-let g:syntastic_style_warning_symbol = "▵"
-let g:syntastic_loc_list_height = 5                                             "Height of the errors window
-let g:syntastic_always_populate_loc_list = 1                                    "Always popuplate syntastic error list
-let g:syntastic_aggregate_errors = 1                                            "Show errors from all checkers
-let g:syntastic_auto_jump = 3                                                   "Jump to first error detected
-let g:syntastic_php_checkers = ['php', 'phpcs', 'phpmd']                        "Enable only basic syntax checking for php
-let g:syntastic_javascript_checkers = ['eslint']                                "Enable these linters for js
-let g:syntastic_scss_checkers = []                                              "Disable scss checking
+
+
+let g:neomake_php_phpcs_args_standard = 'PSR2'                                  "Set phpcs to use PSR2 standard
+let g:neomake_javascript_enabled_makers = ['eslint']                            "Enable these linters for js
 
 let g:vim_json_syntax_conceal = 0                                               "Disable setting quotes for json syntax
 
