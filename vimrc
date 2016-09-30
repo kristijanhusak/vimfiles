@@ -3,7 +3,6 @@ call plug#begin('~/.vim/bundle')
 
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'ryanoasis/vim-devicons'
-Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'nelstrom/vim-visual-star-search'
 Plug 'mileszs/ack.vim'
 Plug 'ctrlpvim/ctrlp.vim'
