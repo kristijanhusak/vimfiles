@@ -43,6 +43,7 @@ Plugins
 * [sheerun/vim-polyglot](https://github.com/sheerun/vim-polyglot)
 * [benjie/neomake-local-eslint.vim](https://github.com/benjie/neomake-local-eslint.vim)
 * [dkprice/vim-easygrep](https://github.com/dkprice/vim-easygrep)
+* [lambdalisue/vim-fullscreen](https://github.com/lambdalisue/vim-fullscreen)
 
 License
 -------

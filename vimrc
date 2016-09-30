@@ -2,6 +2,7 @@ set nocompatible                                                                
 call plug#begin('~/.vim/bundle')
 
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'lambdalisue/vim-fullscreen'
 Plug 'ryanoasis/vim-devicons'
 Plug 'nelstrom/vim-visual-star-search'
 Plug 'mileszs/ack.vim'
@@ -81,7 +82,6 @@ set splitright                                                                  
 set tags=./tags;/                                                               "Find tags file
 
 syntax on                                                                       "turn on syntax highlighting
-
 colorscheme hybrid_material
 
 " ================ Turn Off Swap Files ==============
