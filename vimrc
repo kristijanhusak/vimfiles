@@ -1,14 +1,15 @@
 set nocompatible                                                                "This must be first, because it changes other options as a side effect.
-filetype off                                                                    "required
 call plug#begin('~/.vim/bundle')
 
-Plug 'ryanoasis/vim-webdevicons'
-Plug 'tpope/vim-commentary'
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'ryanoasis/vim-devicons'
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'nelstrom/vim-visual-star-search'
 Plug 'mileszs/ack.vim'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'Raimondi/delimitMate'
 Plug 'mattn/emmet-vim'
+Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-fugitive'
@@ -17,27 +18,15 @@ Plug 'scrooloose/nerdtree'
 Plug 'airblade/vim-gitgutter'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'sheerun/vim-polyglot'
 Plug 'duff/vim-bufonly'
-Plug 'tmhedberg/matchit'
 Plug 'gregsexton/MatchTag'
 Plug 'kristijanhusak/vim-hybrid-material'
 Plug 'Shougo/neocomplete.vim'
 Plug 'Shougo/neosnippet'
 Plug 'honza/vim-snippets'
-Plug 'othree/html5.vim'
-Plug 'xsbeats/vim-blade'
-Plug 'elzr/vim-json'
-Plug 'evidens/vim-twig'
-Plug 'majutsushi/tagbar'
-Plug 'jelera/vim-javascript-syntax'
-Plug 'pangloss/vim-javascript'
-Plug 'StanAngeloff/php.vim'
-Plug 'stephpy/vim-yaml'
-Plug 'cakebaker/scss-syntax.vim'
-Plug 'kchmck/vim-coffee-script'
-Plug 'mustache/vim-mustache-handlebars'
-Plug 'mhinz/vim-startify'
-Plug 'marijnh/tern_for_vim', {'do': 'npm install'}
+Plug 'benjie/neomake-local-eslint.vim'
+Plug 'dkprice/vim-easygrep'
 
 call plug#end()
 
@@ -54,7 +43,7 @@ set guioptions-=T                                                               
 set guioptions-=L                                                               "remove left scrollbar when vertical split
 set guioptions-=r                                                               "remove left scrollbar when vertical split
 set guioptions-=l                                                               "remove left scrollbar
-set guifont=Inconsolata\ for\ Powerline\ 12                                     "font setup
+set guifont=InconsolataForPowerline\ Nerd\ Font\ Medium\ 12                     "font setup
 set linespace=10                                                                "Set lineheight in gvim
 
 " ================ General Config ====================
@@ -128,9 +117,9 @@ augroup END
 
 autocmd vimrc BufWritePre * :call s:StripTrailingWhitespaces()                  "Auto-remove trailing spaces
 autocmd vimrc InsertLeave * NeoSnippetClearMarkers                              "Remove unused markers for snippets
-autocmd vimrc VimEnter * if !argc() | Startify | endif                          "If no file is selected, execute Startify
 autocmd vimrc FileType html,javascript setlocal sw=2 sts=2 ts=2                 "Set 2 indent for html
 autocmd vimrc FileType php,javascript setlocal cc=80                            "Set right margin only for php and js
+autocmd vimrc FileType nerdtree setlocal nolist
 
 autocmd vimrc GUIEnter * set vb t_vb=                                           "Disable visual bell completely
 autocmd vimrc VimEnter * set vb t_vb=
@@ -226,9 +215,7 @@ nnoremap k gk
 " Expand snippets on tab if snippets exists, otherwise do autocompletion
 imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
 \ "\<Plug>(neosnippet_expand_or_jump)"
-\ : pumvisible() ? "\<C-n>" :
-\ <SID>check_back_space() ? "\<TAB>" :
-\ neocomplete#start_manual_complete()
+\ : pumvisible() ? "\<C-n>" : "\<TAB>"
 " If popup window is visible do autocompletion from back
 imap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 " Fix for jumping over placeholders for neosnippet
@@ -281,7 +268,6 @@ nnoremap <Leader>f :Ack
 " Toggle buffer list
 nnoremap <Leader>b :CtrlPBuffer<CR>
 nnoremap <Leader>t :CtrlPBufTag<CR>
-nnoremap <Leader>T :TagbarToggle<CR>
 nnoremap <Leader>m :CtrlPMRU<CR>
 
 " Maps for indentation in normal mode
@@ -320,8 +306,6 @@ let g:gitgutter_eager = 0                                                       
 let g:user_emmet_expandabbr_key = '<c-e>'                                       "Change trigger emmet key
 let g:user_emmet_next_key = '<c-n>'                                             "Change trigger jump to next for emmet
 
-let g:tagbar_autofocus = 1                                                      "Focus tagbar when opened
-
 let g:NERDTreeChDirMode = 2                                                     "Always change the root directory
 let g:NERDTreeMinimalUI = 1                                                     "Disable help text and bookmark title
 let g:NERDTreeShowHidden = 1                                                    "Show hidden files in NERDTree
@@ -330,7 +314,6 @@ let g:NERDTreeIgnore=['\.git$', '\.sass-cache$', '\.vagrant', '\.idea']
 let g:neocomplete#enable_smart_case = 1                                         "Use smartcase.
 let g:neocomplete#data_directory = '~/.vim/.neocomplete'                        "Folder where neocomplete saves cache
 let g:neocomplete#max_list = 15                                                 "Limit neocomplete list to 10 entries
-let g:neocomplete#disable_auto_complete = 1                                     "Disable automatic autocomplete
 let g:neocomplete#enable_at_startup = 1                                         "Enable autocomplete
 
 let g:neosnippet#disable_runtime_snippets = {'_' : 1}                           "Snippets setup
@@ -353,13 +336,4 @@ let g:syntastic_php_checkers = ['php', 'phpcs', 'phpmd']                        
 let g:syntastic_javascript_checkers = ['jshint', 'jscs']                        "Enable these linters for js
 let g:syntastic_scss_checkers = []                                              "Disable scss checking
 
-let g:vim_json_syntax_conceal = 0                                               "Disable setting quotes for json syntax
-
 let g:delimitMate_expand_cr = 1                                                 "auto indent on enter
-
-let g:WebDevIconsNerdTreeAfterGlyphPadding = ' '                                "Set up spacing for sidebar icons
-
-" Include local vimrc if exists
-if filereadable(glob("$HOME/.vimrc.local"))
-    source $HOME/.vimrc.local
-endif
