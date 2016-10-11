@@ -24,7 +24,7 @@ Plug 'kristijanhusak/vim-hybrid-material'
 Plug 'Shougo/neocomplete.vim'
 Plug 'Shougo/neosnippet'
 Plug 'honza/vim-snippets'
-Plug 'benjie/neomake-local-eslint.vim'
+Plug 'mtscout6/syntastic-local-eslint.vim'
 Plug 'dkprice/vim-easygrep'
 
 call plug#end()
@@ -117,7 +117,6 @@ autocmd vimrc BufWritePre * :call s:StripTrailingWhitespaces()                  
 autocmd vimrc InsertLeave * NeoSnippetClearMarkers                              "Remove unused markers for snippets
 autocmd vimrc FileType html,javascript setlocal sw=2 sts=2 ts=2                 "Set 2 indent for html
 autocmd vimrc FileType php,javascript setlocal cc=80                            "Set right margin only for php and js
-autocmd vimrc FileType nerdtree setlocal nolist
 
 autocmd vimrc GUIEnter * set vb t_vb=                                           "Disable visual bell completely
 autocmd vimrc VimEnter * set vb t_vb=
@@ -326,7 +325,7 @@ let g:syntastic_always_populate_loc_list = 1                                    
 let g:syntastic_aggregate_errors = 1                                            "Show errors from all checkers
 let g:syntastic_auto_jump = 3                                                   "Jump to first error detected
 let g:syntastic_php_checkers = ['php', 'phpcs', 'phpmd']                        "Enable only basic syntax checking for php
-let g:syntastic_javascript_checkers = ['jshint', 'jscs']                        "Enable these linters for js
+let g:syntastic_javascript_checkers = ['eslint']                                "Enable these linters for js
 let g:syntastic_scss_checkers = []                                              "Disable scss checking
 
 let g:delimitMate_expand_cr = 1                                                 "auto indent on enter
