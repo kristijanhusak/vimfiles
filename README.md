@@ -19,7 +19,6 @@ Plugins
 ----------------
 
 * [christoomey/vim-tmux-navigator](https://github.com/christoomey/vim-tmux-navigator)
-* [ryanoasis/vim-devicons](https://github.com/ryanoasis/vim-devicons)
 * [scrooloose/syntastic](https://github.com/scrooloose/syntastic)
 * [nelstrom/vim-visual-star-search](https://github.com/nelstrom/vim-visual-star-search)
 * [mileszs/ack.vim](https://github.com/mileszs/ack.vim)

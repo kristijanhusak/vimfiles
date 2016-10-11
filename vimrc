@@ -3,7 +3,6 @@ call plug#begin('~/.vim/bundle')
 
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'lambdalisue/vim-fullscreen'
-Plug 'ryanoasis/vim-devicons'
 Plug 'nelstrom/vim-visual-star-search'
 Plug 'mileszs/ack.vim'
 Plug 'ctrlpvim/ctrlp.vim'
@@ -179,11 +178,6 @@ function! s:LoadLocalVimrc()
     if filereadable(glob(getcwd() . '/.vimrc.local'))
         :execute 'source '.fnameescape(glob(getcwd(). '/.vimrc.local'))
     endif
-endfunction
-
-function! s:check_back_space()
-    let col = col('.') - 1
-    return !col || getline('.')[col - 1]  =~ '\s'
 endfunction
 
 " ================ Custom mappings ========================
